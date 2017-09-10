@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="260.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainWindowController">
+   <children>
+      <Pane prefHeight="260.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="34.0" layoutY="17.0" prefHeight="40.0" prefWidth="252.0" text="Welcome To Tatai!" textAlignment="CENTER">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="78.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleEasySelection" prefHeight="25.0" prefWidth="155.0" text="Easy (Less than 10)" />
+            <Button layoutX="78.0" layoutY="180.0" mnemonicParsing="false" text="Hard (Less than 100)" />
+            <TextArea editable="false" layoutX="14.0" layoutY="56.0" prefHeight="75.0" prefWidth="291.0" text="In Tatai, you can test your ability to pronounce Maori numbers. There are two difficulties. Easy tests numbers below 10, while hard tests numbers below 100!" wrapText="true" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
