@@ -1,55 +1,57 @@
 package application.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import application.controller.MainApp;
 
 public class MainWindowController {
-    @FXML
-    private Label firstNameLabel;
-    @FXML
-    private Label lastNameLabel;
-    @FXML
-    private Label streetLabel;
-    @FXML
-    private Label postalCodeLabel;
-    @FXML
-    private Label cityLabel;
-    @FXML
-    private Label birthdayLabel;
+	@FXML
+	private ComboBox<String> levelSelect;
 
-    // Reference to the main application.
-    private MainApp mainApp;
+	private ObservableList<String> levels = FXCollections.observableArrayList(
+			"Easy (1-10)",
+			"Hard (1-100)"
+			);
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
-    public MainWindowController () {
-    }
+	// Reference to the main application.
+	private MainApp mainApp;
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-    }
-    
-    /**
-     * Called when the user clicks on the Easy button.
-     */
-    @FXML
-    private void handleEasySelection() {
-    	System.out.println("EASY!");
-    }
+	/**
+	 * The constructor.
+	 * The constructor is called before the initialize() method.
+	 */
+	public MainWindowController () {
+	}
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
+	/**
+	 * Initializes the controller class. This method is automatically called
+	 * after the fxml file has been loaded.
+	 */
+	@FXML
+	private void initialize() {
+		levelSelect.setItems(levels);
+	}
+
+	/**
+	 * Called when the user clicks on the Easy button.
+	 */
+	@FXML
+	private void handleStart() {
+		if (levelSelect.getValue()!= null) {
+			// TODO: Change to a new window controller
+			System.out.println(levelSelect.getValue());
+			mainApp.showEasyLevel();
+		}
+	}
+
+	/**
+	 * Is called by the main application to give a reference back to itself.
+	 * 
+	 * @param mainApp
+	 */
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
+	}
 }
