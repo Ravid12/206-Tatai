@@ -16,7 +16,6 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     
-    //git lol
 
     @Override
     public void start(Stage primaryStage) {
