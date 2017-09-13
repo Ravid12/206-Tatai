@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import application.controller.MainApp;
 
 public class MainWindowController {
-	@FXML
+	
 	private ComboBox<String> levelSelect;
 
 	private ObservableList<String> levels = FXCollections.observableArrayList(
@@ -31,7 +31,6 @@ public class MainWindowController {
 	 */
 	@FXML
 	private void initialize() {
-		levelSelect.setItems(levels);
 	}
 
 	/**

@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="260.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+
+<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <ImageView fitHeight="480.0" fitWidth="96.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../res/background.jpg" />
+         </image>
+      </ImageView>
+   </left>
+   <right>
+      <ImageView fitHeight="480.0" fitWidth="96.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../res/background.jpg" />
+         </image>
+      </ImageView>
+   </right>
+</BorderPane>

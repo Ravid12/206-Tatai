@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import com.jfoenix.controls.*?>
@@ -9,23 +10,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="260.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainWindowController">
+<AnchorPane prefHeight="480.0" prefWidth="448.0" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainWindowController">
    <children>
-      <Pane prefHeight="260.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane opacity="0.8" prefHeight="480.0" prefWidth="448.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="TOP_CENTER" layoutX="34.0" layoutY="17.0" prefHeight="40.0" prefWidth="252.0" text="Welcome To Tatai!" textAlignment="CENTER">
+            <JFXButton layoutX="174.0" layoutY="200.0" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Instructions" textFill="WHITE" />
+            <JFXButton layoutX="174.0" layoutY="250.0" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Statistics" textFill="WHITE" />
+            <JFXButton layoutX="174.0" layoutY="300.0" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Play!" textFill="WHITE" />
+            <Label alignment="TOP_CENTER" layoutX="98.0" layoutY="33.0" prefHeight="40.0" prefWidth="252.0" text="Welcome To Tatai!" textAlignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Bold" size="24.0" />
                </font>
             </Label>
-            <TextArea editable="false" layoutX="15.0" layoutY="65.0" pickOnBounds="false" prefHeight="85.0" prefWidth="290.0" text="In Tatai, you can test your ability to pronounce Maori numbers. There are two difficulties. Easy tests numbers below 10, while hard tests numbers below 100! Choose a difficulty, and press start to begin!" wrapText="true">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </TextArea>
-            <ComboBox fx:id="levelSelect" layoutX="35.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" />
-            <Button layoutX="185.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleStart" prefHeight="25.0" prefWidth="100.0" text="Start!" />
-            <Label layoutX="34.0" layoutY="178.0" text="Choose Difficulty:" />
          </children>
       </Pane>
    </children>
