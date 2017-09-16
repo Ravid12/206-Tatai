@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="default-Anchor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.LeaderboardWindowController">
+   <children>
+      <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
+      <ListView layoutX="24.0" layoutY="89.0" prefHeight="250.0" prefWidth="400.0" />
+      <Label layoutX="139.0" layoutY="50.0" styleClass="title" text="Statistics" />
+   </children>
+   <stylesheets>
+      <URL value="@red-theme.css" />
+      <URL value="@red-theme.css" />
+   </stylesheets>
+</AnchorPane>

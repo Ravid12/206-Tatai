@@ -1,12 +1,9 @@
 package application.view;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import application.controller.MainApp;
+import javafx.fxml.FXML;
 
-public class MainWindowController {
+public class PractiseWindowController {
 
 	// Reference to the main application.
 	private MainApp mainApp;
@@ -15,7 +12,7 @@ public class MainWindowController {
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
-	public MainWindowController () {
+	public PractiseWindowController () {
 	}
 
 	/**
@@ -27,26 +24,18 @@ public class MainWindowController {
 	}
 
 	/**
-	 * Called when the user clicks on the Easy button.
+	 * Called when the user clicks on the Record button.
 	 */
 	@FXML
-	private void handleStartBtn() {
+	private void handleTestBtn() {
+		System.out.println("Testing 1, 2, 3");
 		mainApp.showExamWindow();
 	}
 	
 	@FXML
-	private void handlePractiseBtn() {
-		mainApp.showPractiseWindow();
-	}
-	
-	@FXML
-	private void handleStatsBtn() {
-		mainApp.showLeaderboardWindow();
-	}
-	
-	@FXML
-	private void handleInstructionsBtn() {
-		mainApp.showInstructionWindow();
+	private void handleMainMenuBtn() {
+		mainApp.showMainWindow();
+		System.out.println("Menu");		
 	}
 
 	/**
@@ -57,4 +46,5 @@ public class MainWindowController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
+	
 }
