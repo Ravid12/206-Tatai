@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.InstructionWindowController">
+   <children>
+      <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="OK, I got it" />
+      <Label layoutX="108.0" layoutY="50.0" prefHeight="40.0" prefWidth="232.0" styleClass="title" text="Instructions!" textFill="#a10000">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="instructions" layoutX="24.0" layoutY="87.0" prefHeight="245.0" prefWidth="400.0" text="Label" wrapText="true" />
+   </children>
+</AnchorPane>

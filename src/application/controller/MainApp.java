@@ -3,7 +3,12 @@ package application.controller;
 import java.io.IOException;
 
 import application.view.EasyLevelController;
+import application.view.EndWindowController;
+import application.view.ExamWindowController;
+import application.view.InstructionWindowController;
+import application.view.LeaderboardWindowController;
 import application.view.MainWindowController;
+import application.view.PractiseWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -61,6 +66,112 @@ public class MainApp extends Application {
         
             // Give the controller access to the main app.
             MainWindowController controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    /**
+     * Shows the ExamWindow inside the root layout.
+     */
+    public void showExamWindow() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/ExamWindow.fxml"));
+            AnchorPane mainWindow = (AnchorPane) loader.load();
+
+            // Set MainWindow into the center of root layout.
+            rootLayout.setCenter(mainWindow);
+        
+            // Give the controller access to the main app.
+            ExamWindowController controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    /**
+     * Shows the PractiseWindow inside the root layout.
+     */
+    public void showPractiseWindow() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/PractiseWindow.fxml"));
+            AnchorPane mainWindow = (AnchorPane) loader.load();
+
+            // Set MainWindow into the center of root layout.
+            rootLayout.setCenter(mainWindow);
+        
+            // Give the controller access to the main app.
+            PractiseWindowController controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void showInstructionWindow() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/InstructionWindow.fxml"));
+            AnchorPane mainWindow = (AnchorPane) loader.load();
+
+            // Set MainWindow into the center of root layout.
+            rootLayout.setCenter(mainWindow);
+        
+            // Give the controller access to the main app.
+            InstructionWindowController controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void showLeaderboardWindow() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/LeaderboardWindow.fxml"));
+            AnchorPane mainWindow = (AnchorPane) loader.load();
+
+            // Set MainWindow into the center of root layout.
+            rootLayout.setCenter(mainWindow);
+        
+            // Give the controller access to the main app.
+            LeaderboardWindowController controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void showEndWindow() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/EndWindow.fxml"));
+            AnchorPane mainWindow = (AnchorPane) loader.load();
+
+            // Set MainWindow into the center of root layout.
+            rootLayout.setCenter(mainWindow);
+        
+            // Give the controller access to the main app.
+            EndWindowController controller = loader.getController();
             controller.setMainApp(this);
             
         } catch (IOException e) {
