@@ -2,17 +2,14 @@ package application.view;
 
 import application.controller.WindowController;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
-public class EasyLevelController extends WindowController{
-	@FXML
-	private Label number;
+public class LeaderboardWindowController extends WindowController{
 
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
-	public EasyLevelController () {
+	public LeaderboardWindowController () {
 	}
 
 	/**
@@ -21,14 +18,14 @@ public class EasyLevelController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		number.setText("Elevtyleven");
 	}
 
 	/**
-	 * Called when the user clicks on the Menu button.
-	 */
+	 * Called when the user clicks on the Record button.
+	 */	
 	@FXML
-	private void handleMenu() {
+	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-	}
+		System.out.println("Menu");		
+	}	
 }
