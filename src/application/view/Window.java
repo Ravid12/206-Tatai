@@ -7,7 +7,8 @@ public enum Window {
 	LEADERBOARD("Leaderboard"),
 	PRACTICE("Practise"),
 	INSTRUCTION("Instruction"),
-	END("End");
+	END("End"),
+	LEVELSELECT("LevelSelect");
 	
 	private final String name;
 	

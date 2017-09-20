@@ -20,23 +20,35 @@ public class MainWindowController extends WindowController{
 	}
 
 	/**
-	 * Called when the user clicks on the Easy button.
+	 * Called when the user clicks on the Start button.
 	 */
 	@FXML
 	private void handleStartBtn() {
-		mainApp.showWindow(Window.EXAM);
+		mainApp.showWindow(Window.LEVELSELECT);
 	}
 	
+
+	/**
+	 * Called when the user clicks on the Training button.
+	 */
 	@FXML
 	private void handlePractiseBtn() {
 		mainApp.showWindow(Window.PRACTICE);
 	}
 	
+
+	/**
+	 * Called when the user clicks on the Statistics button.
+	 */
 	@FXML
 	private void handleStatsBtn() {
 		mainApp.showWindow(Window.LEADERBOARD);
 	}
 	
+
+	/**
+	 * Called when the user clicks on the Instructions button.
+	 */
 	@FXML
 	private void handleInstructionsBtn() {
 		mainApp.showWindow(Window.INSTRUCTION);
