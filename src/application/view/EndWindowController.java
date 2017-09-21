@@ -1,6 +1,7 @@
 package application.view;
 
 import application.controller.WindowController;
+import application.model.Window;
 import javafx.fxml.FXML;
 
 public class EndWindowController extends WindowController{

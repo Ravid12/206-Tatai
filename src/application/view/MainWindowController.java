@@ -2,6 +2,7 @@ package application.view;
 
 import javafx.fxml.FXML;
 import application.controller.WindowController;
+import application.model.Window;
 
 public class MainWindowController extends WindowController{
 	/**

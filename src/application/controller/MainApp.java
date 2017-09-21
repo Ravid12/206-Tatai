@@ -2,7 +2,8 @@ package application.controller;
 
 import java.io.IOException;
 
-import application.view.Window;
+import application.model.ExamModel;
+import application.model.Window;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private ExamModel examModel;
     
 
     @Override
@@ -50,10 +52,10 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("../view/" + windowName.toString() + "Window.fxml"));
-            AnchorPane EasyLevel = (AnchorPane) loader.load();
+            AnchorPane Window = (AnchorPane) loader.load();
 
             // Set MainWindow into the center of root layout.
-            rootLayout.setCenter(EasyLevel);
+            rootLayout.setCenter(Window);
         
             // Give the controller access to the main app.
             Controller controller = loader.getController();
@@ -61,8 +63,7 @@ public class MainApp extends Application {
             
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        
+        }    
     }
 
 
@@ -76,5 +77,16 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    
+    
+    
+    public void setExamModel(ExamModel examModel) {
+    	this.examModel=examModel;
+    }
+    
+    public ExamModel getExamModel () {
+    	return examModel;
     }
 }

@@ -1,10 +1,17 @@
 package application.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import application.controller.WindowController;
+import application.model.Window;
+import application.model.ExamModel;
 
 public class ExamWindowController extends WindowController{
 	
+	@FXML
+	private Label testNumber;
+	
+	private ExamModel em = ExamModel.getExamModel();
 	private int Counter = 1;
 
 	/**
@@ -20,6 +27,7 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
+		testNumber.setText(em.getNext());
 	}
 
 	/**
@@ -27,7 +35,8 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleRecordBtn() {
-		System.out.println("Zinzan sucks at recorder");		
+		System.out.println("Zinzan sucks at recorder");	
+		testNumber.setText(em.getNext());
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package application.view;
+package application.model;
 
 public enum Window {
 	MAIN("Main"), 

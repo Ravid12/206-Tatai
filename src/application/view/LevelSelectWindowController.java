@@ -1,6 +1,9 @@
 package application.view;
 
 import application.controller.WindowController;
+import application.model.Difficulty;
+import application.model.ExamModel;
+import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,12 +12,9 @@ import javafx.scene.control.ComboBox;
 public class LevelSelectWindowController extends WindowController{
 	
 	@FXML
-	private ComboBox<String> cb = new ComboBox<String>();
+	private ComboBox<Difficulty> cb = new ComboBox<Difficulty>();
 
-	private ObservableList<String> levels = FXCollections.observableArrayList(
-			"Easy",
-			"Hard"
-	);
+	private ObservableList<Difficulty> levels = FXCollections.observableArrayList(Difficulty.values());
 
 	/**
 	 * The constructor.
@@ -46,7 +46,8 @@ public class LevelSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleStartBtn() {
-		mainApp.showWindow(Window.EXAM);
-		System.out.println(cb.getValue());		
+		ExamModel.getExamModel().resetExamModel();
+		ExamModel.getExamModel().createList(cb.getValue());
+		mainApp.showWindow(Window.EXAM);		
 	}
 }

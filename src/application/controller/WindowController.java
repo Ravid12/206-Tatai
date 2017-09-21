@@ -12,4 +12,4 @@ public abstract class WindowController implements Controller{
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
-	}
+}
