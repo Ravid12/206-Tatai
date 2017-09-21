@@ -1,5 +1,5 @@
 package application.model;
 
 public enum Difficulty {
-	EASY, HARD;
+	EASY, HARD, INSANE;
 }
