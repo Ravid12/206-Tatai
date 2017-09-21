@@ -1,5 +1,5 @@
 package application.model;
-//XD
+
 public enum Window {
 	MAIN("Main"), 
 	LEVEL("Level"),
