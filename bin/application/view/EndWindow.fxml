@@ -6,14 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.EndWindowController">
    <children>
-      <ScrollPane layoutX="49.0" layoutY="50.0" prefHeight="250.0" prefWidth="350.0">
-         <content>
-            <JFXListView prefHeight="1000.0" prefWidth="350.0" />
-         </content>
-      </ScrollPane>
       <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
+      <ListView layoutX="24.0" layoutY="90.0" prefHeight="250.0" prefWidth="400.0" />
+      <Label layoutX="157.0" layoutY="45.0" styleClass="title" text="Results" />
    </children>
 </AnchorPane>

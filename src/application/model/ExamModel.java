@@ -1,14 +1,17 @@
 package application.model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ExamModel {
 	
 	private static ExamModel examModel = new ExamModel();
 	
-	private static int[] numbers = new int[10];
+	private static ArrayList<Integer> numbers = new ArrayList<Integer>();
 	
 	private int currentNumber = 0;
+	
+	private boolean practice = false;
 		
 	private ExamModel() {
 	}
@@ -27,26 +30,29 @@ public class ExamModel {
 		
 		if (difficulty == Difficulty.EASY) {
 			for (int i=0; i< 10; i++) {
-				numbers[i]=rn.nextInt(10) + 1;
+				numbers.add(rn.nextInt(9) + 1);
 			}
 		}
 		
 		if (difficulty == Difficulty.HARD) {
 			for (int i=0; i< 10; i++) {
-				numbers[i]=rn.nextInt(100) + 1;
+				numbers.add(rn.nextInt(99) + 1);
 			}
 		}
 	}
 	
-	public void resetExamModel() {
+	public void createList(int practiceNumber) {
+		numbers.add(practiceNumber);
+	}
+	
+	public void resetExamModel(boolean practice) {
 		ExamModel.examModel = new ExamModel();
 	}
 	
 	public String getNext() {
-		return "" + numbers[currentNumber++];
-	}
-	
-	public static void judge () {
-		numbers[0]=999;
+		if (currentNumber < 9) {
+			return "" + numbers.get(currentNumber++);	
+		}
+		return "" + numbers.get(currentNumber);
 	}
 }

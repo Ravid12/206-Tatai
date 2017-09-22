@@ -1,5 +1,5 @@
 package application.model;
-//Ez Pz Lmn Sqz
+
 public enum Window {
 	MAIN("Main"), 
 	LEVEL("Level"),

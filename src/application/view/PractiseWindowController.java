@@ -1,11 +1,19 @@
 package application.view;
 
 import application.controller.WindowController;
+import application.model.ExamModel;
 import application.model.Window;
+import application.utils.StringUtils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 public class PractiseWindowController extends WindowController{
 
+	@FXML
+	private TextField textField = new TextField();
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
@@ -19,6 +27,15 @@ public class PractiseWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
+		// Listen for TextField text changes
+		textField.textProperty().addListener(new ChangeListener<String>() {
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
+						if (newValue.length()>3) {
+							textField.setText(textField.getText().substring(0, 3));
+						}
+			}
+		});
 	}
 
 	/**
@@ -26,13 +43,16 @@ public class PractiseWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleTestBtn() {
-		System.out.println("Testing 1, 2, 3");
-		mainApp.showWindow(Window.EXAM);
+		if (StringUtils.isNumeric(textField.getText())) {
+			ExamModel.getExamModel().createList(Integer.parseInt(textField.getText()));
+			mainApp.showWindow(Window.EXAM);			
+		}
+		ExamModel.getExamModel().resetExamModel(false);
+
 	}
 	
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
-	}
+	}	
 }

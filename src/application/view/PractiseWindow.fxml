@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -8,12 +9,14 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="448.0" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PractiseWindowController">
    <children>
-      <JFXScrollPane layoutX="74.0" layoutY="50.0" prefHeight="180.0" prefWidth="300.0">
-         <children>
-            <JFXListView />
-         </children>
-      </JFXScrollPane>
       <JFXButton layoutX="174.0" layoutY="300.0" onAction="#handleTestBtn" styleClass="default-btn" text="Test" />
       <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
+      <Label layoutX="149.0" layoutY="35.0" styleClass="title" text="Training" />
+      <TextField fx:id="textField" alignment="BASELINE_CENTER" layoutX="183.0" layoutY="205.0" prefHeight="45.0" prefWidth="82.0" promptText="1-99">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label layoutX="147.0" layoutY="183.0" text="Enter a number to test:" />
    </children>
 </AnchorPane>
