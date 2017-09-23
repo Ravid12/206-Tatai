@@ -1,16 +1,26 @@
 package application.view;
 
 import application.controller.WindowController;
+import application.model.Difficulty;
 import application.model.Window;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 
 public class LeaderboardWindowController extends WindowController{
 
+	@FXML
+	private ListView<Difficulty> StatsList = new ListView<Difficulty>();
+
+	private ObservableList<Difficulty> Statistics = FXCollections.observableArrayList(Difficulty.values());
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
 	public LeaderboardWindowController () {
+		
 	}
 
 	/**
@@ -19,6 +29,7 @@ public class LeaderboardWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
+		StatsList.setItems(Statistics);
 	}
 
 	/**

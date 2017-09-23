@@ -46,8 +46,11 @@ public class LevelSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleStartBtn() {
-		ExamModel.getExamModel().resetExamModel(false);
-		ExamModel.getExamModel().createList(cb.getValue());
-		mainApp.showWindow(Window.EXAM);		
+		if (! cb.getSelectionModel().isEmpty())
+		{
+			ExamModel.resetExamModel(false);
+			ExamModel.getExamModel().createList(cb.getValue());
+			mainApp.showWindow(Window.EXAM);
+		}
 	}
 }

@@ -47,7 +47,7 @@ public class PractiseWindowController extends WindowController{
 			ExamModel.getExamModel().createList(Integer.parseInt(textField.getText()));
 			mainApp.showWindow(Window.EXAM);			
 		}
-		ExamModel.getExamModel().resetExamModel(false);
+		ExamModel.resetExamModel(false);
 
 	}
 	

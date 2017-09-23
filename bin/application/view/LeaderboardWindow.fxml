@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="default-Anchor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.LeaderboardWindowController">
+<AnchorPane styleClass="default-Anchor" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.LeaderboardWindowController">
    <children>
       <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
-      <ListView layoutX="24.0" layoutY="90.0" prefHeight="250.0" prefWidth="400.0" />
-      <Label layoutX="139.0" layoutY="35.0" styleClass="title" text="Statistics" />
+      <ListView fx:id="StatsList" layoutX="24.0" layoutY="90.0" prefHeight="250.0" prefWidth="400.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="35.0" prefHeight="47.0" prefWidth="136.0" styleClass="title" text="Statistics" />
    </children>
    <stylesheets>
       <URL value="@red-theme.css" />

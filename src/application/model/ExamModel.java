@@ -7,7 +7,7 @@ public class ExamModel {
 	
 	private static ExamModel examModel = new ExamModel();
 	
-	private static ArrayList<Integer> numbers = new ArrayList<Integer>();
+	private ArrayList<Integer> numbers = new ArrayList<Integer>();
 	
 	private int currentNumber = 0;
 	
@@ -39,13 +39,17 @@ public class ExamModel {
 				numbers.add(rn.nextInt(99) + 1);
 			}
 		}
+		
+		for (int i=0; i< 10; i++) {
+			System.out.println(numbers.get(i));
+		}
 	}
 	
 	public void createList(int practiceNumber) {
 		numbers.add(practiceNumber);
 	}
 	
-	public void resetExamModel(boolean practice) {
+	public static void resetExamModel(boolean practice) {
 		ExamModel.examModel = new ExamModel();
 	}
 	
