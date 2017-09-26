@@ -51,10 +51,16 @@ public class ExamModel {
 	
 	public static void resetExamModel(boolean practice) {
 		ExamModel.examModel = new ExamModel();
+		examModel.practice = practice;
 	}
 	
 	public String getNext() {
-		if (currentNumber < 9) {
+		if(practice)
+		{
+			
+		}
+			
+		else if (currentNumber < 9) {
 			return "" + numbers.get(currentNumber++);	
 		}
 		return "" + numbers.get(currentNumber);

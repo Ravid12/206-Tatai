@@ -2,6 +2,8 @@ package application.view;
 
 import application.controller.WindowController;
 import application.model.Difficulty;
+import application.model.ExamModel;
+import application.model.StatsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,9 +13,9 @@ import javafx.scene.control.ListView;
 public class LeaderboardWindowController extends WindowController{
 
 	@FXML
-	private ListView<Difficulty> StatsList = new ListView<Difficulty>();
+	private ListView<String> StatsList = new ListView<String>();
 
-	private ObservableList<Difficulty> Statistics = FXCollections.observableArrayList(Difficulty.values());
+	private ObservableList<String> Statistics = FXCollections.observableArrayList(new StatsModel().getStats());
 	
 	/**
 	 * The constructor.

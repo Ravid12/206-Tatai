@@ -1,3 +1,4 @@
+
 package application.view;
 
 import application.controller.WindowController;
@@ -43,11 +44,14 @@ public class PractiseWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleTestBtn() {
+		// TODO: Notify user of invalid string input and out of bound numbers
 		if (StringUtils.isNumeric(textField.getText())) {
+			ExamModel.resetExamModel(true);
 			ExamModel.getExamModel().createList(Integer.parseInt(textField.getText()));
 			mainApp.showWindow(Window.EXAM);			
 		}
-		ExamModel.resetExamModel(false);
+		//reset the exammodel later
+//		ExamModel.resetExamModel(false);
 
 	}
 	
