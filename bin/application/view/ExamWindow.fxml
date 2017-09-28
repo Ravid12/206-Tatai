@@ -9,13 +9,26 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="448.0" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ExamWindowController">
    <children>
-      <Label fx:id="testNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="50.0" prefHeight="100.0" prefWidth="200.0" text="Number">
+      <Label fx:id="testNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="149.0" layoutY="100.0" prefHeight="50.0" prefWidth="150.0" text="Number">
          <font>
             <Font size="32.0" />
          </font></Label>
-      <JFXButton layoutX="174.0" layoutY="250.0" onAction="#handleRecordBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Record" />
-      <JFXButton layoutX="174.0" layoutY="300.0" onAction="#handleListenBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Listen" />
-      <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleConfirmBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Confirm" />
-      <JFXButton layoutX="174.0" layoutY="400.0" onAction="#handleMenuBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Menu" />
+      <JFXButton layoutX="114.0" layoutY="325.0" onAction="#handleRecordBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Record" />
+      <JFXButton layoutX="234.0" layoutY="325.0" onAction="#handleConfirmBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Next" />
+      <JFXButton layoutX="174.0" layoutY="410.0" onAction="#handleMenuBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Menu" />
+      <Label fx:id="difficulty" layoutX="25.0" layoutY="25.0" prefWidth="150.0" text="Difficulty" />
+      <Label fx:id="round" alignment="CENTER_RIGHT" layoutX="273.0" layoutY="25.0" prefWidth="150.0" text="Question Number" />
+      <ProgressBar layoutX="24.0" layoutY="275.0" prefWidth="400.0" progress="0.0" />
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="175.0" prefHeight="50.0" prefWidth="222.0" text="You should have said" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="120.0" layoutY="375.0" prefWidth="208.0" text="You have X attempts remaining" />
+      <Label fx:id="maoriNumber" alignment="TOP_CENTER" layoutX="24.0" layoutY="210.0" prefHeight="25.0" prefWidth="400.0" text="Maori Number" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

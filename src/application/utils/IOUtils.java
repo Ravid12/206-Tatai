@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class IOUtils {
 
-	public ArrayList<String> readFile(String FileName)
+	public static ArrayList<String> readFile(String FileName)
 	{
 		ArrayList<String> al = new ArrayList<String>();
 		try {
@@ -19,9 +19,7 @@ public class IOUtils {
 			
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
-				al.add(line);
-				System.out.println(line.toString());
-				
+				al.add(line);				
 			}
 			
 			fileReader.close();
@@ -35,7 +33,7 @@ public class IOUtils {
 		return al;
 	}
 	
-	public void overwriteFile(String FileName, String string)
+	public static void overwriteFile(String FileName, String string)
 	{
 		try {
             FileWriter writer = new FileWriter(FileName, false);

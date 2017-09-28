@@ -12,6 +12,8 @@ public class ExamModel {
 	private int currentNumber = 0;
 	
 	private boolean practice = false;
+	
+	private Difficulty difficulty;
 		
 	private ExamModel() {
 	}
@@ -26,6 +28,7 @@ public class ExamModel {
 	}
 	
 	public void createList(Difficulty difficulty) {
+		this.difficulty = difficulty;
 		Random rn = new Random();
 		
 		for (int i=0; i< 10; i++) {
@@ -48,5 +51,9 @@ public class ExamModel {
 			return "" + numbers.get(currentNumber++);	
 		}
 		return "" + numbers.get(currentNumber);
+	}
+	
+	public Difficulty getDifficulty() {
+		return difficulty;
 	}
 }

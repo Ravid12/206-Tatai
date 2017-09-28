@@ -1,25 +1,36 @@
 package application.view;
 
-import javafx.application.Platform;
-import javafx.concurrent.Service;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+import application.controller.WindowController;
+import application.model.ExamModel;
+import application.model.Window;
+import application.utils.IOUtils;
+import application.utils.MaoriUtils;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-
-import application.controller.WindowController;
-import application.model.Window;
-import application.model.ExamModel;
 
 public class ExamWindowController extends WindowController{
 
 	@FXML
 	private Label testNumber;
+	
+	@FXML
+	private Label maoriNumber;
+	
+	@FXML
+	private Label difficulty;
+	
+	@FXML
+	private Label round;
 
 	private ExamModel em = ExamModel.getExamModel();
-	private int Counter = 1;
+	private int counter = 1;
 
 	/**
 	 * The constructor.
@@ -35,6 +46,9 @@ public class ExamWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		testNumber.setText(em.getNext());
+		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
+		difficulty.setText(em.getDifficulty().toString());
+		round.setText(""+counter+"/10");
 	}
 
 	/**
@@ -43,15 +57,17 @@ public class ExamWindowController extends WindowController{
 	@FXML
 	private void handleRecordBtn() {
 
-		Task task = new Task<Void>() {
+		Task<Void> task = new Task<Void>() {
 			@Override 
 			public Void call() {
-				String cmd = "./HTK/MaoriNumbers/GoSpeech2";
+				String cmd = "./GoSpeech2";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
-					Process pr = builder.start();
+					builder.directory(new File("./HTK/MaoriNumbers/"));
+					Process pr = builder.start();						
 					try {
 						pr.waitFor();
+
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -61,6 +77,14 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};
+		task.setOnSucceeded(e -> {
+			ArrayList<String> out = IOUtils.readFile("./HTK/MaoriNumbers/recout.mlf");
+			for (String line : out) {
+				System.out.println(line);
+			}
+		});
+		
+		new Thread(task).start();
 	}
 
 
@@ -77,10 +101,11 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleConfirmBtn() {
-		System.out.println("Confirm " + Counter);
-		testNumber.setText(em.getNext());
-		Counter++;
+		if (counter < 10) counter++;
 		checkAnswer();
+		testNumber.setText(em.getNext());
+		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
+		round.setText(""+counter+"/10");
 	}
 
 	/**

@@ -3,7 +3,10 @@ package application.view;
 import application.controller.WindowController;
 import application.model.Difficulty;
 import application.model.Stat;
+import application.model.StatsModel;
 import application.model.Window;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -56,6 +59,5 @@ public class StatisticsWindowController extends WindowController{
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
 	}	
 }
