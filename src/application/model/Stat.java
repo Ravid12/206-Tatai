@@ -24,7 +24,7 @@ public class Stat {
         this.number.set(number);
     }
 
-    public IntegerProperty NumberProperty() {
+    public IntegerProperty numberProperty() {
         return number;
     }
 	

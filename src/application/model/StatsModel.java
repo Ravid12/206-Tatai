@@ -24,7 +24,7 @@ public class StatsModel
 		for (int i=0; i<difficulties.length; i++) 
 		{
 			ArrayList<Stat> al = new ArrayList<Stat>();
-			for (int j=difficulties[i].getMin(); j<difficulties[i].getMin()+1; j++)
+			for (int j=difficulties[i].getMin(); j<difficulties[i].getMax()+1; j++)
 			{
 				al.add(new Stat(j));
 			}
@@ -39,7 +39,7 @@ public class StatsModel
 	
 	public ArrayList<Stat> getStats(Difficulty difficulty)
 	{
-		return sm.statistics.get(difficulty);
+		return statistics.get(difficulty);
 	}
 	
 	public void updateStats(String string)
