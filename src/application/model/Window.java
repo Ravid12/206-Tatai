@@ -4,7 +4,7 @@ public enum Window {
 	MAIN("Main"), 
 	LEVEL("Level"),
 	EXAM("Exam"),
-	LEADERBOARD("Leaderboard"),
+	STATISTICS("Statistics"),
 	PRACTICE("Practise"),
 	INSTRUCTION("Instruction"),
 	END("End"),

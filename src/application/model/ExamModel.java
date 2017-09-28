@@ -57,7 +57,7 @@ public class ExamModel {
 	public String getNext() {
 		if(practice)
 		{
-			
+			return "" + numbers.get(currentNumber);
 		}
 			
 		else if (currentNumber < 9) {
