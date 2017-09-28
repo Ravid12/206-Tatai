@@ -29,10 +29,9 @@ public class StatsModel
 		return sm;
 	}
 	
-	public ArrayList<String> getStats()
+	public Stat getStats(Difficulty difficulty)
 	{
-		al = new IOUtils().readFile("test.txt");
-		return al;
+		return sm.statistics.get(difficulty);
 	}
 	
 	public void updateStats(String string)
@@ -40,47 +39,47 @@ public class StatsModel
 		new IOUtils().overwriteFile("test.txt", string);
 	}
 	
-	private String sessionAveragePerGame(Difficulty difficulty)
-	{
-		if (difficulty.equals(Difficulty.EASY) && sessionEasyTries != 0)
-		{	
-			return (sessionEasyQuestionsCorrect / sessionEasyTries) + "";
-		}
-		
-		if (difficulty.equals(Difficulty.HARD) && sessionHardTries != 0)
-		{	
-			return (sessionHardQuestionsCorrect / sessionHardTries) + "";
-		}
-		else
-		{
-			return "0";
-		}
-	}
-	
-	public void updateCorrectTotal(Difficulty difficulty)
-	{
-		if (difficulty.equals(Difficulty.EASY))
-		{	
-			sessionEasyQuestionsCorrect++;
-		}
-		
-		if (difficulty.equals(Difficulty.HARD))
-		{	
-			sessionHardQuestionsCorrect++;
-		}
-		
-	}
-	
-	public void updateTriesTotal(Difficulty difficulty)
-	{
-		if (difficulty.equals(Difficulty.EASY))
-		{	
-			sessionEasyTries++;;
-		}
-		
-		if (difficulty.equals(Difficulty.HARD))
-		{	
-			sessionHardTries++;;
-		}
-	}
+//	private String sessionAveragePerGame(Difficulty difficulty)
+//	{
+//		if (difficulty.equals(Difficulty.EASY) && sessionEasyTries != 0)
+//		{	
+//			return (sessionEasyQuestionsCorrect / sessionEasyTries) + "";
+//		}
+//		
+//		if (difficulty.equals(Difficulty.HARD) && sessionHardTries != 0)
+//		{	
+//			return (sessionHardQuestionsCorrect / sessionHardTries) + "";
+//		}
+//		else
+//		{
+//			return "0";
+//		}
+//	}
+//	
+//	public void updateCorrectTotal(Difficulty difficulty)
+//	{
+//		if (difficulty.equals(Difficulty.EASY))
+//		{	
+//			sessionEasyQuestionsCorrect++;
+//		}
+//		
+//		if (difficulty.equals(Difficulty.HARD))
+//		{	
+//			sessionHardQuestionsCorrect++;
+//		}
+//		
+//	}
+//	
+//	public void updateTriesTotal(Difficulty difficulty)
+//	{
+//		if (difficulty.equals(Difficulty.EASY))
+//		{	
+//			sessionEasyTries++;;
+//		}
+//		
+//		if (difficulty.equals(Difficulty.HARD))
+//		{	
+//			sessionHardTries++;;
+//		}
+//	}
 }

@@ -24,6 +24,18 @@ public class Stat {
 		}
 	}
 	
+	public ArrayList<Integer> getCorrect()
+	{
+		return correct;
+	}
 	
+	public ArrayList<Integer> getIncorrect()
+	{
+		return incorrect;
+	}
 	
+	public ArrayList<Integer> getNumbers()
+	{
+		return numbers;
+	}
 }
