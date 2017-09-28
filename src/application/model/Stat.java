@@ -2,40 +2,53 @@ package application.model;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Stat {
-	private ArrayList<Integer> numbers;
-	private ArrayList<Integer> correct;
-	private ArrayList<Integer> incorrect;
+	private IntegerProperty number;
+	private IntegerProperty correct;
+	private IntegerProperty incorrect;
 	
-	public Stat(int min, int max) {
-		for(int i = min; i<max+1; i++)
-		{
-			numbers.add(i);
-			correct.add(0);
-			incorrect.add(0);
-		}
+	public Stat(int number) {
+        this.number = new SimpleIntegerProperty(number);
+        this.correct = new SimpleIntegerProperty(0);
+        this.incorrect = new SimpleIntegerProperty(0);
 	}
 	
-	public void update(int number, boolean right) {
-		if (right) {
-			correct.set(number, correct.get(number)+1);
-		} else {
-			incorrect.set(number, correct.get(number)+1);
-		}
-	}
+	public int getnumber() {
+        return number.get();
+    }
+
+    public void setNumber(int number) {
+        this.number.set(number);
+    }
+
+    public IntegerProperty NumberProperty() {
+        return number;
+    }
 	
-	public ArrayList<Integer> getCorrect()
-	{
-		return correct;
-	}
+	public int getCorrect() {
+        return correct.get();
+    }
+
+    public void setCorrect() {
+        this.correct.set(getCorrect()+1);
+    }
+
+    public IntegerProperty correctProperty() {
+        return correct;
+    }
 	
-	public ArrayList<Integer> getIncorrect()
-	{
-		return incorrect;
-	}
-	
-	public ArrayList<Integer> getNumbers()
-	{
-		return numbers;
-	}
+    public int getIncorrect() {
+        return incorrect.get();
+    }
+
+    public void setIncorrect() {
+        this.incorrect.set(getIncorrect()+1);
+    }
+
+    public IntegerProperty incorrectProperty() {
+        return incorrect;
+    }
 }

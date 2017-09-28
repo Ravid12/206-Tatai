@@ -1,7 +1,7 @@
 package application.model;
 
 public enum Difficulty {
-	EASY(1, 9), HARD(10, 99), ALL(1, 99);
+	EASY(1, 9), HARD(10, 99);
 
 	private int min;
 	private int max;

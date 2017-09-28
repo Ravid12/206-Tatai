@@ -2,20 +2,15 @@ package application.view;
 
 import application.controller.WindowController;
 import application.model.Difficulty;
-import application.model.ExamModel;
-import application.model.StatsModel;
+import application.model.Stat;
 import application.model.Window;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class StatisticsWindowController extends WindowController{
-
 	@FXML
 	private TabPane statsWindows = new TabPane();
 	
@@ -27,7 +22,7 @@ public class StatisticsWindowController extends WindowController{
 		
 	}
 
-	/**
+	/**	
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
@@ -37,7 +32,7 @@ public class StatisticsWindowController extends WindowController{
 		for (int i=0; i<difficulties.length; i++) {
 			Tab tab = new Tab(difficulties[i].toString());
 			
-			TableView<String> stats = new TableView<String>();
+			TableView<Stat> stats = new TableView<Stat>();
 	        TableColumn numberCol = new TableColumn("Number");
 	        TableColumn correctCol = new TableColumn("Correct Attempts");
 	        TableColumn incorrectCol = new TableColumn("Incorrect Attempts");

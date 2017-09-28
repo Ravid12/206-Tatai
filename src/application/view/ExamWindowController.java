@@ -42,8 +42,10 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleRecordBtn() {
-		Task<Integer> task = new Task<Integer>() {
-			@Override protected void call() throws Exception {
+
+		Task task = new Task<Void>() {
+			@Override 
+			public Void call() {
 				String cmd = "./HTK/MaoriNumbers/GoSpeech2";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
@@ -56,10 +58,12 @@ public class ExamWindowController extends WindowController{
 					pr.destroy();
 				} catch (IOException e) {
 				}
-
+				return null;
 			}
 		};
 	}
+
+
 
 	/**
 	 * Called when the user clicks on the listen button.
