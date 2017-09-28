@@ -17,12 +17,7 @@ import javafx.scene.control.TableView;
 public class StatisticsWindowController extends WindowController{
 
 	@FXML
-	private ListView<String> statsList = new ListView<String>();
-	
-	@FXML
 	private TabPane statsWindows = new TabPane();
-
-	private ObservableList<String> Statistics = FXCollections.observableArrayList(new StatsModel().getStats());
 	
 	/**
 	 * The constructor.
@@ -38,7 +33,6 @@ public class StatisticsWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		statsList.setItems(Statistics);
 		Difficulty difficulties[] = Difficulty.values();
 		for (int i=0; i<difficulties.length; i++) {
 			Tab tab = new Tab(difficulties[i].toString());
@@ -47,7 +41,10 @@ public class StatisticsWindowController extends WindowController{
 	        TableColumn numberCol = new TableColumn("Number");
 	        TableColumn correctCol = new TableColumn("Correct Attempts");
 	        TableColumn incorrectCol = new TableColumn("Incorrect Attempts");
+	        
+	        
 	        stats.getColumns().addAll(numberCol, correctCol, incorrectCol);
+	        
 	        
 			tab.setContent(stats);
 			statsWindows.getTabs().add(tab);

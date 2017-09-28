@@ -1,16 +1,23 @@
 package application.view;
 
+import javafx.application.Platform;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
+
 import application.controller.WindowController;
 import application.model.Window;
 import application.model.ExamModel;
 
 public class ExamWindowController extends WindowController{
-	
+
 	@FXML
 	private Label testNumber;
-	
+
 	private ExamModel em = ExamModel.getExamModel();
 	private int Counter = 1;
 
@@ -35,26 +42,43 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleRecordBtn() {
-		testNumber.setText(em.getNext());
+		Task<Integer> task = new Task<Integer>() {
+			@Override protected void call() throws Exception {
+				String cmd = "./HTK/MaoriNumbers/GoSpeech2";
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+				try {
+					Process pr = builder.start();
+					try {
+						pr.waitFor();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					pr.destroy();
+				} catch (IOException e) {
+				}
+
+			}
+		};
 	}
-	
+
 	/**
 	 * Called when the user clicks on the listen button.
 	 */
 	@FXML
 	private void handleListenBtn() {
 	}
-	
+
 	/**
 	 * Called when the user clicks on the Confirm button.
 	 */
 	@FXML
 	private void handleConfirmBtn() {
 		System.out.println("Confirm " + Counter);
+		testNumber.setText(em.getNext());
 		Counter++;
 		checkAnswer();
 	}
-	
+
 	/**
 	 * Called when the user clicks on the Menu button.
 	 */
@@ -63,12 +87,12 @@ public class ExamWindowController extends WindowController{
 		mainApp.showWindow(Window.MAIN);
 		System.out.println("Menu");		
 	}
-	
+
 	/**
 	 * checks user recording with HTK, updates screen if correct/incorrect, 
 	 * and updates stats model.
 	 */
 	public void checkAnswer() {
-		
+
 	}
 }
