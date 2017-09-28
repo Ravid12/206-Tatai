@@ -35,7 +35,6 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleRecordBtn() {
-		System.out.println("Zinzan sucks at recorder");	
 		testNumber.setText(em.getNext());
 	}
 	
@@ -44,7 +43,6 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleListenBtn() {
-		System.out.println("Ravid you just need to listen");		
 	}
 	
 	/**
@@ -54,7 +52,7 @@ public class ExamWindowController extends WindowController{
 	private void handleConfirmBtn() {
 		System.out.println("Confirm " + Counter);
 		Counter++;
-		mainApp.showWindow(Window.END);
+		checkAnswer();
 	}
 	
 	/**
@@ -64,5 +62,13 @@ public class ExamWindowController extends WindowController{
 	private void handleMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
 		System.out.println("Menu");		
+	}
+	
+	/**
+	 * checks user recording with HTK, updates screen if correct/incorrect, 
+	 * and updates stats model.
+	 */
+	public void checkAnswer() {
+		
 	}
 }

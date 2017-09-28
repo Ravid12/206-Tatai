@@ -44,6 +44,7 @@ public class ExamModel {
 	
 	public String getNext() {
 		if (!practice && currentNumber < 9) {
+
 			return "" + numbers.get(currentNumber++);	
 		}
 		return "" + numbers.get(currentNumber);

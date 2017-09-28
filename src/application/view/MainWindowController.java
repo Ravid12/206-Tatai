@@ -43,7 +43,7 @@ public class MainWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleStatsBtn() {
-		mainApp.showWindow(Window.LEADERBOARD);
+		mainApp.showWindow(Window.STATISTICS);
 	}
 	
 
