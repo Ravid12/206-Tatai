@@ -38,12 +38,18 @@ public class StatisticsWindowController extends WindowController{
 		for (int i=0; i<difficulties.length; i++) {
 			Tab tab = new Tab(difficulties[i].toString());
 			
+			ObservableList<Stat> statlist = FXCollections.observableArrayList(StatsModel.getInstance().getStats(difficulties[i]));
+			
 			TableView<Stat> stats = new TableView<Stat>();
-	        TableColumn numberCol = new TableColumn("Number");
-	        TableColumn correctCol = new TableColumn("Correct Attempts");
-	        TableColumn incorrectCol = new TableColumn("Incorrect Attempts");
+	        TableColumn<Stat, Integer> numberCol = new TableColumn<Stat, Integer>("Number");
+	        TableColumn<Stat, Integer> correctCol = new TableColumn<Stat, Integer>("Correct Attempts");
+	        TableColumn<Stat, Integer> incorrectCol = new TableColumn<Stat, Integer>("Incorrect Attempts");
 	        stats.getColumns().addAll(numberCol, correctCol, incorrectCol);
 	        
+	        numberCol.setCellValueFactory(cellData -> cellData.getValue().numberProperty().asObject());
+	        correctCol.setCellValueFactory(cellData -> cellData.getValue().correctProperty().asObject());
+	        incorrectCol.setCellValueFactory(cellData -> cellData.getValue().incorrectProperty().asObject());
+	        stats.setItems(statlist);
 			tab.setContent(stats);
 			statsWindows.getTabs().add(tab);
 		}
