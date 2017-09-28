@@ -6,50 +6,81 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import application.utils.IOUtils;
 
 public class StatsModel 
 {
+	private static final StatsModel sm = new StatsModel();
 	private ArrayList<String> al = new ArrayList<String>();
+	private HashMap<Difficulty, Stat> statistics = new HashMap<Difficulty, Stat>();
+	
+	private StatsModel()
+	{
+		Difficulty difficulties[] = Difficulty.values();
+		for (int i=0; i<difficulties.length; i++) {
+			statistics.put(difficulties[i], new Stat(difficulties[i].getMin(), difficulties[i].getMax()));
+		}
+	}
+	
+	public static StatsModel getInstance()
+	{
+		return sm;
+	}
 	
 	public ArrayList<String> getStats()
 	{
-		try {
-			File file = new File("test.txt");
-			FileReader fileReader = new FileReader(file);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			
-			String line;
-			while ((line = bufferedReader.readLine()) != null) {
-				al.add(line);
-				System.out.println(line.toString());
-				
-			}
-			fileReader.close();
-		} 
-		
-		catch (IOException e) 
-		{
-			e.printStackTrace();
+		al = new IOUtils().readFile("test.txt");
+		return al;
+	}
+	
+	public void updateStats(String string)
+	{
+		new IOUtils().overwriteFile("test.txt", string);
+	}
+	
+	private String sessionAveragePerGame(Difficulty difficulty)
+	{
+		if (difficulty.equals(Difficulty.EASY) && sessionEasyTries != 0)
+		{	
+			return (sessionEasyQuestionsCorrect / sessionEasyTries) + "";
 		}
 		
-		return al;
+		if (difficulty.equals(Difficulty.HARD) && sessionHardTries != 0)
+		{	
+			return (sessionHardQuestionsCorrect / sessionHardTries) + "";
+		}
+		else
+		{
+			return "0";
+		}
 	}
 	
-	public ArrayList<String> StatsInfo()
+	public void updateCorrectTotal(Difficulty difficulty)
 	{
-		return al;
+		if (difficulty.equals(Difficulty.EASY))
+		{	
+			sessionEasyQuestionsCorrect++;
+		}
+		
+		if (difficulty.equals(Difficulty.HARD))
+		{	
+			sessionHardQuestionsCorrect++;
+		}
+		
 	}
 	
-	public void updateStats()
+	public void updateTriesTotal(Difficulty difficulty)
 	{
-		try {
-            FileWriter writer = new FileWriter("MyFile.txt", false);
-            writer.write("Hello World");
-            writer.write("\r\n");   // write new line
-            writer.write("Good Bye!");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		if (difficulty.equals(Difficulty.EASY))
+		{	
+			sessionEasyTries++;;
+		}
+		
+		if (difficulty.equals(Difficulty.HARD))
+		{	
+			sessionHardTries++;;
+		}
 	}
 }

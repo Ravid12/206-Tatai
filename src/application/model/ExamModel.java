@@ -28,20 +28,8 @@ public class ExamModel {
 	public void createList(Difficulty difficulty) {
 		Random rn = new Random();
 		
-		if (difficulty == Difficulty.EASY) {
-			for (int i=0; i< 10; i++) {
-				numbers.add(rn.nextInt(9) + 1);
-			}
-		}
-		
-		if (difficulty == Difficulty.HARD) {
-			for (int i=0; i< 10; i++) {
-				numbers.add(rn.nextInt(99) + 1);
-			}
-		}
-		
 		for (int i=0; i< 10; i++) {
-			System.out.println(numbers.get(i));
+			numbers.add(rn.nextInt(difficulty.getMax()-difficulty.getMin()+1) + difficulty.getMin());
 		}
 	}
 	
@@ -55,12 +43,8 @@ public class ExamModel {
 	}
 	
 	public String getNext() {
-		if(practice)
-		{
-			return "" + numbers.get(currentNumber);
-		}
-			
-		else if (currentNumber < 9) {
+		if (!practice && currentNumber < 9) {
+
 			return "" + numbers.get(currentNumber++);	
 		}
 		return "" + numbers.get(currentNumber);
