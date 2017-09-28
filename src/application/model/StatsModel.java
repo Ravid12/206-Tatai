@@ -9,18 +9,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import application.utils.IOUtils;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class StatsModel 
 {
 	private static final StatsModel sm = new StatsModel();
-	private ArrayList<String> al = new ArrayList<String>();
-	private HashMap<Difficulty, Stat> statistics = new HashMap<Difficulty, Stat>();
+	private HashMap<Difficulty, ArrayList<Stat>> statistics = new HashMap<Difficulty, ArrayList<Stat>>();
 	
 	private StatsModel()
 	{
 		Difficulty difficulties[] = Difficulty.values();
-		for (int i=0; i<difficulties.length; i++) {
-			statistics.put(difficulties[i], new Stat(difficulties[i].getMin(), difficulties[i].getMax()));
+		
+		for (int i=0; i<difficulties.length; i++) 
+		{
+			ArrayList<Stat> al = new ArrayList<Stat>();
+			for (int j=difficulties[i].getMin(); j<difficulties[i].getMin()+1; j++)
+			{
+				al.add(new Stat(j));
+			}
+			statistics.put(difficulties[i], al);
 		}
 	}
 	
@@ -29,7 +37,7 @@ public class StatsModel
 		return sm;
 	}
 	
-	public Stat getStats(Difficulty difficulty)
+	public ArrayList<Stat> getStats(Difficulty difficulty)
 	{
 		return sm.statistics.get(difficulty);
 	}

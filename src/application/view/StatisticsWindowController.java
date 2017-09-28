@@ -3,6 +3,7 @@ package application.view;
 import application.controller.WindowController;
 import application.model.Difficulty;
 import application.model.ExamModel;
+import application.model.Stat;
 import application.model.StatsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
@@ -15,14 +16,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class StatisticsWindowController extends WindowController{
-
-	@FXML
-	private ListView<String> statsList = new ListView<String>();
 	
 	@FXML
 	private TabPane statsWindows = new TabPane();
-
-	private ObservableList<String> Statistics = FXCollections.observableArrayList(new StatsModel().getStats());
 	
 	/**
 	 * The constructor.
@@ -38,12 +34,11 @@ public class StatisticsWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		statsList.setItems(Statistics);
 		Difficulty difficulties[] = Difficulty.values();
 		for (int i=0; i<difficulties.length; i++) {
 			Tab tab = new Tab(difficulties[i].toString());
 			
-			TableView<String> stats = new TableView<String>();
+			TableView<Stat> stats = new TableView<Stat>();
 	        TableColumn numberCol = new TableColumn("Number");
 	        TableColumn correctCol = new TableColumn("Correct Attempts");
 	        TableColumn incorrectCol = new TableColumn("Incorrect Attempts");
