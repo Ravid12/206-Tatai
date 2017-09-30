@@ -19,15 +19,15 @@
       <Label fx:id="difficulty" layoutX="25.0" layoutY="25.0" prefWidth="150.0" text="Difficulty" />
       <Label fx:id="round" alignment="CENTER_RIGHT" layoutX="273.0" layoutY="25.0" prefWidth="150.0" text="Question Number" />
       <ProgressBar layoutX="24.0" layoutY="275.0" prefWidth="400.0" progress="0.0" />
-      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="175.0" prefHeight="50.0" prefWidth="222.0" text="You should have said" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="message" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="175.0" prefHeight="25.0" prefWidth="400.0" text="Incorrect, You should have said" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="120.0" layoutY="375.0" prefWidth="208.0" text="You have X attempts remaining" />
+      <Label fx:id="attemptsLeft" alignment="CENTER" layoutX="114.0" layoutY="375.0" prefWidth="220.0" text="You have 2 attempts remaining" />
       <Label fx:id="maoriNumber" alignment="TOP_CENTER" layoutX="24.0" layoutY="210.0" prefHeight="25.0" prefWidth="400.0" text="Maori Number" textAlignment="CENTER">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>

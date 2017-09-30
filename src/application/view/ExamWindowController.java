@@ -1,9 +1,5 @@
 package application.view;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
@@ -17,6 +13,7 @@ import application.utils.MaoriUtils;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class ExamWindowController extends WindowController{
 
@@ -33,6 +30,12 @@ public class ExamWindowController extends WindowController{
 	private Label round;
 
 	@FXML
+	private Label attemptsLeft;
+	
+	@FXML
+	private Label message;
+	
+	@FXML
 	private JFXButton btn_next;
 	
 	@FXML
@@ -40,6 +43,8 @@ public class ExamWindowController extends WindowController{
 
 	private Boolean isCompleted = false;
 	private Boolean isFirstAttempt = true;
+	private String greenColour = "#13ea00";
+	private String redColour = "#e80000";
 	
 	private int counter = 1;
 
@@ -62,6 +67,10 @@ public class ExamWindowController extends WindowController{
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
 		difficulty.setText(em.getDifficulty().toString());
 		round.setText(""+counter+"/10");
+		attemptsLeft.setText("You have 2 attempts remaining");
+		message.setText("");
+		maoriNumber.setVisible(false);
+		maoriNumber.setTextFill(Color.web(redColour));
 	}
 
 	/**
@@ -103,6 +112,7 @@ public class ExamWindowController extends WindowController{
 				isCompleted = true;
 				em.setCorrect(true);
 				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), true);
+				correctAttempt();
 			} else if (isFirstAttempt) {
 				isFirstAttempt=false;
 				incorrectFirstAttempt();
@@ -141,6 +151,9 @@ public class ExamWindowController extends WindowController{
 		btn_record.setDisable(false);
 		isCompleted = false;
 		isFirstAttempt=true;
+		attemptsLeft.setText("You have 2 attempts remaining");
+		message.setText("");
+		maoriNumber.setVisible(false);
 	}
 
 	/**
@@ -150,14 +163,30 @@ public class ExamWindowController extends WindowController{
 	private void handleMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
 	}
+	
+	// called when correct attempt is input
+	private void correctAttempt() 
+	{
+		message.setText("Correct, Well Done");
+		message.setTextFill(Color.web(greenColour));
+		attemptsLeft.setText("Press Next to continue");
+		maoriNumber.setVisible(false);
+	}
 
 	// This should change display to red or show a cross or something
-	public void incorrectFirstAttempt() {
-
+	private void incorrectFirstAttempt() 
+	{
+		message.setText("Incorrect, Try again");
+		message.setTextFill(Color.web(redColour));
+		attemptsLeft.setText("You have 1 attempt remaining");
 	}
 	
 	// This should change display to red and also say "you should have said"
-	public void incorrectSecondAttempt() {
-		
+	private void incorrectSecondAttempt() 
+	{
+		attemptsLeft.setText("Press Next to continue");
+		message.setText("Incorrect, You should have said");
+		message.setTextFill(Color.web(redColour));
+		maoriNumber.setVisible(true);
 	}
 }
