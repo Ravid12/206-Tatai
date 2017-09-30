@@ -72,8 +72,8 @@ public class ExamWindowController extends WindowController{
 	private void initialize() {
 		testNumber.setText(em.getNext());
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
-		difficulty.setText(em.getDifficulty().toString());
-		round.setText(""+counter+"/10");
+		difficulty.setText("Difficulty: " + em.getDifficulty().toString());
+		round.setText("Question " + counter + " of 10");
 		attemptsLeft.setText("You have 2 attempts remaining");
 		message.setText("");
 		maoriNumber.setVisible(false);
@@ -154,7 +154,6 @@ public class ExamWindowController extends WindowController{
 					try {
 						Thread.sleep(3);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -167,7 +166,6 @@ public class ExamWindowController extends WindowController{
 					try {
 						Thread.sleep(3);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
