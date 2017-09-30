@@ -39,6 +39,8 @@ public class ExamWindowController extends WindowController{
 
 	private Boolean isCompleted = false;
 	private Boolean isFirstAttempt = true;
+	
+	private int counter = 1;
 
 	private ExamModel em = ExamModel.getExamModel();
 
@@ -58,7 +60,7 @@ public class ExamWindowController extends WindowController{
 		testNumber.setText(em.getNext());
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
 		difficulty.setText(em.getDifficulty().toString());
-		round.setText(""+em.getStage()+"/10");
+		round.setText(""+counter+"/10");
 	}
 
 	/**
@@ -123,11 +125,17 @@ public class ExamWindowController extends WindowController{
 	@FXML
 	private void handleConfirmBtn() {
 		testNumber.setText(em.getNext());
+		counter++;
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
-		round.setText(""+em.getStage()+"/10");
-		if (em.getStage()==10) {
+		round.setText(""+counter+"/10");
+		if (counter==10) {
 			mainApp.showWindow(Window.END);
 		}
+		
+		btn_next.setDisable(true);
+		btn_record.setDisable(false);
+		isCompleted = false;
+		isFirstAttempt=true;
 	}
 
 	/**
@@ -138,11 +146,12 @@ public class ExamWindowController extends WindowController{
 		mainApp.showWindow(Window.MAIN);
 	}
 
-
+	// This should change display to red or show a cross or something
 	public void incorrectFirstAttempt() {
 
 	}
 	
+	// This should change display to red and also say "you should have said"
 	public void incorrectSecondAttempt() {
 		
 	}
