@@ -104,9 +104,11 @@ public class ExamWindowController extends WindowController{
 				incorrectFirstAttempt();
 			} else {
 				incorrectSecondAttempt();
+				isCompleted = true;
+				em.setCorrect(false);
 			}
 			
-			if (isCompleted || !isFirstAttempt) {
+			if (isCompleted) {
 				btn_next.setDisable(false);
 				btn_record.setDisable(true);
 			}
