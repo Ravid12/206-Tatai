@@ -7,7 +7,7 @@ public class ExamModel {
 	
 	private static ExamModel examModel = new ExamModel();
 	private ArrayList<Integer> numbers = new ArrayList<Integer>();
-	private ArrayList<Boolean> isCorrectList = new ArrayList<Boolean>();
+	private ArrayList<Correctness> isCorrectList = new ArrayList<Correctness>();
 
 	private int currentNumber = 0;
 	private boolean practice = false;
@@ -55,7 +55,7 @@ public class ExamModel {
 		return numbers;
 	}
 	
-	public ArrayList<Boolean> getCorrectList() {
+	public ArrayList<Correctness> getCorrectList() {
 		return isCorrectList;
 	}
 	
@@ -64,6 +64,14 @@ public class ExamModel {
 	}
 	
 	public void setCorrect(Boolean correct) {
-		isCorrectList.add(correct);
+		if(correct == true)
+		{
+			isCorrectList.add(Correctness.CORRECT);
+		}
+		
+		else
+		{
+			isCorrectList.add(Correctness.INCORRECT);
+		}
 	}
 }

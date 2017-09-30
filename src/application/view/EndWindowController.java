@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import application.controller.WindowController;
+import application.model.Correctness;
 import application.model.ExamModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
@@ -20,6 +21,8 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private Label finalscore;
 		
+	private int noCorrect;
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
@@ -35,19 +38,15 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		ObservableList<String> list = FXCollections.observableArrayList();
-		int noCorrect = Collections.frequency(ExamModel.getExamModel().getCorrectList(), true);
+		noCorrect = Collections.frequency(ExamModel.getExamModel().getCorrectList(), Correctness.CORRECT);
 		for(int i =0; i<10; i++)
 		{
 			// 
-			list.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
+			list.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
 			
 		}
 		endList.setItems(list);
 		finalscore.setText("You got " + noCorrect + "/10 Correct!");
-		if(noCorrect > 7)
-		{
-			mainApp.setUnlocked();
-		}
 	}
 	
 	/**
@@ -55,6 +54,10 @@ public class EndWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleMainMenuBtn() {
+		if(noCorrect > 7)
+		{
+			mainApp.setUnlocked();
+		}
 		mainApp.showWindow(Window.MAIN);
 	}
 }
