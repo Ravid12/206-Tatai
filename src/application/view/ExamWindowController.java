@@ -106,7 +106,7 @@ public class ExamWindowController extends WindowController{
 				incorrectSecondAttempt();
 			}
 			
-			if (isCompleted) {
+			if (isCompleted || !isFirstAttempt) {
 				btn_next.setDisable(false);
 				btn_record.setDisable(true);
 			}

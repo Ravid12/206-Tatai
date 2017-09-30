@@ -63,10 +63,10 @@ public class ExamModel {
 	}
 	
 	public int getStage() {
-		return currentNumber+1;
+		return currentNumber;
 	}
 	
 	public void setCorrect(Boolean correct) {
-		isCorrectList.set(currentNumber, correct);
+		isCorrectList.add(correct);
 	}
 }
