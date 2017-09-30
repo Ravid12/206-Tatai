@@ -8,12 +8,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 public class LevelSelectWindowController extends WindowController{
 	
 	@FXML
 	private ComboBox<Difficulty> cb = new ComboBox<Difficulty>();
 
+	@FXML
+	private Label errorMessage;
+	
 	private ObservableList<Difficulty> levels = FXCollections.observableArrayList(Difficulty.values());
 
 	/**
@@ -30,6 +34,7 @@ public class LevelSelectWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		cb.setItems(levels);
+		errorMessage.setText("");
 	}
 
 	/**
@@ -48,9 +53,22 @@ public class LevelSelectWindowController extends WindowController{
 	private void handleStartBtn() {
 		if (! cb.getSelectionModel().isEmpty())
 		{
-			ExamModel.resetExamModel(false);
-			ExamModel.getExamModel().createList(cb.getValue());
-			mainApp.showWindow(Window.EXAM);
+			if(cb.getValue().equals(Difficulty.HARD) && ! mainApp.getUnlocked())
+			{
+				errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
+			}
+			
+			else
+			{
+				ExamModel.resetExamModel(false);
+				ExamModel.getExamModel().createList(cb.getValue());
+				mainApp.showWindow(Window.EXAM);
+			}
+		}
+		
+		if (cb.getSelectionModel().isEmpty())
+		{
+			errorMessage.setText("Please select a difficulty");
 		}
 	}
 }
