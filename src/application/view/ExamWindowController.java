@@ -158,6 +158,20 @@ public class ExamWindowController extends WindowController{
 						e.printStackTrace();
 					}
 				}
+				
+				recordingProgress.setProgress(0);
+				
+				for(int i = 0; i < 1000; i++)
+				{
+					recordingProgress.setProgress(i*0.001 + 0.001);
+					try {
+						Thread.sleep(3);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
 				return null;
 			}
 		};
@@ -193,7 +207,7 @@ public class ExamWindowController extends WindowController{
 		attemptsLeft.setText("You have 2 attempts remaining");
 		message.setText("");
 		maoriNumber.setVisible(false);
-		recordingProgress.setProgress(0);
+		
 	}
 
 	/**

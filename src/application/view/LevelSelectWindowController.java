@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class LevelSelectWindowController extends WindowController{
 	
@@ -19,7 +20,7 @@ public class LevelSelectWindowController extends WindowController{
 	private Label errorMessage;
 	
 	private ObservableList<Difficulty> levels = FXCollections.observableArrayList(Difficulty.values());
-
+	private final String redColour = "#e80000";
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
@@ -35,6 +36,7 @@ public class LevelSelectWindowController extends WindowController{
 	private void initialize() {
 		cb.setItems(levels);
 		errorMessage.setText("");
+		errorMessage.setTextFill(Color.web(redColour));
 	}
 
 	/**
