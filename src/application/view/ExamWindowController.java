@@ -13,6 +13,7 @@ import application.utils.MaoriUtils;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 
 public class ExamWindowController extends WindowController{
@@ -40,6 +41,12 @@ public class ExamWindowController extends WindowController{
 	
 	@FXML
 	private JFXButton btn_record;
+	
+	@FXML
+	private JFXButton btn_menu;
+	
+	@FXML
+	private ProgressBar recordingProgress;
 
 	private Boolean isCompleted = false;
 	private Boolean isFirstAttempt = true;
@@ -71,6 +78,7 @@ public class ExamWindowController extends WindowController{
 		message.setText("");
 		maoriNumber.setVisible(false);
 		maoriNumber.setTextFill(Color.web(redColour));
+		recordingProgress.setProgress(0);
 	}
 
 	/**
@@ -81,6 +89,9 @@ public class ExamWindowController extends WindowController{
 		Task<Void> task = new Task<Void>() {
 			@Override 
 			public Void call() {
+				btn_menu.setDisable(true);
+				btn_record.setDisable(true);
+				btn_next.setDisable(true);
 //				String cmd = "./GoSpeech2";
 //				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 //				try {
@@ -127,9 +138,37 @@ public class ExamWindowController extends WindowController{
 				btn_next.setDisable(false);
 				btn_record.setDisable(true);
 			}
+			
+			btn_menu.setDisable(false);
+			
+		});
+		
+		
+		// New task for the loading bar
+		Task<Void> loadingTask = new Task<Void>() {
+			@Override 
+			public Void call() {
+				for(int i = 0; i < 1000; i++)
+				{
+					recordingProgress.setProgress(i*0.001 + 0.001);
+					try {
+						Thread.sleep(3);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				return null;
+			}
+		};
+		
+		
+		loadingTask.setOnSucceeded(e -> {
+			
 		});
 
 		new Thread(task).start();
+		new Thread(loadingTask).start();
 	}
 
 	/**
@@ -154,6 +193,7 @@ public class ExamWindowController extends WindowController{
 		attemptsLeft.setText("You have 2 attempts remaining");
 		message.setText("");
 		maoriNumber.setVisible(false);
+		recordingProgress.setProgress(0);
 	}
 
 	/**
@@ -179,6 +219,7 @@ public class ExamWindowController extends WindowController{
 		message.setText("Incorrect, Try again");
 		message.setTextFill(Color.web(redColour));
 		attemptsLeft.setText("You have 1 attempt remaining");
+		btn_record.setDisable(false);
 	}
 	
 	// This should change display to red and also say "you should have said"
