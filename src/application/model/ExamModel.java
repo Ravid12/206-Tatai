@@ -9,6 +9,8 @@ public class ExamModel {
 	
 	private ArrayList<Integer> numbers = new ArrayList<Integer>();
 	
+	private ArrayList<Boolean> isCorrectList = new ArrayList<Boolean>(10);
+	
 	private int currentNumber = 0;
 	
 	private boolean practice = false;
@@ -55,5 +57,13 @@ public class ExamModel {
 	
 	public Difficulty getDifficulty() {
 		return difficulty;
+	}
+	
+	public int getStage() {
+		return currentNumber+1;
+	}
+	
+	public void setCorrect(Boolean correct) {
+		isCorrectList.set(currentNumber, correct);
 	}
 }

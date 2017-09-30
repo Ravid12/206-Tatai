@@ -14,9 +14,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;
-    private ExamModel examModel;
-    
+    private BorderPane rootLayout;    
 
     @Override
     public void start(Stage primaryStage) {
@@ -78,15 +76,5 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    
-    
-    
-    public void setExamModel(ExamModel examModel) {
-    	this.examModel=examModel;
-    }
-    
-    public ExamModel getExamModel () {
-    	return examModel;
-    }
+
 }

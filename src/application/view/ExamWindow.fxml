@@ -13,8 +13,8 @@
          <font>
             <Font size="32.0" />
          </font></Label>
-      <JFXButton layoutX="114.0" layoutY="325.0" onAction="#handleRecordBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Record" />
-      <JFXButton layoutX="234.0" layoutY="325.0" onAction="#handleConfirmBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Next" />
+      <JFXButton fx:id="btn_record" layoutX="114.0" layoutY="325.0" onAction="#handleRecordBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Record" />
+      <JFXButton fx:id="btn_next" disable="true" layoutX="234.0" layoutY="325.0" onAction="#handleConfirmBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Next" />
       <JFXButton layoutX="174.0" layoutY="410.0" onAction="#handleMenuBtn" prefHeight="40.0" prefWidth="100.0" styleClass="default-btn" text="Menu" />
       <Label fx:id="difficulty" layoutX="25.0" layoutY="25.0" prefWidth="150.0" text="Difficulty" />
       <Label fx:id="round" alignment="CENTER_RIGHT" layoutX="273.0" layoutY="25.0" prefWidth="150.0" text="Question Number" />

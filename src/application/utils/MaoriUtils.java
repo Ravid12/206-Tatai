@@ -1,16 +1,16 @@
 package application.utils;
 
-import java.util.ArrayList;
-
 public class MaoriUtils {
 	public static String getMaoriNumber(int number) {
+		String maoriNumber;
+		
 		
 		final String[] components = new String[] {
 				"maa",
 				"tahi",
 				"rua",
 				"toru",
-				"wha",
+				"whaa",
 				"rima",
 				"ono",
 				"whitu",
@@ -20,15 +20,17 @@ public class MaoriUtils {
 		};
 		
 		if (number < 11) {
-			return components[number];
+			maoriNumber = components[number];
 		} else if (number < 20){
-			return components[10] + " " + components[0] + " " + components[number%10];
+			maoriNumber = components[10] + " " + components[0] + " " + components[number%10];
 		} else {
 			if (number % 10 == 0) {
-				return components[(number/10)%10] + " " + components[10];
+				maoriNumber = components[(number/10)%10] + " " + components[10];
 			} else {
-				return components[((number-number%10)/10)%10] + " " + components[10] + " " + components[0] + " " + components[number%10]; 
+				maoriNumber = components[((number-number%10)/10)%10] + " " + components[10] + " " + components[0] + " " + components[number%10]; 
 			}
 		}
+		
+		return maoriNumber;
 	}
 }

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import com.jfoenix.controls.JFXButton;
+
 import application.controller.WindowController;
 import application.model.ExamModel;
 import application.model.Window;
@@ -19,18 +21,26 @@ public class ExamWindowController extends WindowController{
 
 	@FXML
 	private Label testNumber;
-	
+
 	@FXML
 	private Label maoriNumber;
-	
+
 	@FXML
 	private Label difficulty;
-	
+
 	@FXML
 	private Label round;
 
+	@FXML
+	private JFXButton btn_next;
+	
+	@FXML
+	private JFXButton btn_record;
+
+	private Boolean isCompleted = false;
+	private Boolean isFirstAttempt = true;
+
 	private ExamModel em = ExamModel.getExamModel();
-	private int counter = 1;
 
 	/**
 	 * The constructor.
@@ -48,7 +58,7 @@ public class ExamWindowController extends WindowController{
 		testNumber.setText(em.getNext());
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
 		difficulty.setText(em.getDifficulty().toString());
-		round.setText(""+counter+"/10");
+		round.setText(""+em.getStage()+"/10");
 	}
 
 	/**
@@ -56,34 +66,52 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleRecordBtn() {
-
 		Task<Void> task = new Task<Void>() {
 			@Override 
 			public Void call() {
-				String cmd = "./GoSpeech2";
-				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
-				try {
-					builder.directory(new File("./HTK/MaoriNumbers/"));
-					Process pr = builder.start();						
-					try {
-						pr.waitFor();
-
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					pr.destroy();
-				} catch (IOException e) {
-				}
+//				String cmd = "./GoSpeech2";
+//				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+//				try {
+//					builder.directory(new File("./HTK/MaoriNumbers/"));
+//					Process pr = builder.start();						
+//					try {
+//						pr.waitFor();
+//
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//					pr.destroy();
+//				} catch (IOException e) {
+//				}
 				return null;
 			}
 		};
+		
+		
 		task.setOnSucceeded(e -> {
+			String whatTheySaid = "";
+
 			ArrayList<String> out = IOUtils.readFile("./HTK/MaoriNumbers/recout.mlf");
 			for (String line : out) {
-				System.out.println(line);
+				whatTheySaid = whatTheySaid.concat(line + " ");
+			}
+
+			if (whatTheySaid.contains(maoriNumber.getText())) {
+				isCompleted = true;
+				em.setCorrect(true);
+			} else if (isFirstAttempt) {
+				isFirstAttempt=false;
+				incorrectFirstAttempt();
+			} else {
+				incorrectSecondAttempt();
+			}
+			
+			if (isCompleted) {
+				btn_next.setDisable(false);
+				btn_record.setDisable(true);
 			}
 		});
-		
+
 		new Thread(task).start();
 	}
 
@@ -101,11 +129,9 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleConfirmBtn() {
-		if (counter < 10) counter++;
-		checkAnswer();
 		testNumber.setText(em.getNext());
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
-		round.setText(""+counter+"/10");
+		round.setText(""+em.getStage()+"/10");
 	}
 
 	/**
@@ -114,14 +140,14 @@ public class ExamWindowController extends WindowController{
 	@FXML
 	private void handleMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
 	}
 
-	/**
-	 * checks user recording with HTK, updates screen if correct/incorrect, 
-	 * and updates stats model.
-	 */
-	public void checkAnswer() {
 
+	public void incorrectFirstAttempt() {
+
+	}
+	
+	public void incorrectSecondAttempt() {
+		
 	}
 }
