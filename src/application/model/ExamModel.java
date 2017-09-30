@@ -7,7 +7,7 @@ public class ExamModel {
 	
 	private static ExamModel examModel = new ExamModel();
 	private ArrayList<Integer> numbers = new ArrayList<Integer>();
-	private ArrayList<Boolean> isCorrectList = new ArrayList<Boolean>();
+	private ArrayList<Boolean> isCorrectList = new ArrayList<Boolean>(10);
 
 	private int currentNumber = 0;
 	private boolean practice = false;
