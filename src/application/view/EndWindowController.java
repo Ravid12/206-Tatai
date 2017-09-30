@@ -30,7 +30,7 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		ObservableList<String> list = FXCollections.observableArrayList();
-		for(int i =0; i<9; i++)
+		for(int i =0; i<10; i++)
 		{
 			// 
 			list.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
