@@ -42,9 +42,11 @@ public class StatsModel
 		return statistics.get(difficulty);
 	}
 	
-	public void updateStats(String string)
+	public void updateStats(Difficulty difficulty, int number, Boolean correct)
 	{
-		new IOUtils().overwriteFile("test.txt", string);
+		ArrayList<Stat> stats = statistics.get(difficulty);
+		if (correct) stats.get(number-1).addToCorrect(1);
+		if (!correct) stats.get(number-1).addToIncorrect(1);
 	}
 	
 //	private String sessionAveragePerGame(Difficulty difficulty)

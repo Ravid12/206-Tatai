@@ -32,8 +32,8 @@ public class Stat {
         return correct.get();
     }
 
-    public void setCorrect() {
-        this.correct.set(getCorrect()+1);
+    public void addToCorrect(int i) {
+        this.correct.set(getCorrect()+i);
     }
 
     public IntegerProperty correctProperty() {
@@ -44,8 +44,8 @@ public class Stat {
         return incorrect.get();
     }
 
-    public void setIncorrect() {
-        this.incorrect.set(getIncorrect()+1);
+    public void addToIncorrect(int i) {
+        this.incorrect.set(getIncorrect()+i);
     }
 
     public IntegerProperty incorrectProperty() {

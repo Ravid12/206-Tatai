@@ -29,13 +29,13 @@ public class EndWindowController extends WindowController{
 	
 	@FXML
 	private void initialize() {
-		ArrayList<String> numberList = new ArrayList<String>();
+		ObservableList<String> list = FXCollections.observableArrayList();
 		for(int i =0; i<9; i++)
 		{
 			// 
-			numberList.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
+			list.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
+			
 		}
-		ObservableList<String> list = FXCollections.observableArrayList(numberList);
 		endList.setItems(list);
 	}
 	
@@ -45,6 +45,5 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
 	}
 }

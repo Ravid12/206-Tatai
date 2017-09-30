@@ -38,6 +38,7 @@ public class StatisticsWindowController extends WindowController{
 			ObservableList<Stat> statlist = FXCollections.observableArrayList(StatsModel.getInstance().getStats(difficulties[i]));
 			
 			TableView<Stat> stats = new TableView<Stat>();
+			stats.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 	        TableColumn<Stat, Integer> numberCol = new TableColumn<Stat, Integer>("Number");
 	        TableColumn<Stat, Integer> correctCol = new TableColumn<Stat, Integer>("Correct Attempts");

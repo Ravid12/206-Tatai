@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXButton;
 
 import application.controller.WindowController;
 import application.model.ExamModel;
+import application.model.StatsModel;
 import application.model.Window;
 import application.utils.IOUtils;
 import application.utils.MaoriUtils;
@@ -101,6 +102,7 @@ public class ExamWindowController extends WindowController{
 			if (whatTheySaid.contains(maoriNumber.getText())) {
 				isCompleted = true;
 				em.setCorrect(true);
+				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), true);
 			} else if (isFirstAttempt) {
 				isFirstAttempt=false;
 				incorrectFirstAttempt();
@@ -108,6 +110,7 @@ public class ExamWindowController extends WindowController{
 				incorrectSecondAttempt();
 				isCompleted = true;
 				em.setCorrect(false);
+				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), false);
 			}
 			
 			if (isCompleted) {
@@ -123,12 +126,14 @@ public class ExamWindowController extends WindowController{
 	 * Called when the user clicks on the Confirm button.
 	 */
 	@FXML
-	private void handleConfirmBtn() {
+	private void handleConfirmBtn() {		
+
+		
 		testNumber.setText(em.getNext());
 		counter++;
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
 		round.setText(""+counter+"/10");
-		if (counter==10) {
+		if (counter==11) {
 			mainApp.showWindow(Window.END);
 		}
 		
