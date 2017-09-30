@@ -15,7 +15,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ExamModel examModel;
+    private boolean unlocked;
     
 
     @Override
@@ -79,14 +79,11 @@ public class MainApp extends Application {
         launch(args);
     }
     
-    
-    
-    
-    public void setExamModel(ExamModel examModel) {
-    	this.examModel=examModel;
+    public void setUnlocked(boolean unlocked) {
+    	this.unlocked=unlocked;
     }
     
-    public ExamModel getExamModel () {
-    	return examModel;
+    public boolean getUnlocked() {
+    	return unlocked;
     }
 }
