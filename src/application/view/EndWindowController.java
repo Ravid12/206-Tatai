@@ -1,34 +1,52 @@
 package application.view;
 
+import java.util.ArrayList;
+
 import application.controller.WindowController;
+import application.model.ExamModel;
 import application.model.Window;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 
 public class EndWindowController extends WindowController{
 
-		/**
-		 * The constructor.
-		 * The constructor is called before the initialize() method.
-		 */
-		public EndWindowController () {
-		}
-
-		/**
-		 * Initializes the controller class. This method is automatically called
-		 * after the fxml file has been loaded.
-		 */
-		@FXML
-		private void initialize() {
-		}
-
-		/**
-		 * Called when the user clicks on the Record button.
-		 */
+	@FXML
+	private ListView<String> endList;
 		
-		
-		@FXML
-		private void handleMainMenuBtn() {
-			mainApp.showWindow(Window.MAIN);
-			System.out.println("Menu");		
+	/**
+	 * The constructor.
+	 * The constructor is called before the initialize() method.
+	 */
+	public EndWindowController () {
+	}
+	
+	/**
+	 * Initializes the controller class. This method is automatically called
+	 * after the fxml file has been loaded.
+	 */
+	
+	@FXML
+	private void initialize() {
+		ArrayList<String> numberList = new ArrayList<String>();
+		for(int i =0; i<10; i++)
+		{
+			// 
+			numberList.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i).toString());
 		}
+		ObservableList<String> list = FXCollections.observableArrayList(numberList);
+		endList.setItems(list);
+	}
+	
+	/**
+	 * Called when the user clicks on the Record button.
+	 */
+	
+	
+	@FXML
+	private void handleMainMenuBtn() {
+		mainApp.showWindow(Window.MAIN);
+		System.out.println("Menu");		
+	}
 }

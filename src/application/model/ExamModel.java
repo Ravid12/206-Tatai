@@ -6,16 +6,13 @@ import java.util.Random;
 public class ExamModel {
 	
 	private static ExamModel examModel = new ExamModel();
-	
 	private ArrayList<Integer> numbers = new ArrayList<Integer>();
-	
 	private ArrayList<Boolean> isCorrectList = new ArrayList<Boolean>(10);
-	
+
 	private int currentNumber = 0;
-	
 	private boolean practice = false;
-	
 	private Difficulty difficulty;
+	
 		
 	private ExamModel() {
 	}
@@ -53,6 +50,12 @@ public class ExamModel {
 			return "" + numbers.get(currentNumber++);	
 		}
 		return "" + numbers.get(currentNumber);
+	}
+	
+	public ArrayList<Integer> getTestedNumbers()
+	{
+		
+		return numbers;
 	}
 	
 	public Difficulty getDifficulty() {

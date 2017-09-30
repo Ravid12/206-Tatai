@@ -115,15 +115,6 @@ public class ExamWindowController extends WindowController{
 		new Thread(task).start();
 	}
 
-
-
-	/**
-	 * Called when the user clicks on the listen button.
-	 */
-	@FXML
-	private void handleListenBtn() {
-	}
-
 	/**
 	 * Called when the user clicks on the Confirm button.
 	 */
@@ -132,6 +123,9 @@ public class ExamWindowController extends WindowController{
 		testNumber.setText(em.getNext());
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
 		round.setText(""+em.getStage()+"/10");
+		if (em.getStage()==10) {
+			mainApp.showWindow(Window.END);
+		}
 	}
 
 	/**

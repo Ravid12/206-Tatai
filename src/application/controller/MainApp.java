@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;    
-
+    private BorderPane rootLayout;
+    private boolean unlocked;
+    
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -77,4 +78,11 @@ public class MainApp extends Application {
         launch(args);
     }
 
+    public void setUnlocked(boolean unlocked) {
+    	this.unlocked=unlocked;
+    }
+    
+    public boolean getUnlocked() {
+    	return unlocked;
+    }
 }
