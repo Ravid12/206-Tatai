@@ -15,7 +15,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private boolean unlocked;
+    private boolean unlocked = false;
     
     @Override
     public void start(Stage primaryStage) {
@@ -78,8 +78,8 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public void setUnlocked(boolean unlocked) {
-    	this.unlocked=unlocked;
+    public void setUnlocked() {
+    	this.unlocked=true;
     }
     
     public boolean getUnlocked() {

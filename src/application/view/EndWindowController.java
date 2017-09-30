@@ -1,6 +1,7 @@
 package application.view;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import application.controller.WindowController;
 import application.model.ExamModel;
@@ -8,12 +9,16 @@ import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class EndWindowController extends WindowController{
 
 	@FXML
 	private ListView<String> endList;
+	
+	@FXML
+	private Label finalscore;
 		
 	/**
 	 * The constructor.
@@ -30,13 +35,19 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		ObservableList<String> list = FXCollections.observableArrayList();
-		for(int i =0; i<9; i++)
+		int noCorrect = Collections.frequency(ExamModel.getExamModel().getCorrectList(), true);
+		for(int i =0; i<10; i++)
 		{
 			// 
 			list.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
 			
 		}
 		endList.setItems(list);
+		finalscore.setText("You got " + noCorrect + "/10 Correct!");
+		if(noCorrect > 7)
+		{
+			mainApp.setUnlocked();
+		}
 	}
 	
 	/**

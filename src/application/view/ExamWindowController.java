@@ -43,8 +43,8 @@ public class ExamWindowController extends WindowController{
 
 	private Boolean isCompleted = false;
 	private Boolean isFirstAttempt = true;
-	private String greenColour = "#13ea00";
-	private String redColour = "#e80000";
+	private final String greenColour = "#13ea00";
+	private final String redColour = "#e80000";
 	
 	private int counter = 1;
 

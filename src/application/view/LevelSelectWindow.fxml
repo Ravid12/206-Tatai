@@ -11,7 +11,8 @@
       <Label layoutX="114.0" layoutY="35.0" styleClass="title" text="Level Select" />
       <ComboBox fx:id="cb" layoutX="74.0" layoutY="228.0" prefWidth="150.0" />
       <JFXButton layoutX="274.0" layoutY="220.0" onAction="#handleStartBtn" styleClass="default-btn" text="Start!" />
-      <JFXButton layoutX="174.0" layoutY="315.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Menu" />
+      <JFXButton layoutX="174.0" layoutY="325.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Menu" />
       <Label layoutX="74.0" layoutY="209.0" text="Choose a level:" />
+      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="260.0" prefHeight="52.0" prefWidth="178.0" text="You need to get 8 or more correct in Easy mode to unlock Hard mode" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>
