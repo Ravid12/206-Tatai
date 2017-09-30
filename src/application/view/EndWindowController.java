@@ -30,20 +30,18 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		ArrayList<String> numberList = new ArrayList<String>();
-		for(int i =0; i<10; i++)
+		for(int i =0; i<9; i++)
 		{
 			// 
-			numberList.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i).toString());
+			numberList.add((i + 1) + ")" + "\t\t" + ExamModel.getExamModel().getTestedNumbers().get(i) + "\t\t" + ExamModel.getExamModel().getCorrectList().get(i));
 		}
 		ObservableList<String> list = FXCollections.observableArrayList(numberList);
 		endList.setItems(list);
 	}
 	
 	/**
-	 * Called when the user clicks on the Record button.
-	 */
-	
-	
+	 * Called when the user clicks on the Main Menu button.
+	 */	
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);

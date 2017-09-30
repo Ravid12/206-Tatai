@@ -46,24 +46,21 @@ public class ExamModel {
 	
 	public String getNext() {
 		if (!practice && currentNumber < 9) {
-
 			return "" + numbers.get(currentNumber++);	
 		}
 		return "" + numbers.get(currentNumber);
 	}
 	
-	public ArrayList<Integer> getTestedNumbers()
-	{
-		
+	public ArrayList<Integer> getTestedNumbers() {
 		return numbers;
+	}
+	
+	public ArrayList<Boolean> getCorrectList() {
+		return isCorrectList;
 	}
 	
 	public Difficulty getDifficulty() {
 		return difficulty;
-	}
-	
-	public int getStage() {
-		return currentNumber;
 	}
 	
 	public void setCorrect(Boolean correct) {
