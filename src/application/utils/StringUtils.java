@@ -5,7 +5,7 @@ public class StringUtils {
 	{  
 	  try  
 	  {  
-	    double d = Double.parseDouble(str);  
+	    Double.parseDouble(str);  
 	  }  
 	  catch(NumberFormatException nfe)  
 	  {  
