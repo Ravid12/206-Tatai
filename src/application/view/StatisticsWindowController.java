@@ -29,6 +29,7 @@ public class StatisticsWindowController extends WindowController{
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void initialize() {
 		Difficulty difficulties[] = Difficulty.values();
