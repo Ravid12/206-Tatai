@@ -1,5 +1,7 @@
 package application.view;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
@@ -92,20 +94,20 @@ public class ExamWindowController extends WindowController{
 				btn_menu.setDisable(true);
 				btn_record.setDisable(true);
 				btn_next.setDisable(true);
-//				String cmd = "./GoSpeech2";
-//				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
-//				try {
-//					builder.directory(new File("./HTK/MaoriNumbers/"));
-//					Process pr = builder.start();						
-//					try {
-//						pr.waitFor();
-//
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					pr.destroy();
-//				} catch (IOException e) {
-//				}
+				String cmd = "./GoSpeech2";
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+				try {
+					builder.directory(new File("./HTK/MaoriNumbers/"));
+					Process pr = builder.start();						
+					try {
+						pr.waitFor();
+
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					pr.destroy();
+				} catch (IOException e) {
+				}
 				return null;
 			}
 		};
@@ -154,7 +156,6 @@ public class ExamWindowController extends WindowController{
 					try {
 						Thread.sleep(3);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -167,11 +168,9 @@ public class ExamWindowController extends WindowController{
 					try {
 						Thread.sleep(3);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
-				
 				return null;
 			}
 		};
@@ -190,8 +189,6 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleConfirmBtn() {		
-
-		
 		testNumber.setText(em.getNext());
 		counter++;
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
@@ -207,7 +204,6 @@ public class ExamWindowController extends WindowController{
 		attemptsLeft.setText("You have 2 attempts remaining");
 		message.setText("");
 		maoriNumber.setVisible(false);
-		
 	}
 
 	/**

@@ -64,13 +64,9 @@ public class ExamModel {
 	}
 	
 	public void setCorrect(Boolean correct) {
-		if(correct == true)
-		{
+		if(correct == true) {
 			isCorrectList.add(Correctness.CORRECT);
-		}
-		
-		else
-		{
+		} else {
 			isCorrectList.add(Correctness.INCORRECT);
 		}
 	}

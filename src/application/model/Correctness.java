@@ -5,13 +5,11 @@ public enum Correctness {
 	
 	private String name;
 	
-	Correctness(String string) 
-	{
+	Correctness(String string) {
 		this.name = string;
 	}
 	
-	public String toString()
-	{
+	public String toString() {
 		return name;
 	}
 }
