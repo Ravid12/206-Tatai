@@ -38,10 +38,8 @@ public class InstructionWindowController extends WindowController{
 		}
 
 		/**
-		 * Called when the user clicks on the Record button.
-		 */
-		
-		
+		 * Called when the user clicks on the main menu button.
+		 */		
 		@FXML
 		private void handleMainMenuBtn() {
 			mainApp.showWindow(Window.MAIN);

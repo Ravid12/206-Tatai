@@ -112,13 +112,13 @@ public class ExamWindowController extends WindowController{
 				}
 				return null;
 			}
-		};
+		};		
 		
 		
 		task.setOnSucceeded(e -> {
 			String whatTheySaid = "";
 
-			ArrayList<String> out = IOUtils.readFile("./HTK/MaoriNumbers/recout.mlf");
+			ArrayList<String> out = IOUtils.readFile("HTK/MaoriNumbers/recout.mlf");
 			for (String line : out) {
 				whatTheySaid = whatTheySaid.concat(line + " ");
 			}
