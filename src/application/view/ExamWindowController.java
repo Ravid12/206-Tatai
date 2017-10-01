@@ -85,6 +85,8 @@ public class ExamWindowController extends WindowController{
 
 	/**
 	 * Called when the user clicks on the Record button.
+	 * Creates a new task to Record the person's voice.
+	 * It is then compared to the Maori Number that was generated.
 	 */
 	@FXML
 	private void handleRecordBtn() {

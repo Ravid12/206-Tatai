@@ -3,6 +3,7 @@ package application.model;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+// This class exists to display statistics in a Tabular format.
 public class Stat {
 	private IntegerProperty number;
 	private IntegerProperty correct;

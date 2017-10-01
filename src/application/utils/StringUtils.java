@@ -1,6 +1,10 @@
 package application.utils;
 
 public class StringUtils {
+	
+	/**
+	 * Method that checks if a string is a number.
+	 */
 	public static boolean isNumeric(String str)  
 	{  
 	  try  

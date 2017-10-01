@@ -1,5 +1,5 @@
 package application.model;
-
+// An Enum that contains information on all "Windows" that get launched in the program.
 public enum Window {
 	MAIN("Main"), 
 	LEVEL("Level"),

@@ -48,6 +48,9 @@ public class MainApp extends Application {
         }
     }
    
+    /**
+     * Initializes the window that goes inside the rootlayout.
+     */
     public void showWindow(Window windowName) {
         try {
             // Load person overview.
@@ -76,14 +79,23 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
+    /**
+     * Entry point for application.
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Method to enable hardmode for the application.
+     */
     public void setUnlocked() {
     	this.unlocked=true;
     }
     
+    /**
+     * Checks if Hardmode has been enabled.
+     */
     public boolean getUnlocked() {
     	return unlocked;
     }

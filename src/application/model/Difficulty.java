@@ -1,5 +1,7 @@
 package application.model;
 
+// This Enum exists to alter existing / add new difficulties to the app
+// Any new Difficulty Enum added will be automatically integrated to all parts of the App.
 public enum Difficulty {
 	EASY(1, 10), HARD(10, 99);
 

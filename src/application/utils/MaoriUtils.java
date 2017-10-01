@@ -1,6 +1,9 @@
 package application.utils;
 
 public class MaoriUtils {
+	/**
+	 * Method that translates an integer input to the corresponding string in Maori.
+	 */
 	public static String getMaoriNumber(int number) {
 		String maoriNumber;
 		

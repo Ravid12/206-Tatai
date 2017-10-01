@@ -7,8 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+// Utility classes do not need objects.
+// They have few methods, all of which are pretty basic but extremely useful.
 public class IOUtils {
 
+	/**
+	 * Method that reads the FileName that is passed in as a String input.
+	 */
 	public static ArrayList<String> readFile(String FileName)
 	{
 		ArrayList<String> al = new ArrayList<String>();
@@ -33,6 +38,10 @@ public class IOUtils {
 		return al;
 	}
 	
+	/**
+	 * Method that writes a String to the FileName. 
+	 * Both are passed in as a String input.
+	 */
 	public static void overwriteFile(String FileName, String string)
 	{
 		try {
