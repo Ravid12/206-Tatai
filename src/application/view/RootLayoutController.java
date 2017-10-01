@@ -26,7 +26,7 @@ public class RootLayoutController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		Image image = new Image("side.png");
+		Image image = new Image(RootLayoutController.class.getResource("side.png").toExternalForm());
 		leftSide.setImage(image);
 		rightSide.setImage(image);
 	}
