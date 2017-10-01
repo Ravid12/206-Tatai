@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RootLayoutController">
    <left>
-      <ImageView fitHeight="480.0" fitWidth="96.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="leftSide" fitHeight="480.0" fitWidth="96.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../res/side.png" />
+            <Image url="@side.png" />
          </image>
       </ImageView>
    </left>
    <right>
-      <ImageView fitHeight="480.0" fitWidth="96.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="rightSide" fitHeight="480.0" fitWidth="96.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../res/side.png" />
+            <Image url="@side.png" />
          </image>
       </ImageView>
    </right>
