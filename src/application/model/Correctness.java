@@ -4,7 +4,7 @@ package application.model;
 // A class for storing whether the question was answered correctly was required
 // But additionally, the toString method needed to be overridden so a new class was created.
 public enum Correctness {
-	CORRECT("Correct"), INCORRECT("Incorrect");
+	CORRECT("Correct\t✓"), INCORRECT("Incorrect\t✕");
 	
 	private String name;
 	
