@@ -34,19 +34,19 @@ public class ExamWindowController extends WindowController{
 
 	@FXML
 	private Label attemptsLeft;
-	
+
 	@FXML
 	private Label message;
-	
+
 	@FXML
 	private JFXButton btn_next;
-	
+
 	@FXML
 	private JFXButton btn_record;
-	
+
 	@FXML
 	private JFXButton btn_menu;
-	
+
 	@FXML
 	private ProgressBar recordingProgress;
 
@@ -54,7 +54,7 @@ public class ExamWindowController extends WindowController{
 	private Boolean isFirstAttempt = true;
 	private final String greenColour = "#13ea00";
 	private final String redColour = "#e80000";
-	
+
 	private int counter = 1;
 
 	private ExamModel em = ExamModel.getExamModel();
@@ -93,28 +93,28 @@ public class ExamWindowController extends WindowController{
 		Task<Void> task = new Task<Void>() {
 			@Override 
 			public Void call() {
-				btn_menu.setDisable(true);
-				btn_record.setDisable(true);
-				btn_next.setDisable(true);
-				String cmd = "./GoSpeech2";
-				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
-				try {
-					builder.directory(new File("./HTK/MaoriNumbers/"));
-					Process pr = builder.start();						
-					try {
-						pr.waitFor();
-
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					pr.destroy();
-				} catch (IOException e) {
-				}
+				//				btn_menu.setDisable(true);
+				//				btn_record.setDisable(true);
+				//				btn_next.setDisable(true);
+				//				String cmd = "./GoSpeech2";
+				//				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+				//				try {
+				//					builder.directory(new File("./HTK/MaoriNumbers/"));
+				//					Process pr = builder.start();						
+				//					try {
+				//						pr.waitFor();
+				//
+				//					} catch (InterruptedException e) {
+				//						e.printStackTrace();
+				//					}
+				//					pr.destroy();
+				//				} catch (IOException e) {
+				//				}
 				return null;
 			}
 		};		
-		
-		
+
+
 		task.setOnSucceeded(e -> {
 			String whatTheySaid = "";
 
@@ -137,17 +137,17 @@ public class ExamWindowController extends WindowController{
 				em.setCorrect(false);
 				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), false);
 			}
-			
+
 			if (isCompleted) {
 				btn_next.setDisable(false);
 				btn_record.setDisable(true);
 			}
-			
+
 			btn_menu.setDisable(false);
-			
+
 		});
-		
-		
+
+
 		// New task for the loading bar
 		Task<Void> loadingTask = new Task<Void>() {
 			@Override 
@@ -161,9 +161,9 @@ public class ExamWindowController extends WindowController{
 						e.printStackTrace();
 					}
 				}
-				
+
 				recordingProgress.setProgress(0);
-				
+
 				for(int i = 0; i < 1000; i++)
 				{
 					recordingProgress.setProgress(i*0.001 + 0.001);
@@ -176,10 +176,10 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};
-		
-		
+
+
 		loadingTask.setOnSucceeded(e -> {
-			
+
 		});
 
 		new Thread(task).start();
@@ -198,7 +198,7 @@ public class ExamWindowController extends WindowController{
 		if (counter==11) {
 			mainApp.showWindow(Window.END);
 		}
-		
+
 		btn_next.setDisable(true);
 		btn_record.setDisable(false);
 		isCompleted = false;
@@ -215,7 +215,7 @@ public class ExamWindowController extends WindowController{
 	private void handleMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
 	}
-	
+
 	// called when correct attempt is input
 	private void correctAttempt() 
 	{
@@ -233,7 +233,7 @@ public class ExamWindowController extends WindowController{
 		attemptsLeft.setText("You have 1 attempt remaining");
 		btn_record.setDisable(false);
 	}
-	
+
 	// This should change display to red and also say "you should have said"
 	private void incorrectSecondAttempt() 
 	{
