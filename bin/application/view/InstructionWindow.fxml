@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.InstructionWindowController">
+
+<AnchorPane prefHeight="480.0" prefWidth="448.0" stylesheets="@red-theme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.view.InstructionWindowController">
    <children>
-      <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="OK, I got it" />
-      <Label layoutX="108.0" layoutY="35.0" prefHeight="40.0" prefWidth="232.0" styleClass="title" text="Instructions!" textFill="#a10000">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-      </Label>
-      <Label fx:id="instructions" layoutX="24.0" layoutY="87.0" prefHeight="245.0" prefWidth="400.0" text="Label" wrapText="true" />
+      <Label layoutX="115.0" layoutY="35.0" styleClass="title" text="Instructions" />
+      <TextArea editable="false" layoutX="15.0" layoutY="75.0" prefHeight="320.0" prefWidth="420.0" text="Welcome to Taatai. Taatai is an app for practicing to pronounce Maori numbers.&#10;&#10;There are two game modes: &quot;Play&quot; and &quot;Practice&quot;:&#10;&#10;Play Mode&#10;In Play mode, you are tested, and given a score out of 10. There are 2 difficulties in Play Mode: easy and hard. In easy mode, you are only tested on numbers below 10, but in hard mode, you can be tested on any number below 100. In play mode, your statistics and progress are saved.&#10;&#10;Practice Mode&#10;In Practice mode, you can choose which numbers you would like to learn, and practice them. Your stats will not be saved.&#10;&#10;Statistics&#10;In the statistics window, you can view your statistics for each level. Currently, your statistics comprises of the frequency of correct and incorrect attempts for each number.&#10;&#10;&#10;" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <JFXButton layoutX="174.0" layoutY="410.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Ok, got it!" />
    </children>
 </AnchorPane>

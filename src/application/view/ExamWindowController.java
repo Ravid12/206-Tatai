@@ -34,27 +34,31 @@ public class ExamWindowController extends WindowController{
 
 	@FXML
 	private Label attemptsLeft;
-	
+
 	@FXML
 	private Label message;
-	
+
 	@FXML
-	private JFXButton btn_next;
-	
+	private JFXButton btn_confirm;
+
 	@FXML
 	private JFXButton btn_record;
-	
+
 	@FXML
 	private JFXButton btn_menu;
-	
+
+	@FXML
+	private JFXButton btn_listen;
+
 	@FXML
 	private ProgressBar recordingProgress;
 
+	private Boolean isConfirm = true;
 	private Boolean isCompleted = false;
 	private Boolean isFirstAttempt = true;
 	private final String greenColour = "#13ea00";
 	private final String redColour = "#e80000";
-	
+
 	private int counter = 1;
 
 	private ExamModel em = ExamModel.getExamModel();
@@ -95,7 +99,8 @@ public class ExamWindowController extends WindowController{
 			public Void call() {
 				btn_menu.setDisable(true);
 				btn_record.setDisable(true);
-				btn_next.setDisable(true);
+				btn_confirm.setDisable(true);
+				btn_listen.setDisable(true);
 				String cmd = "./GoSpeech2";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
@@ -113,9 +118,56 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};		
-		
-		
+
+
 		task.setOnSucceeded(e -> {
+
+		});
+
+
+		new Thread(task).start();
+		new Thread(makeLoadingTask()).start();
+	}
+
+	@FXML
+	private void handleListenBtn () {
+		Task<Void> task = new Task<Void>() {
+			@Override 
+			public Void call() {
+				btn_menu.setDisable(true);
+				btn_record.setDisable(true);
+				btn_confirm.setDisable(true);
+				btn_record.setDisable(true);
+				btn_listen.setDisable(true);
+				String cmd = "./play.sh";
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+				try {
+					builder.directory(new File("./HTK/MaoriNumbers/"));
+					Process pr = builder.start();						
+					try {
+						pr.waitFor();
+
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					pr.destroy();
+				} catch (IOException e) {
+				}
+				return null;
+			}
+		};
+
+		new Thread(task).start();
+		new Thread(makeLoadingTask()).start();
+
+	}
+
+	/**
+	 * Called when the user clicks on the Confirm button.
+	 */
+	@FXML
+	private void handleConfirmBtn() {
+		if (isConfirm) {
 			String whatTheySaid = "";
 
 			ArrayList<String> out = IOUtils.readFile("HTK/MaoriNumbers/recout.mlf");
@@ -131,81 +183,46 @@ public class ExamWindowController extends WindowController{
 			} else if (isFirstAttempt) {
 				isFirstAttempt=false;
 				incorrectFirstAttempt();
+				btn_listen.setDisable(true);
+				btn_confirm.setDisable(true);
+				btn_record.setDisable(false);
+				btn_menu.setDisable(false);
 			} else {
 				incorrectSecondAttempt();
 				isCompleted = true;
 				em.setCorrect(false);
 				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), false);
 			}
-			
+
 			if (isCompleted) {
-				btn_next.setDisable(false);
+				btn_listen.setDisable(true);
+				btn_confirm.setDisable(false);
+				btn_record.setDisable(true);
+				btn_menu.setDisable(false);
+				btn_confirm.setText("Continue");
+				isConfirm = false;
 				btn_record.setDisable(true);
 			}
-			
-			btn_menu.setDisable(false);
-			
-		});
-		
-		
-		// New task for the loading bar
-		Task<Void> loadingTask = new Task<Void>() {
-			@Override 
-			public Void call() {
-				for(int i = 0; i < 1000; i++)
-				{
-					recordingProgress.setProgress(i*0.001 + 0.001);
-					try {
-						Thread.sleep(3);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				
-				recordingProgress.setProgress(0);
-				
-				for(int i = 0; i < 1000; i++)
-				{
-					recordingProgress.setProgress(i*0.001 + 0.001);
-					try {
-						Thread.sleep(3);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				return null;
+
+		} else {
+			testNumber.setText(em.getNext());
+			counter++;
+			maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
+			round.setText(""+counter+"/10");
+			if (counter==11) {
+				mainApp.showWindow(Window.END);
 			}
-		};
-		
-		
-		loadingTask.setOnSucceeded(e -> {
-			
-		});
 
-		new Thread(task).start();
-		new Thread(loadingTask).start();
-	}
-
-	/**
-	 * Called when the user clicks on the Confirm button.
-	 */
-	@FXML
-	private void handleConfirmBtn() {		
-		testNumber.setText(em.getNext());
-		counter++;
-		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
-		round.setText(""+counter+"/10");
-		if (counter==11) {
-			mainApp.showWindow(Window.END);
+			btn_confirm.setText("Confirm");
+			isConfirm = true;
+			btn_confirm.setDisable(true);
+			btn_record.setDisable(false);
+			isCompleted = false;
+			isFirstAttempt=true;
+			attemptsLeft.setText("You have 2 attempts remaining");
+			message.setText("");
+			maoriNumber.setVisible(false);
 		}
-		
-		btn_next.setDisable(true);
-		btn_record.setDisable(false);
-		isCompleted = false;
-		isFirstAttempt=true;
-		attemptsLeft.setText("You have 2 attempts remaining");
-		message.setText("");
-		maoriNumber.setVisible(false);
 	}
 
 	/**
@@ -215,7 +232,7 @@ public class ExamWindowController extends WindowController{
 	private void handleMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
 	}
-	
+
 	// called when correct attempt is input
 	private void correctAttempt() 
 	{
@@ -233,7 +250,7 @@ public class ExamWindowController extends WindowController{
 		attemptsLeft.setText("You have 1 attempt remaining");
 		btn_record.setDisable(false);
 	}
-	
+
 	// This should change display to red and also say "you should have said"
 	private void incorrectSecondAttempt() 
 	{
@@ -242,4 +259,33 @@ public class ExamWindowController extends WindowController{
 		message.setTextFill(Color.web(redColour));
 		maoriNumber.setVisible(true);
 	}
+
+	private Task<Void> makeLoadingTask() {
+		// New task for the loading bar
+		Task<Void> loadingTask = new Task<Void>() {
+			@Override 
+			public Void call() {
+				for(int i = 0; i < 1000; i++)
+				{
+					recordingProgress.setProgress(i*0.001 + 0.001);
+					try {
+						Thread.sleep(3);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				return null;
+			}
+		};
+
+
+		loadingTask.setOnSucceeded(e -> {
+			btn_listen.setDisable(false);
+			btn_confirm.setDisable(false);
+			btn_record.setDisable(false);
+			btn_menu.setDisable(false);
+		});
+		return loadingTask;
+	}
+
 }
