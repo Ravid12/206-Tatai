@@ -121,7 +121,10 @@ public class ExamWindowController extends WindowController{
 
 
 		task.setOnSucceeded(e -> {
-
+			btn_listen.setDisable(false);
+			btn_confirm.setDisable(false);
+			btn_record.setDisable(false);
+			btn_menu.setDisable(false);
 		});
 
 
@@ -156,6 +159,13 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};
+		
+		task.setOnSucceeded(e -> {
+			btn_listen.setDisable(false);
+			btn_confirm.setDisable(false);
+			btn_record.setDisable(false);
+			btn_menu.setDisable(false);
+		});
 
 		new Thread(task).start();
 		new Thread(makeLoadingTask()).start();
@@ -278,13 +288,6 @@ public class ExamWindowController extends WindowController{
 			}
 		};
 
-
-		loadingTask.setOnSucceeded(e -> {
-			btn_listen.setDisable(false);
-			btn_confirm.setDisable(false);
-			btn_record.setDisable(false);
-			btn_menu.setDisable(false);
-		});
 		return loadingTask;
 	}
 
