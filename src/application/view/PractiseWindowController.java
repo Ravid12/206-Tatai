@@ -46,8 +46,6 @@ public class PractiseWindowController extends WindowController{
 	private void handleTestBtn() {
 		// TODO: Notify user of invalid string input and out of bound numbers
 		if (StringUtils.isNumeric(textField.getText())) {
-			ExamModel.resetExamModel(true);
-			ExamModel.getExamModel().createList(Integer.parseInt(textField.getText()));
 			mainApp.showWindow(Window.EXAM);			
 		}
 		//reset the exammodel later

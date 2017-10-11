@@ -1,8 +1,13 @@
 package application.view;
 
+import java.util.ArrayList;
+
 import application.controller.WindowController;
 import application.model.Difficulty;
+import application.model.EquationModel;
 import application.model.ExamModel;
+import application.model.NumberModel;
+import application.model.Operator;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,8 +67,10 @@ public class LevelSelectWindowController extends WindowController{
 			
 			else
 			{
-				ExamModel.resetExamModel(false);
-				ExamModel.getExamModel().createList(cb.getValue());
+				ArrayList<Operator> o = new ArrayList<Operator>();
+				o.add(Operator.ADDITION);
+				EquationModel.resetExamModel(o);
+				EquationModel.getExamModel().createList(cb.getValue());
 				mainApp.showWindow(Window.EXAM);
 			}
 		}

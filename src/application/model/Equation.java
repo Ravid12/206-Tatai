@@ -11,6 +11,8 @@ public class Equation{
 		private int secondNumber;
 		private int result;
 		private Operator operator;
+
+		//TODO: Make Both numbers in substraction below 100. Also, addition is wrong
 		
 		public Equation(Operator operator, int maxVal, int minVal)
 		{
@@ -73,14 +75,19 @@ public class Equation{
 	        }
 		}
 		
-		public int[] getNumbers()
+		public int getResult()
 		{
-			return new int[] {firstNumber, secondNumber, result};
+			return result;
 		}
 		
 		public Operator getOperator()
 		{
 			return this.operator;
 		}
- 
+		
+		@Override
+		public String toString() {
+			return firstNumber + " " + operator.toString() + " " + secondNumber;
+		}
+		   
 }

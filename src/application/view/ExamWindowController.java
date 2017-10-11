@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXButton;
 
 import application.controller.WindowController;
 import application.model.ExamModel;
+import application.model.NumberModel;
 import application.model.StatsModel;
 import application.model.Window;
 import application.utils.IOUtils;
@@ -61,7 +62,7 @@ public class ExamWindowController extends WindowController{
 
 	private int counter = 1;
 
-	private ExamModel em = ExamModel.getExamModel();
+	private ExamModel em = NumberModel.getNumberModel();
 
 	/**
 	 * The constructor.
@@ -76,8 +77,8 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		testNumber.setText(em.getNext());
-		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
+		testNumber.setText(em.getDisplay());
+		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber())));
 		difficulty.setText("Difficulty: " + em.getDifficulty().toString());
 		round.setText("Question " + counter + " of 10");
 		attemptsLeft.setText("You have 2 attempts remaining");
@@ -201,7 +202,7 @@ public class ExamWindowController extends WindowController{
 				incorrectSecondAttempt();
 				isCompleted = true;
 				em.setCorrect(false);
-				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), false);
+				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(em.getNumber()), false);
 			}
 
 			if (isCompleted) {
@@ -215,9 +216,10 @@ public class ExamWindowController extends WindowController{
 			}
 
 		} else {
-			testNumber.setText(em.getNext());
+			em.nextNumber();
+			testNumber.setText(em.getDisplay());
 			counter++;
-			maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(testNumber.getText())));
+			maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber())));
 			round.setText(""+counter+"/10");
 			if (counter==11) {
 				mainApp.showWindow(Window.END);

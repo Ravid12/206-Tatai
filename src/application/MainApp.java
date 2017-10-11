@@ -28,7 +28,7 @@ public class MainApp extends Application {
         initRootLayout();
         
         for (int i=0; i<100; i++) {
-        	System.out.println(new Equation(Operator.ADDITION));
+        	System.out.println(new Equation(Operator.SUBTRACTION, 99, 1));
         }
 
         showWindow(Window.MAIN);
