@@ -1,60 +1,71 @@
 package application.model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Equation{
 
-		private int max = 99;
-		private int min = 1;
+		private int max;
+		private int min;
 		private int firstNumber;
 		private int secondNumber;
 		private int result;
 		private Operator operator;
 		
-		public Equation(Operator operator)
+		public Equation(Operator operator, int maxVal, int minVal)
 		{
 			Random rand = new Random();
+			
 			this.operator = operator;
+			this.max = maxVal;
+			this.min = minVal;
+			this.result = rand.nextInt((max - min) + 1) + min;
+			
 	        switch (operator) {
 	        
 	        case ADDITION:
-	        	firstNumber = rand.nextInt((max - min) + 1) + min - min;
-	        	secondNumber = rand.nextInt((max - firstNumber - min) + 1) + min;
-	        	result = firstNumber + secondNumber;
+	        	
+	        	firstNumber = rand.nextInt((result - min - min) + 1) + min;
+	        	secondNumber = firstNumber - result;
 	            break;
 	            
 	        case SUBTRACTION:
-	        	firstNumber = rand.nextInt((max - min) + 1) + min;
-	        	secondNumber = rand.nextInt((firstNumber - min) + 1) + min - min;
-	        	result = firstNumber - secondNumber;
+	        	firstNumber = rand.nextInt((max - result) + 1) + result;
+	        	secondNumber = firstNumber + result;
 	            break;
 	             
 	        case MULTIPLICATION:
-	        	firstNumber = rand.nextInt((max - min) + 1) + min;
-	        	secondNumber = rand.nextInt(((max / firstNumber) - min) + 1) + min;
-	        	result = firstNumber * secondNumber;
-	            break;
-	             
-	        case DIVISION:
-	        	int num1 = rand.nextInt((max - min) + 1) + min;
-	        	int num2 = rand.nextInt(((max / firstNumber) - min) + 1) + min;
-	        	int num3 = num1 * num2;
+	        	ArrayList<Integer> al = new ArrayList<Integer>();
 	        	
-	        	Random decider = new Random();
+	    		for(int i = 1; i <= result; i++) {
+	    			if(result%i == 0) {
+	    				al.add(i);
+	    			}
+	    		}
+	    		
+	    		Random factorDecider = new Random();
+	    		int index = factorDecider.nextInt((al.size() - 0) + 1) + 0;
+	    		
+	    		Random decider = new Random();
 	        	int decision = decider.nextInt((2 - 1) + 1) + 1;
 	        	
-	        	firstNumber = num3;
 	        	if(decision == 1)
 	        	{
-	        		secondNumber = num1;
-	        		result = num2;
+	        		firstNumber = al.get(index);
+	        		secondNumber = result / firstNumber;
 	        	}
 	        	
 	        	else
 	        	{
-	        		secondNumber = num2;
-	        		result = num1;
+	        		secondNumber = al.get(index);
+	        		firstNumber = result / firstNumber;
+	        		
 	        	}
+	            break;
+	             
+	        case DIVISION:
+	        	secondNumber = rand.nextInt(((max / result) - min) + 1) + min;
+	        	firstNumber = secondNumber * result;
 	            break;
 	             
 	        default: ;
