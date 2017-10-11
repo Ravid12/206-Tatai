@@ -27,13 +27,13 @@ public class Equation{
 	        	firstNumber = rand.nextInt((max - min) + 1) + min;
 	        	secondNumber = rand.nextInt((firstNumber - min) + 1) + min - min;
 	        	result = firstNumber - secondNumber;
-	             break;
+	            break;
 	             
 	        case MULTIPLICATION:
 	        	firstNumber = rand.nextInt((max - min) + 1) + min;
 	        	secondNumber = rand.nextInt(((max / firstNumber) - min) + 1) + min;
 	        	result = firstNumber * secondNumber;
-	             break;
+	            break;
 	             
 	        case DIVISION:
 	        	int num1 = rand.nextInt((max - min) + 1) + min;
@@ -71,5 +71,5 @@ public class Equation{
 		{
 			return this.operator;
 		}
-		   
+ 
 }

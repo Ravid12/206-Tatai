@@ -4,6 +4,8 @@ package application;
 import java.io.IOException;
 
 import application.controller.Controller;
+import application.model.Equation;
+import application.model.Operator;
 import application.model.Window;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +26,10 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Tatai");
 
         initRootLayout();
+        
+        for (int i=0; i<100; i++) {
+        	System.out.println(new Equation(Operator.ADDITION));
+        }
 
         showWindow(Window.MAIN);
     }
