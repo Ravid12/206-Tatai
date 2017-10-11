@@ -34,7 +34,7 @@ public class MainWindowController extends WindowController{
 	 */
 	@FXML
 	private void handlePractiseBtn() {
-		mainApp.showWindow(Window.PRACTICE);
+		mainApp.showWindow(Window.PRACTICESELECT);
 	}
 	
 

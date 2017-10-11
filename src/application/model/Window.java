@@ -8,7 +8,8 @@ public enum Window {
 	PRACTICE("Practise"),
 	INSTRUCTION("Instruction"),
 	END("End"),
-	LEVELSELECT("LevelSelect");
+	LEVELSELECT("LevelSelect"),
+	PRACTICESELECT("PracticeSelect");
 	
 	private final String name;
 	
