@@ -90,6 +90,22 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+//    	for(int i = 0; i<100; i++)
+//    	{
+//    		System.out.println(new Equation(Operator.ADDITION, 99, 1));
+//    	}
+//    	for(int i = 0; i<100; i++)
+//    	{
+//    		System.out.println(new Equation(Operator.SUBTRACTION, 99, 1));
+//    	}
+//    	for(int i = 0; i<100; i++)
+//    	{
+//    		System.out.println(new Equation(Operator.MULTIPLICATION, 99, 1));
+//    	}
+//    	for(int i = 0; i<100; i++)
+//    	{
+//    		System.out.println(new Equation(Operator.DIVISION, 99, 1));
+//    	}
     }
 
     /**

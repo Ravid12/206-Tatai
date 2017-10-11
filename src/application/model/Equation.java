@@ -26,14 +26,15 @@ public class Equation{
 	        switch (operator) {
 	        
 	        case ADDITION:
-	        	
+	        	this.result = rand.nextInt((max - 2*min) + 1) + 2*min;
 	        	firstNumber = rand.nextInt((result - min - min) + 1) + min;
-	        	secondNumber = firstNumber - result;
+	        	secondNumber = result - firstNumber;
 	            break;
 	            
 	        case SUBTRACTION:
-	        	firstNumber = rand.nextInt((max - result) + 1) + result;
-	        	secondNumber = firstNumber + result;
+	        	this.result = rand.nextInt((max - min - min) + 1) + min;
+	        	firstNumber = rand.nextInt((max - (result + min)) + 1) + result + min;
+	        	secondNumber = firstNumber - result;
 	            break;
 	             
 	        case MULTIPLICATION:
@@ -46,7 +47,7 @@ public class Equation{
 	    		}
 	    		
 	    		Random factorDecider = new Random();
-	    		int index = factorDecider.nextInt((al.size() - 0) + 1) + 0;
+	    		int index = factorDecider.nextInt((al.size() -1 - 0) + 1) + 0;
 	    		
 	    		Random decider = new Random();
 	        	int decision = decider.nextInt((2 - 1) + 1) + 1;
@@ -60,9 +61,11 @@ public class Equation{
 	        	else
 	        	{
 	        		secondNumber = al.get(index);
-	        		firstNumber = result / firstNumber;
+	        		firstNumber = result / secondNumber;
 	        		
 	        	}
+	    		
+	    		
 	            break;
 	             
 	        case DIVISION:
@@ -88,6 +91,6 @@ public class Equation{
 		@Override
 		public String toString() {
 			return firstNumber + " " + operator.toString() + " " + secondNumber;
-		}
 		   
+		}
 }
