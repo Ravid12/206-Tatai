@@ -54,4 +54,16 @@ public class IOUtils {
         }
 	}
 	
+	public static void appendFile(String FileName, String string)
+	{
+		try {
+            FileWriter writer = new FileWriter(FileName, true);
+            writer.write(string);
+            writer.write("\r\n");   // write new line
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
 }

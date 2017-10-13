@@ -68,7 +68,8 @@ public class LevelSelectWindowController extends WindowController{
 			else
 			{
 				ArrayList<Operator> o = new ArrayList<Operator>();
-				o.add(Operator.ADDITION);
+				o.add(Operator.SUBTRACTION);
+				o.add(Operator.MULTIPLICATION);
 				EquationModel.resetExamModel(o);
 				EquationModel.getExamModel().createList(cb.getValue());
 				mainApp.showWindow(Window.EXAM);
