@@ -3,18 +3,24 @@ package application.view;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.jfoenix.controls.JFXButton;
 
 import application.controller.WindowController;
 import application.model.ExamModel;
 import application.model.NumberModel;
+import application.model.StatisticsModel;
 import application.model.StatsModel;
 import application.model.Window;
 import application.utils.IOUtils;
 import application.utils.MaoriUtils;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
@@ -77,8 +83,8 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		testNumber.setText(em.getDisplay());
-		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber())));
+		testNumber.setText(em.getDisplay(counter-1));
+		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber(counter-1))));
 		difficulty.setText("Difficulty: " + em.getDifficulty().toString());
 		round.setText("Question " + counter + " of 10");
 		attemptsLeft.setText("You have 2 attempts remaining");
@@ -95,33 +101,33 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleRecordBtn() {
-		Task<Void> task = new Task<Void>() {
+		Task<Void> taskRecord = new Task<Void>() {
 			@Override 
 			public Void call() {
-				btn_menu.setDisable(true);
-				btn_record.setDisable(true);
-				btn_confirm.setDisable(true);
-				btn_listen.setDisable(true);
-				String cmd = "./GoSpeech2";
-				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
-				try {
-					builder.directory(new File("./HTK/MaoriNumbers/"));
-					Process pr = builder.start();						
-					try {
-						pr.waitFor();
-
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					pr.destroy();
-				} catch (IOException e) {
-				}
+				//				btn_menu.setDisable(true);
+				//				btn_record.setDisable(true);
+				//				btn_confirm.setDisable(true);
+				//				btn_listen.setDisable(true);
+				//				String cmd = "./GoSpeech2";
+				//				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+				//				try {
+				//					builder.directory(new File("./HTK/MaoriNumbers/"));
+				//					Process pr = builder.start();						
+				//					try {
+				//						pr.waitFor();
+				//
+				//					} catch (InterruptedException e) {
+				//						e.printStackTrace();
+				//					}
+				//					pr.destroy();
+				//				} catch (IOException e) {
+				//				}
 				return null;
 			}
 		};		
 
 
-		task.setOnSucceeded(e -> {
+		taskRecord.setOnSucceeded(e -> {
 			btn_listen.setDisable(false);
 			btn_confirm.setDisable(false);
 			btn_record.setDisable(false);
@@ -129,13 +135,13 @@ public class ExamWindowController extends WindowController{
 		});
 
 
-		new Thread(task).start();
-		new Thread(makeLoadingTask()).start();
+		new Thread(taskRecord).start();
+		//		new Thread(makeLoadingTask()).start();
 	}
 
 	@FXML
 	private void handleListenBtn () {
-		Task<Void> task = new Task<Void>() {
+		Task<Void> taskListen = new Task<Void>() {
 			@Override 
 			public Void call() {
 				btn_menu.setDisable(true);
@@ -160,15 +166,15 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};
-		
-		task.setOnSucceeded(e -> {
+
+		taskListen.setOnSucceeded(e -> {
 			btn_listen.setDisable(false);
 			btn_confirm.setDisable(false);
 			btn_record.setDisable(false);
 			btn_menu.setDisable(false);
 		});
 
-		new Thread(task).start();
+		new Thread(taskListen).start();
 		new Thread(makeLoadingTask()).start();
 
 	}
@@ -188,8 +194,7 @@ public class ExamWindowController extends WindowController{
 
 			if (whatTheySaid.contains(maoriNumber.getText())) {
 				isCompleted = true;
-				em.setCorrect(true);
-				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(testNumber.getText()), true);
+				StatisticsModel.getStatisticsModel().addTempStat(em.getDisplay(counter-1), em.getNumber(counter-1), true);
 				correctAttempt();
 			} else if (isFirstAttempt) {
 				isFirstAttempt=false;
@@ -201,8 +206,7 @@ public class ExamWindowController extends WindowController{
 			} else {
 				incorrectSecondAttempt();
 				isCompleted = true;
-				em.setCorrect(false);
-				StatsModel.getInstance().updateStats(em.getDifficulty(),Integer.parseInt(em.getNumber()), false);
+				StatisticsModel.getStatisticsModel().addTempStat(em.getDisplay(counter-1), em.getNumber(counter-1), false);
 			}
 
 			if (isCompleted) {
@@ -216,24 +220,26 @@ public class ExamWindowController extends WindowController{
 			}
 
 		} else {
-			em.nextNumber();
-			testNumber.setText(em.getDisplay());
 			counter++;
-			maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber())));
-			round.setText(""+counter+"/10");
+
 			if (counter==11) {
 				mainApp.showWindow(Window.END);
-			}
+			} else {
 
-			btn_confirm.setText("Confirm");
-			isConfirm = true;
-			btn_confirm.setDisable(true);
-			btn_record.setDisable(false);
-			isCompleted = false;
-			isFirstAttempt=true;
-			attemptsLeft.setText("You have 2 attempts remaining");
-			message.setText("");
-			maoriNumber.setVisible(false);
+				testNumber.setText(em.getDisplay(counter-1));
+				maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber(counter-1))));
+				round.setText(""+counter+"/10");
+
+				btn_confirm.setText("Confirm");
+				isConfirm = true;
+				btn_confirm.setDisable(true);
+				btn_record.setDisable(false);
+				isCompleted = false;
+				isFirstAttempt=true;
+				attemptsLeft.setText("You have 2 attempts remaining");
+				message.setText("");
+				maoriNumber.setVisible(false);
+			}
 		}
 	}
 
@@ -242,7 +248,31 @@ public class ExamWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleMenuBtn() {
-		mainApp.showWindow(Window.MAIN);
+		Alert alert1 = new Alert(AlertType.CONFIRMATION);
+		alert1.setTitle("Return to Menu");
+		alert1.setHeaderText(null);
+		alert1.setContentText("Are you sure you want to return to menu?");
+
+		ButtonType buttonTypeYes = new ButtonType("Yes");
+		ButtonType buttonTypeNo = new ButtonType("No");
+		
+		alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+		Optional<ButtonType> result1 = alert1.showAndWait();
+		if (result1.get() == buttonTypeYes){
+			Alert alert2 = new Alert(AlertType.CONFIRMATION);
+			alert2.setTitle("Return to Menu");
+			alert2.setHeaderText(null);
+			alert2.setContentText("Would you like to save the stats for this session?");
+			
+			alert2.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+			Optional<ButtonType> result2 = alert2.showAndWait();
+			if (result2.get() == buttonTypeYes){
+				StatisticsModel.getStatisticsModel().saveStats();
+			}
+			mainApp.showWindow(Window.MAIN);
+		}
 	}
 
 	// called when correct attempt is input

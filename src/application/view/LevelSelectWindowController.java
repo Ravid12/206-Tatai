@@ -8,6 +8,7 @@ import application.model.EquationModel;
 import application.model.ExamModel;
 import application.model.NumberModel;
 import application.model.Operator;
+import application.model.StatisticsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,6 +78,8 @@ public class LevelSelectWindowController extends WindowController{
 				o.add(Operator.SUBTRACTION);
 				EquationModel.resetExamModel(o);
 				EquationModel.getExamModel().createList(cb.getValue());
+				//TODO: Add users so we can put username in here
+				StatisticsModel.getStatisticsModel().startTempStat("user");
 				mainApp.showWindow(Window.EXAM);
 			}
 		}

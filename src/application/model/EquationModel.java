@@ -55,8 +55,8 @@ public class EquationModel extends ExamModel{
 	}
 
 	@Override
-	public String getDisplay() {
-		return "" + equations.get(currentDisplay);
+	public String getDisplay(int i) {
+		return "" + equations.get(i);
 	}
 
 	/**

@@ -13,12 +13,13 @@ public class IOUtils {
 
 	/**
 	 * Method that reads the FileName that is passed in as a String input.
+	 * returns Arraylist, where each element represents line of the file.
 	 */
 	public static ArrayList<String> readFile(String FileName)
 	{
 		ArrayList<String> al = new ArrayList<String>();
 		try {
-			File file = new File(FileName);
+			File file = new File("./" + FileName);
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			
@@ -45,7 +46,7 @@ public class IOUtils {
 	public static void overwriteFile(String FileName, String string)
 	{
 		try {
-            FileWriter writer = new FileWriter(FileName, false);
+            FileWriter writer = new FileWriter("./" + FileName, false);
             writer.write(string);
             writer.write("\r\n");   // write new line
             writer.close();
@@ -57,7 +58,7 @@ public class IOUtils {
 	public static void appendFile(String FileName, String string)
 	{
 		try {
-            FileWriter writer = new FileWriter(FileName, true);
+            FileWriter writer = new FileWriter("./" + FileName, true);
             writer.write(string);
             writer.write("\r\n");   // write new line
             writer.close();

@@ -1,6 +1,7 @@
 package application;
 
 
+import java.io.File;
 import java.io.IOException;
 
 import application.controller.Controller;
@@ -85,6 +86,7 @@ public class MainApp extends Application {
      * Entry point for application.
      */
     public static void main(String[] args) {
+    	new File("./stats").mkdir();
         launch(args);
 //    	for(int i = 0; i<100; i++)
 //    	{

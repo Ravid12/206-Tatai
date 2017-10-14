@@ -36,4 +36,9 @@ public class MaoriUtils {
 		
 		return maoriNumber;
 	}
+	
+	public static String getMaoriNumber(String number) {
+		return getMaoriNumber(Integer.parseInt(number));
+	}
+
 }
