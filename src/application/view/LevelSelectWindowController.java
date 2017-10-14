@@ -67,8 +67,14 @@ public class LevelSelectWindowController extends WindowController{
 			
 			else
 			{
+				/**
+				 * TODO: Currently only chooses addition. Have to fix this for users 
+				 * to choose what operators etc;
+				 */
 				ArrayList<Operator> o = new ArrayList<Operator>();
-				o.add(Operator.ADDITION);
+				o.add(Operator.DIVISION);
+				o.add(Operator.MULTIPLICATION);
+				o.add(Operator.SUBTRACTION);
 				EquationModel.resetExamModel(o);
 				EquationModel.getExamModel().createList(cb.getValue());
 				mainApp.showWindow(Window.EXAM);

@@ -3,7 +3,6 @@ package application.view;
 import application.controller.WindowController;
 import application.model.Window;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 public class InstructionWindowController extends WindowController{
 

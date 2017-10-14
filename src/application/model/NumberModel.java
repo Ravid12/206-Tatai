@@ -1,6 +1,5 @@
 package application.model;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class NumberModel extends ExamModel{
