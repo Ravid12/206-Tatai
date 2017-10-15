@@ -28,7 +28,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showWindow(Window.MAIN);
+        showWindow(Window.USERSELECT);
     }
 
     /**
