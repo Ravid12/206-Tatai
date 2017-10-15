@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.EquationSelectWindowController">
+   <children>
+      <CheckBox fx:id="addBox" layoutX="72.6" layoutY="250.0" mnemonicParsing="false" text="➕" />
+      <CheckBox fx:id="subBox" layoutX="162.2" layoutY="250.0" mnemonicParsing="false" text="➖" />
+      <CheckBox fx:id="mulBox" layoutX="251.8" layoutY="250.0" mnemonicParsing="false" text="X" />
+      <CheckBox fx:id="divBox" layoutX="341.4" layoutY="250.0" mnemonicParsing="false" text="➗" />
+      <Label layoutX="87.0" layoutY="100.0" prefHeight="57.0" prefWidth="274.0" text="Please choose the kinds of equations you wish to be tested on using the checkboxes" textAlignment="CENTER" wrapText="true" />
+      <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleSelectBtn" styleClass="default-btn" text="Go!" />
+      <JFXButton layoutX="174.0" layoutY="400.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
+      <Label alignment="TOP_CENTER" layoutX="74.0" layoutY="50.0" prefHeight="57.0" prefWidth="300.0" styleClass="title" text="Equation Select" wrapText="true" />
+   </children>
+</AnchorPane>

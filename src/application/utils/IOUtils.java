@@ -47,8 +47,7 @@ public class IOUtils {
 	{
 		try {
             FileWriter writer = new FileWriter("./" + FileName, false);
-            writer.write(string);
-            writer.write("\r\n");   // write new line
+            writer.write(string + "\r\n");   // write new line
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

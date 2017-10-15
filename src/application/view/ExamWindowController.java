@@ -11,7 +11,6 @@ import application.controller.WindowController;
 import application.model.ExamModel;
 import application.model.NumberModel;
 import application.model.StatisticsModel;
-import application.model.StatsModel;
 import application.model.Window;
 import application.utils.IOUtils;
 import application.utils.MaoriUtils;

@@ -1,7 +1,10 @@
 package application.model;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import application.utils.IOUtils;
 
@@ -37,6 +40,28 @@ public class StatisticsModel {
 	}
 	
 	public void saveStats() {
+		ArrayList<String> fileContents = IOUtils.readFile("stats/temp.txt");
+		String username = "stats/" + user +".txt";
+		File file = new File(username);
+		try {
+			if(file.createNewFile())
+			{
+				
+			}
+			else
+			{
+				
+			}
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		for(int i=0; i<fileContents.size(); i++)
+		{
+			IOUtils.appendFile("username",fileContents.get(i));
+		}
 		//TODO: copy contents of temp.txt into user.txt
 	}
 	
