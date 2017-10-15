@@ -48,6 +48,7 @@ public class UserSelectWindowController extends WindowController{
 			if(!tf.getText().isEmpty() && tf.getText() != null)
 			{
 				StatisticsModel.getStatisticsModel().setUser(tf.getText());
+				IOUtils.appendFile("stats/users/user.txt", tf.getText());
 				mainApp.showWindow(Window.MAIN);
 			}
 			
@@ -63,6 +64,7 @@ public class UserSelectWindowController extends WindowController{
 			if(!tf.getText().isEmpty() && tf.getText() != null)
 			{
 				StatisticsModel.getStatisticsModel().setUser(tf.getText());
+				IOUtils.appendFile("stats/users/user.txt", tf.getText());
 				mainApp.showWindow(Window.MAIN);
 			}
 			
