@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import application.controller.WindowController;
 import application.model.Difficulty;
 import application.model.EquationModel;
+import application.model.ExamModel;
 import application.model.Mode;
 import application.model.Operator;
 import application.model.Window;
@@ -71,7 +72,8 @@ public class EquationSelectWindowController extends WindowController{
 	 * Called when the user clicks on the Start button.
 	 */	
 	@FXML
-	private void handleSelectBtn() {
+	private void handleSelectBtn() 
+	{
 		if (! cb.getSelectionModel().isEmpty()) 
 		{
 			ArrayList<Operator> o = new ArrayList<Operator>();
@@ -103,11 +105,13 @@ public class EquationSelectWindowController extends WindowController{
 					o.add(Operator.DIVISION);
 				}
 				
-				else
+				if (!divBox.isSelected() && !mulBox.isSelected() && !subBox.isSelected() && !addBox.isSelected())
 				{
-					
+					System.out.println("none selected");
 				}
 				EquationModel.resetExamModel(o);
+				ExamModel.setDifficulty(Difficulty.EASY);
+				EquationModel.getExamModel().createList();
 			}
 			
 			else if(cb.getValue().equals(Difficulty.HARD))
@@ -138,17 +142,21 @@ public class EquationSelectWindowController extends WindowController{
 					o.add(Operator.DIVISION);
 				}
 				
-				else
+				if (!divBox.isSelected() && !mulBox.isSelected() && !subBox.isSelected() && !addBox.isSelected())
 				{
-					
+					System.out.println("none selected");
 				}
 				EquationModel.resetExamModel(o);
+				ExamModel.setDifficulty(Difficulty.HARD);
+				EquationModel.getExamModel().createList();
 			}
 			
-			else
-			{
-				System.out.println("Please select a difficulty");
-			}
+			mainApp.showWindow(Window.EXAM);
+		}
+		
+		else
+		{
+			System.out.println("Please select a difficulty");
 		}
 	}
 }
