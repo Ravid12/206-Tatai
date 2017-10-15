@@ -10,7 +10,8 @@ public enum Window {
 	END("End"),
 	LEVELSELECT("LevelSelect"),
 	PRACTICESELECT("PracticeSelect"),
-	EQUATIONSELECT("EquationSelect");
+	EQUATIONSELECT("EquationSelect"),
+	MODESELECT("ModeSelect");
 	
 	private final String name;
 	

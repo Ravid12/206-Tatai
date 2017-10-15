@@ -25,7 +25,7 @@ public class MainWindowController extends WindowController{
 	 */
 	@FXML
 	private void handleStartBtn() {
-		mainApp.showWindow(Window.LEVELSELECT);
+		mainApp.showWindow(Window.MODESELECT);
 	}
 	
 
