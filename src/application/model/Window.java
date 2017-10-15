@@ -11,7 +11,8 @@ public enum Window {
 	LEVELSELECT("LevelSelect"),
 	PRACTICESELECT("PracticeSelect"),
 	EQUATIONSELECT("EquationSelect"),
-	MODESELECT("ModeSelect");
+	MODESELECT("ModeSelect"),
+	USERSELECT("UserSelect");
 	
 	private final String name;
 	
