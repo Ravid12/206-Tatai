@@ -1,8 +1,12 @@
 package application.view;
 
+import java.util.ArrayList;
+
 import application.controller.WindowController;
 import application.model.Difficulty;
+import application.model.EquationModel;
 import application.model.Mode;
+import application.model.Operator;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,33 +74,40 @@ public class EquationSelectWindowController extends WindowController{
 	private void handleSelectBtn() {
 		if (! cb.getSelectionModel().isEmpty()) 
 		{
+			ArrayList<Operator> o = new ArrayList<Operator>();
 			if(cb.getValue().equals(Difficulty.EASY))
 			{
 				
 				if (addBox.isSelected())
 				{
-					System.out.println("add");
+					System.out.println("add");					
+					o.add(Operator.ADDITION);
+					
 				}
 				
 				if (subBox.isSelected())
 				{
 					System.out.println("sub");
+					o.add(Operator.SUBTRACTION);
 				}
 				
 				if (mulBox.isSelected())
 				{
 					System.out.println("mul");
+					o.add(Operator.MULTIPLICATION);
 				}
 				
 				if (divBox.isSelected())
 				{
 					System.out.println("div");
+					o.add(Operator.DIVISION);
 				}
 				
 				else
 				{
 					
 				}
+				EquationModel.resetExamModel(o);
 			}
 			
 			else if(cb.getValue().equals(Difficulty.HARD))
@@ -104,28 +115,34 @@ public class EquationSelectWindowController extends WindowController{
 				
 				if (addBox.isSelected())
 				{
-					System.out.println("add");
+					System.out.println("add");					
+					o.add(Operator.ADDITION);
+					
 				}
 				
 				if (subBox.isSelected())
 				{
 					System.out.println("sub");
+					o.add(Operator.SUBTRACTION);
 				}
 				
 				if (mulBox.isSelected())
 				{
 					System.out.println("mul");
+					o.add(Operator.MULTIPLICATION);
 				}
 				
 				if (divBox.isSelected())
 				{
 					System.out.println("div");
+					o.add(Operator.DIVISION);
 				}
 				
 				else
 				{
 					
 				}
+				EquationModel.resetExamModel(o);
 			}
 			
 			else
