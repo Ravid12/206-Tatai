@@ -38,7 +38,7 @@ public class StatisticsWindowController extends WindowController{
 		for (int i=0; i<difficulties.length; i++) {
 			Tab tab = new Tab(difficulties[i].toString());
 			
-			ObservableList<Stat> statlist = FXCollections.observableArrayList(StatsModel.getInstance().getStats(difficulties[i]));
+			ObservableList<Stat> statlist = FXCollections.observableArrayList(sm.loadDayStats());
 			
 			TableView<Stat> stats = new TableView<Stat>();
 			stats.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

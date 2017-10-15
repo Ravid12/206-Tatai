@@ -29,7 +29,6 @@ public class NumberModel extends ExamModel{
      */
 	@Override
 	public void createList() {
-		super.difficulty = difficulty;
 		Random rn = new Random();
 		
 		for (int i=0; i< 10; i++) {

@@ -3,6 +3,7 @@ package application.view;
 import java.util.ArrayList;
 import application.controller.WindowController;
 import application.model.Result;
+import application.model.StatisticsModel;
 import application.model.Window;
 import application.utils.IOUtils;
 import application.utils.MaoriUtils;
@@ -40,6 +41,8 @@ public class EndWindowController extends WindowController{
 	@SuppressWarnings("unchecked")
 	@FXML
 	private void initialize() {
+		StatisticsModel.getStatisticsModel().saveStats();
+
 		resultList = new ArrayList<Result>();
 		
 		for(int i =0; i<10; i++)

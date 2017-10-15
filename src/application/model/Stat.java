@@ -2,28 +2,31 @@ package application.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 // This class exists to display statistics in a Tabular format.
 public class Stat {
-	private IntegerProperty number;
-	private IntegerProperty correct;
-	private IntegerProperty incorrect;
+	private StringProperty equation = new SimpleStringProperty(null);
+	private StringProperty date = new SimpleStringProperty(null);
+	private StringProperty result = new SimpleStringProperty(null);
+	private StringProperty number = new SimpleStringProperty(null);
 	
-	public Stat(int number) {
-        this.number = new SimpleIntegerProperty(number);
-        this.correct = new SimpleIntegerProperty(0);
-        this.incorrect = new SimpleIntegerProperty(0);
+	private IntegerProperty correct = new SimpleIntegerProperty(0);
+	private IntegerProperty incorrect = new SimpleIntegerProperty(0);
+	
+	public Stat() {
 	}
 	
-	public int getnumber() {
+	public String getnumber() {
         return number.get();
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number.set(number);
     }
 
-    public IntegerProperty numberProperty() {
+    public StringProperty numberProperty() {
         return number;
     }
 	
@@ -50,4 +53,40 @@ public class Stat {
     public IntegerProperty incorrectProperty() {
         return incorrect;
     }
+
+	public String getDate() {
+		return date.get();
+	}
+
+	public void setDate(String date) {
+		this.date.set(date);
+	}
+	
+	public StringProperty dateProperty() {
+		return date;
+	}
+	
+	public String getEquation() {
+		return equation.get();
+	}
+
+	public void setEquation(String equation) {
+		this.equation.set(equation);
+	}
+	
+	public StringProperty equationProperty() {
+		return equation;
+	}
+	
+	public String getResult() {
+		return result.get();
+	}
+
+	public void setResult(String result) {
+		this.result.set(result);
+	}
+	
+	public StringProperty resultProperty() {
+		return result;
+	}
 }

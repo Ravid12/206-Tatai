@@ -63,10 +63,12 @@ public class EquationModel extends ExamModel{
 	 * Doing this purges the list of 10 numbers, allowing a new list to be made.
 	 * Also tells the ExamModel if it is in practice mode or not.
 	 */
-	public static void resetExamModel(ArrayList<Operator> operators) {
-		EquationModel.operators = operators;
+	public static void resetExamModel() {
 		examModel = new EquationModel();
 	}
-
+	
+	public static void setOperators(ArrayList<Operator> o) {
+		operators = o;
+	}
 
 }

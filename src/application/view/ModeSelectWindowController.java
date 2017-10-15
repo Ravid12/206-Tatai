@@ -1,7 +1,9 @@
 package application.view;
 
 import application.controller.WindowController;
+import application.model.EquationModel;
 import application.model.Mode;
+import application.model.NumberModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,12 +54,14 @@ public class ModeSelectWindowController extends WindowController{
 			{
 //				errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
 				System.out.println("Equation");
+				EquationModel.resetExamModel();
 				mainApp.showWindow(Window.EQUATIONSELECT);
 			}
 			
 			else
 			{
 				System.out.println("Speaking");
+				NumberModel.resetExamModel();
 				mainApp.showWindow(Window.LEVELSELECT);
 			}
 		}
@@ -68,3 +72,4 @@ public class ModeSelectWindowController extends WindowController{
 		}
 	}
 }
+

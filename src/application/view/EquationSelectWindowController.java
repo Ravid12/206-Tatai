@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import application.controller.WindowController;
 import application.model.Difficulty;
 import application.model.EquationModel;
-import application.model.Mode;
 import application.model.Operator;
 import application.model.Window;
 import javafx.collections.FXCollections;
@@ -14,32 +13,31 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 
 public class EquationSelectWindowController extends WindowController{
 	@FXML
 	private ComboBox<Difficulty> cb = new ComboBox<Difficulty>();
-	
+
 	private ObservableList<Difficulty> levels = FXCollections.observableArrayList(Difficulty.values());
-	
+
 	@FXML
 	private CheckBox addBox;
-	
+
 	@FXML
 	private CheckBox subBox;
-	
+
 	@FXML
 	private CheckBox mulBox;
-	
+
 	@FXML
 	private CheckBox divBox;
-	
+
 	@FXML
 	private Button selectButton;
-	
+
 	@FXML
 	private Button menuButton;
-	
+
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
@@ -54,8 +52,8 @@ public class EquationSelectWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		cb.setItems(levels);
-//		errorMessage.setText("");
-//		errorMessage.setTextFill(Color.web(redColour));
+		//		errorMessage.setText("");
+		//		errorMessage.setTextFill(Color.web(redColour));
 	}
 
 	/**
@@ -72,83 +70,31 @@ public class EquationSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleSelectBtn() {
-		if (! cb.getSelectionModel().isEmpty()) 
-		{
+		if (! cb.getSelectionModel().isEmpty()) {
 			ArrayList<Operator> o = new ArrayList<Operator>();
-			if(cb.getValue().equals(Difficulty.EASY))
-			{
-				
-				if (addBox.isSelected())
-				{
-					System.out.println("add");					
-					o.add(Operator.ADDITION);
-					
-				}
-				
-				if (subBox.isSelected())
-				{
-					System.out.println("sub");
-					o.add(Operator.SUBTRACTION);
-				}
-				
-				if (mulBox.isSelected())
-				{
-					System.out.println("mul");
-					o.add(Operator.MULTIPLICATION);
-				}
-				
-				if (divBox.isSelected())
-				{
-					System.out.println("div");
-					o.add(Operator.DIVISION);
-				}
-				
-				else
-				{
-					
-				}
-				EquationModel.resetExamModel(o);
+
+			if (addBox.isSelected()) {
+				o.add(Operator.ADDITION);
 			}
-			
-			else if(cb.getValue().equals(Difficulty.HARD))
-			{
-				
-				if (addBox.isSelected())
-				{
-					System.out.println("add");					
-					o.add(Operator.ADDITION);
-					
-				}
-				
-				if (subBox.isSelected())
-				{
-					System.out.println("sub");
-					o.add(Operator.SUBTRACTION);
-				}
-				
-				if (mulBox.isSelected())
-				{
-					System.out.println("mul");
-					o.add(Operator.MULTIPLICATION);
-				}
-				
-				if (divBox.isSelected())
-				{
-					System.out.println("div");
-					o.add(Operator.DIVISION);
-				}
-				
-				else
-				{
-					
-				}
-				EquationModel.resetExamModel(o);
+
+			if (subBox.isSelected()) {
+				o.add(Operator.SUBTRACTION);
 			}
-			
-			else
-			{
-				System.out.println("Please select a difficulty");
+
+			if (mulBox.isSelected()) {
+				o.add(Operator.MULTIPLICATION);
 			}
+
+			if (divBox.isSelected()) {
+				o.add(Operator.DIVISION);
+			}			
+			EquationModel.setOperators(o);
+			EquationModel.getEquationModel().setDifficulty(cb.getValue());
+			EquationModel.getEquationModel().createList();
+			mainApp.showWindow(Window.EXAM);
+		}			
+		else {
+			System.out.println("Please select a difficulty");
 		}
 	}
 }

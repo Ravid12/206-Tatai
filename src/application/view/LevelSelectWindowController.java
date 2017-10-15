@@ -68,19 +68,9 @@ public class LevelSelectWindowController extends WindowController{
 			
 			else
 			{
-				/**
-				 * TODO: Currently only chooses addition. Have to fix this for users 
-				 * to choose what operators etc;
-				 */
-				ArrayList<Operator> o = new ArrayList<Operator>();
-				o.add(Operator.DIVISION);
-				o.add(Operator.MULTIPLICATION);
-				o.add(Operator.SUBTRACTION);
-				ExamModel.setDifficulty(cb.getValue());
-				EquationModel.resetExamModel(o);
-				EquationModel.getExamModel().createList();
-				//TODO: Add users so we can put username in here
-				StatisticsModel.getStatisticsModel().startTempStat("user");
+				ExamModel.getExamModel().setDifficulty(cb.getValue());
+				NumberModel.getExamModel().createList();
+				StatisticsModel.getStatisticsModel().startTempStat();
 				mainApp.showWindow(Window.EXAM);
 			}
 		}

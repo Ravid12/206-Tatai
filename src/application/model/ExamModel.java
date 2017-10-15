@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ExamModel {
 	protected static ExamModel examModel;
 	
-	protected Difficulty difficulty;
+	protected static Difficulty difficulty;
 	protected ArrayList<Integer> numbers = new ArrayList<Integer>();
 
 	
@@ -47,8 +47,8 @@ public class ExamModel {
 		return difficulty;
 	}
 	
-	public static void setDifficulty(Difficulty d) {
-		this.difficulty=d;
+	public void setDifficulty(Difficulty d) {
+		difficulty=d;
 	}
 	
 	public void createList() {

@@ -1,3 +1,4 @@
-2017/10/15
-1 X 7%7%Incorrect ✕
-7 ➗ 1%7%Incorrect ✕
+#2017/10/15
+6%6%Incorrect ✕
+1 ➕ 6%7%Incorrect ✕
+5 ➖ 1%4%Incorrect ✕
