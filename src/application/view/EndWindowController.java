@@ -1,13 +1,8 @@
 package application.view;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
 import application.controller.WindowController;
-import application.model.Correctness;
-import application.model.ExamModel;
 import application.model.Result;
-import application.model.Stat;
 import application.model.Window;
 import application.utils.IOUtils;
 import application.utils.MaoriUtils;
@@ -15,7 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -29,7 +23,6 @@ public class EndWindowController extends WindowController{
 		
 	private int noCorrect;
 	private ArrayList<Result> resultList;
-	private ExamModel em = ExamModel.getExamModel();
 	private ArrayList<String> results = IOUtils.readFile("stats/temp.txt");
 	
 	/**

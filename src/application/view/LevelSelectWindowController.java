@@ -76,8 +76,9 @@ public class LevelSelectWindowController extends WindowController{
 				o.add(Operator.DIVISION);
 				o.add(Operator.MULTIPLICATION);
 				o.add(Operator.SUBTRACTION);
+				ExamModel.setDifficulty(cb.getValue());
 				EquationModel.resetExamModel(o);
-				EquationModel.getExamModel().createList(cb.getValue());
+				EquationModel.getExamModel().createList();
 				//TODO: Add users so we can put username in here
 				StatisticsModel.getStatisticsModel().startTempStat("user");
 				mainApp.showWindow(Window.EXAM);

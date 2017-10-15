@@ -32,8 +32,7 @@ public class EquationModel extends ExamModel{
 	/**
 	 * Creates a random list of ten numbers between the two values defined in the Difficulty Enum that is passed into it.
 	 */
-	public void createList(Difficulty difficulty) {
-		super.difficulty = difficulty;
+	public void createList() {
 		Random rn = new Random();
 
 		for (int i=0; i< 10; i++) {			

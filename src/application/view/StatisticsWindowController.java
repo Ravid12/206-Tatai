@@ -3,7 +3,7 @@ package application.view;
 import application.controller.WindowController;
 import application.model.Difficulty;
 import application.model.Stat;
-import application.model.StatsModel;
+import application.model.StatisticsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +16,8 @@ import javafx.scene.control.TableView;
 public class StatisticsWindowController extends WindowController{
 	@FXML
 	private TabPane statsWindows = new TabPane();
+	
+	private StatisticsModel sm = StatisticsModel.getStatisticsModel();
 	
 	/**
 	 * The constructor.

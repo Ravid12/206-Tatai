@@ -47,8 +47,11 @@ public class ExamModel {
 		return difficulty;
 	}
 	
-
-	public void createList(Difficulty value) {
+	public static void setDifficulty(Difficulty d) {
+		this.difficulty=d;
+	}
+	
+	public void createList() {
 	}
 
 }

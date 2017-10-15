@@ -28,7 +28,7 @@ public class NumberModel extends ExamModel{
      * Creates a random list of ten numbers between the two values defined in the Difficulty Enum that is passed into it.
      */
 	@Override
-	public void createList(Difficulty difficulty) {
+	public void createList() {
 		super.difficulty = difficulty;
 		Random rn = new Random();
 		
