@@ -1,5 +1,8 @@
 package application.view;
 
+import java.io.File;
+import java.io.IOException;
+
 import application.controller.WindowController;
 import application.model.Mode;
 import application.model.StatisticsModel;
@@ -43,35 +46,31 @@ public class UserSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleLoginBtn() {
-		if (!cb.getSelectionModel().isEmpty())
-		{
-			if(!tf.getText().isEmpty() && tf.getText() != null)
-			{
-				StatisticsModel.getStatisticsModel().setUser(tf.getText());
-				IOUtils.appendFile("stats/users/user.txt", tf.getText());
-				mainApp.showWindow(Window.MAIN);
-			}
-			
-			else
-			{
-				StatisticsModel.getStatisticsModel().setUser(cb.getValue());
-				mainApp.showWindow(Window.MAIN);
+		//TODO: If user types name in text field and it's already in combobox
+		String username = null;
+		
+		if (cb.getSelectionModel().isEmpty() && tf.getText().isEmpty() && tf.getText() == null){
+			System.out.println("no username selected");
+			username = null;
+		}	
+		else if (!cb.getSelectionModel().isEmpty() && !tf.getText().isEmpty()) {
+			//TODO: make this intuitive please Zinzan
+		}
+		else {
+			if (!cb.getSelectionModel().isEmpty()) {
+				username = (cb.getValue());
+			} else {
+				username = tf.getText();
 			}
 		}
 		
-		if (cb.getSelectionModel().isEmpty())
-		{
-			if(!tf.getText().isEmpty() && tf.getText() != null)
-			{
-				StatisticsModel.getStatisticsModel().setUser(tf.getText());
-				IOUtils.appendFile("stats/users/user.txt", tf.getText());
-				mainApp.showWindow(Window.MAIN);
-			}
+		if (username !=null) {
+			StatisticsModel.getStatisticsModel().setUser(username);
+			IOUtils.appendFile("stats/users/user.txt", username);
+			mainApp.showWindow(Window.MAIN);
 			
-			else
-			{
-				System.out.println("no username selected");
-			}
+		} else {
+			//TODO: Make this intuitive as well Zinzan Please
 		}
 	}
 }

@@ -31,30 +31,9 @@ public class StatisticsWindowController extends WindowController{
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
-	@SuppressWarnings("unchecked")
 	@FXML
 	private void initialize() {
-		Difficulty difficulties[] = Difficulty.values();
-		for (int i=0; i<difficulties.length; i++) {
-			Tab tab = new Tab(difficulties[i].toString());
-			
-			ObservableList<Stat> statlist = FXCollections.observableArrayList(sm.loadDayStats());
-			
-			TableView<Stat> stats = new TableView<Stat>();
-			stats.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-	        TableColumn<Stat, Integer> numberCol = new TableColumn<Stat, Integer>("Number");
-	        TableColumn<Stat, Integer> correctCol = new TableColumn<Stat, Integer>("Correct Attempts");
-	        TableColumn<Stat, Integer> incorrectCol = new TableColumn<Stat, Integer>("Incorrect Attempts");
-	        stats.getColumns().addAll(numberCol, correctCol, incorrectCol);
-	        
-	        numberCol.setCellValueFactory(cellData -> cellData.getValue().numberProperty().asObject());
-	        correctCol.setCellValueFactory(cellData -> cellData.getValue().correctProperty().asObject());
-	        incorrectCol.setCellValueFactory(cellData -> cellData.getValue().incorrectProperty().asObject());
-	        stats.setItems(statlist);
-			tab.setContent(stats);
-			statsWindows.getTabs().add(tab);
-		}
+		showDailyStats();
 	}
 
 	/**
@@ -63,5 +42,28 @@ public class StatisticsWindowController extends WindowController{
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-	}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void showDailyStats() {
+		Tab tab_daily = new Tab("Daily Stats");
+		
+		ObservableList<Stat> statlist = FXCollections.observableArrayList(sm.loadDayStats());
+		
+		TableView<Stat> stats = new TableView<Stat>();
+		stats.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        TableColumn<Stat, String> questionCol = new TableColumn<Stat, String>("Question");
+        TableColumn<Stat, String> answerCol = new TableColumn<Stat, String>("Correct Answer");
+        TableColumn<Stat, String> resultCol = new TableColumn<Stat, String>("Result");
+        stats.getColumns().addAll(questionCol, answerCol, resultCol);
+        
+        questionCol.setCellValueFactory(cellData -> cellData.getValue().equationProperty());
+        answerCol.setCellValueFactory(cellData -> cellData.getValue().resultProperty());
+        resultCol.setCellValueFactory(cellData -> cellData.getValue().numberProperty());
+        stats.setItems(statlist);
+		tab_daily.setContent(stats);
+		statsWindows.getTabs().add(tab_daily);
+		
+	}
 }

@@ -10,7 +10,7 @@ import application.utils.IOUtils;
 
 public class StatisticsModel {
 	private static StatisticsModel sm = new StatisticsModel();
-	private String user = "testboi";
+	private String user;
 
 	private StatisticsModel() {
 
@@ -43,16 +43,6 @@ public class StatisticsModel {
 		ArrayList<String> fileContents = IOUtils.readFile("stats/temp.txt");
 		String fileNameStats = "stats/" + user +".txt";
 		String fileNameDates = "stats/" + user +"-dates.txt";
-
-		File fileStats = new File(fileNameStats);
-		File fileDates = new File(fileNameDates);
-		try {
-			if(!fileStats.createNewFile() && (!fileDates.createNewFile())) {
-			}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 
 		if (!IOUtils.readFile(fileNameDates).contains(fileContents.get(0).substring(1))) {
 			IOUtils.appendFile(fileNameDates, fileContents.get(0).substring(1));
@@ -87,6 +77,19 @@ public class StatisticsModel {
 
 	public void setUser(String user) {
 		this.user = user;
-	}
+		
+		String fileNameStats = "stats/" + user +".txt";
+		String fileNameDates = "stats/" + user +"-dates.txt";
 
+		File fileStats = new File(fileNameStats);
+		File fileDates = new File(fileNameDates);
+		try {
+			fileStats.createNewFile();
+			fileDates.createNewFile();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
