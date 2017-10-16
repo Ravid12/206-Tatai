@@ -37,8 +37,7 @@ public class PracticeSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleMainMenuBtn() {
-		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
+		mainApp.showWindow(Window.MAIN);	
 	}
 
 	/**
@@ -50,8 +49,6 @@ public class PracticeSelectWindowController extends WindowController{
 		{
 			if(cb.getValue().equals(Mode.EQUATION))
 			{
-//				errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
-				System.out.println("Equation");
 			}
 			
 			else
@@ -62,7 +59,6 @@ public class PracticeSelectWindowController extends WindowController{
 		
 		if (cb.getSelectionModel().isEmpty())
 		{
-//			errorMessage.setText("Please select a difficulty");
 		}
 	}
 }

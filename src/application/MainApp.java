@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.IOException;
 
 import application.controller.Controller;
-import application.model.Equation;
-import application.model.Operator;
 import application.model.Window;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -88,22 +86,6 @@ public class MainApp extends Application {
     public static void main(String[] args) {
     	new File("./stats").mkdir();
         launch(args);
-//    	for(int i = 0; i<100; i++)
-//    	{
-//    		System.out.println(new Equation(Operator.ADDITION, 99, 1));
-//    	}
-//    	for(int i = 0; i<100; i++)
-//    	{
-//    		System.out.println(new Equation(Operator.SUBTRACTION, 99, 1));
-//    	}
-//    	for(int i = 0; i<100; i++)
-//    	{
-//    		System.out.println(new Equation(Operator.MULTIPLICATION, 99, 1));
-//    	}
-//    	for(int i = 0; i<100; i++)
-//    	{
-//    		System.out.println(new Equation(Operator.DIVISION, 99, 1));
-//    	}
     }
 
     /**

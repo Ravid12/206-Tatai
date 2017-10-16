@@ -62,7 +62,6 @@ public class EquationSelectWindowController extends WindowController{
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
 	}
 
 	/**
@@ -94,7 +93,6 @@ public class EquationSelectWindowController extends WindowController{
 			mainApp.showWindow(Window.EXAM);
 		}			
 		else {
-			System.out.println("Please select a difficulty");
 		}
 	}
 }
