@@ -103,24 +103,24 @@ public class ExamWindowController extends WindowController{
 		Task<Void> taskRecord = new Task<Void>() {
 			@Override 
 			public Void call() {
-				//				btn_menu.setDisable(true);
-				//				btn_record.setDisable(true);
-				//				btn_confirm.setDisable(true);
-				//				btn_listen.setDisable(true);
-				//				String cmd = "./GoSpeech2";
-				//				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
-				//				try {
-				//					builder.directory(new File("./HTK/MaoriNumbers/"));
-				//					Process pr = builder.start();						
-				//					try {
-				//						pr.waitFor();
-				//
-				//					} catch (InterruptedException e) {
-				//						e.printStackTrace();
-				//					}
-				//					pr.destroy();
-				//				} catch (IOException e) {
-				//				}
+				btn_menu.setDisable(true);
+				btn_record.setDisable(true);
+				btn_confirm.setDisable(true);
+				btn_listen.setDisable(true);
+				String cmd = "./GoSpeech2";
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
+				try {
+					builder.directory(new File("./HTK/MaoriNumbers/"));
+					Process pr = builder.start();						
+					try {
+						pr.waitFor();
+
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					pr.destroy();
+				} catch (IOException e) {
+				}
 				return null;
 			}
 		};		
@@ -135,7 +135,7 @@ public class ExamWindowController extends WindowController{
 
 
 		new Thread(taskRecord).start();
-		//		new Thread(makeLoadingTask()).start();
+		new Thread(makeLoadingTask()).start();
 	}
 
 	@FXML
@@ -254,7 +254,7 @@ public class ExamWindowController extends WindowController{
 
 		ButtonType buttonTypeYes = new ButtonType("Yes");
 		ButtonType buttonTypeNo = new ButtonType("No");
-		
+
 		alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
 		Optional<ButtonType> result1 = alert1.showAndWait();
@@ -263,7 +263,7 @@ public class ExamWindowController extends WindowController{
 			alert2.setTitle("Return to Menu");
 			alert2.setHeaderText(null);
 			alert2.setContentText("Would you like to save the stats for this session?");
-			
+
 			alert2.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
 			Optional<ButtonType> result2 = alert2.showAndWait();

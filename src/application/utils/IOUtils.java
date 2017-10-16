@@ -19,7 +19,7 @@ public class IOUtils {
 	{
 		ArrayList<String> al = new ArrayList<String>();
 		try {
-			File file = new File("./" + FileName);
+			File file = new File(FileName);
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			

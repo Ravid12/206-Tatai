@@ -1,19 +1,6 @@
-#2017/10/14
-8%8%Incorrect ✕
-9%9%Incorrect ✕
-7%7%Incorrect ✕
-#2017/10/14
-7 ➖ 2%5%Incorrect ✕
-1 ➕ 1%2%Incorrect ✕
-#2017/10/14
-9%9%Incorrect ✕
-7%7%Incorrect ✕
-#2017/10/15
+#2017/10/17
+5%5%Incorrect ✕
+#2017/10/17
 6%6%Incorrect ✕
-7 ➖ 2%5%Incorrect ✕
-1 ➕ 1%2%Incorrect ✕
-9 ➖ 1%8%Incorrect ✕
-#2017/10/16
+#2017/10/17
 8%8%Incorrect ✕
-9%9%Incorrect ✕
-7%7%Incorrect ✕
