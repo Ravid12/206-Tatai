@@ -2,7 +2,6 @@
 package application.view;
 
 import application.controller.WindowController;
-import application.model.ExamModel;
 import application.model.Window;
 import application.utils.StringUtils;
 import javafx.beans.value.ChangeListener;

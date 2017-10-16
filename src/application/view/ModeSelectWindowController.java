@@ -40,7 +40,6 @@ public class ModeSelectWindowController extends WindowController{
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
 	}
 
 	/**
@@ -52,15 +51,12 @@ public class ModeSelectWindowController extends WindowController{
 		{
 			if(cb.getValue().equals(Mode.EQUATION))
 			{
-//				errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
-				System.out.println("Equation");
 				EquationModel.resetExamModel();
 				mainApp.showWindow(Window.EQUATIONSELECT);
 			}
 			
 			else
 			{
-				System.out.println("Speaking");
 				NumberModel.resetExamModel();
 				mainApp.showWindow(Window.LEVELSELECT);
 			}
@@ -68,7 +64,6 @@ public class ModeSelectWindowController extends WindowController{
 		
 		if (cb.getSelectionModel().isEmpty())
 		{
-//			errorMessage.setText("Please select a difficulty");
 		}
 	}
 }

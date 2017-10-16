@@ -5,10 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import application.controller.Controller;
-import application.model.Equation;
-import application.model.Operator;
 import application.model.Window;
-import application.utils.IOUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

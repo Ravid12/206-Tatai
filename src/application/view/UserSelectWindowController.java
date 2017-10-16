@@ -49,11 +49,11 @@ public class UserSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleLoginBtn() {
-		//TODO: If user types name in text field and it's already in combobox
 		String username = null;
 		
-		if (cb.getSelectionModel().isEmpty() && tf.getText().isEmpty() && tf.getText() == null){
-			System.out.println("no username selected");
+		if (cb.getSelectionModel().isEmpty() && (tf.getText().isEmpty() || tf.getText() == null)){
+			errorMessage.setText(noneSelected);
+			errorMessage.setVisible(true);
 			username = null;
 		}	
 		else if (!cb.getSelectionModel().isEmpty() && !tf.getText().isEmpty()) {
@@ -73,7 +73,14 @@ public class UserSelectWindowController extends WindowController{
 				}
 			}
 		}
-		
+
+		if(IOUtils.readFile("stats/users/user.txt").contains(username) && !comboBox)
+		{
+			errorMessage.setText("Username already taken");
+			errorMessage.setVisible(true);
+			username = null;
+			
+		}
 		if (username !=null) {
 			StatisticsModel.getStatisticsModel().setUser(username);
 			IOUtils.appendFile("stats/users/user.txt", username);

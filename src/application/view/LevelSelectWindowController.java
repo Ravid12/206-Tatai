@@ -1,13 +1,9 @@
 package application.view;
 
-import java.util.ArrayList;
-
 import application.controller.WindowController;
 import application.model.Difficulty;
-import application.model.EquationModel;
 import application.model.ExamModel;
 import application.model.NumberModel;
-import application.model.Operator;
 import application.model.StatisticsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
@@ -50,8 +46,7 @@ public class LevelSelectWindowController extends WindowController{
 	 */	
 	@FXML
 	private void handleMainMenuBtn() {
-		mainApp.showWindow(Window.MAIN);
-		System.out.println("Menu");		
+		mainApp.showWindow(Window.MAIN);	
 	}
 
 	/**

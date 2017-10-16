@@ -20,7 +20,6 @@ public class InstructionWindowController extends WindowController{
 		@FXML
 		private void initialize() {
 			
-			//TODO: Finish this
 		}
 
 		/**
