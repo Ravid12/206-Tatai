@@ -1,10 +1,6 @@
 package application.view;
 
-import java.io.File;
-import java.io.IOException;
-
 import application.controller.WindowController;
-import application.model.Mode;
 import application.model.StatisticsModel;
 import application.model.Window;
 import application.utils.IOUtils;
