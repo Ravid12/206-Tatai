@@ -1,0 +1,1 @@
+aplay foo.wav

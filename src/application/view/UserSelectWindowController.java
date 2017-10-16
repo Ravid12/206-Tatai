@@ -24,6 +24,7 @@ public class UserSelectWindowController extends WindowController{
 	private Label errorMessage;
 	
 	private ObservableList<String> users = FXCollections.observableArrayList(IOUtils.readFile("stats/users/user.txt"));
+	private String noneSelected = "   Please either    Create a new user Choose an existing user";
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
@@ -50,6 +51,7 @@ public class UserSelectWindowController extends WindowController{
 	@FXML
 	private void handleLoginBtn() {
 		String username = null;
+		boolean comboBox = false;
 		
 		if (cb.getSelectionModel().isEmpty() && (tf.getText().isEmpty() || tf.getText() == null)){
 			errorMessage.setText(noneSelected);
@@ -57,23 +59,16 @@ public class UserSelectWindowController extends WindowController{
 			username = null;
 		}	
 		else if (!cb.getSelectionModel().isEmpty() && !tf.getText().isEmpty()) {
-			//TODO: make this intuitive please Zinzan
+			username = tf.getText();
 		}
 		else {
-			if (!cb.getSelectionModel().isEmpty()) {
-				username = cb.getValue();
+			if (!tf.getText().isEmpty()) {
+				username = tf.getText();
 			} else {
-				if(IOUtils.readFile("stats/users/user.txt").contains(tf.getText()))
-				{
-					errorMessage.setVisible(true);
-				}
-				else
-				{
-					username = tf.getText();
-				}
+				username = cb.getValue();
+				comboBox = true;
 			}
 		}
-
 		if(IOUtils.readFile("stats/users/user.txt").contains(username) && !comboBox)
 		{
 			errorMessage.setText("Username already taken");
@@ -83,9 +78,11 @@ public class UserSelectWindowController extends WindowController{
 		}
 		if (username !=null) {
 			StatisticsModel.getStatisticsModel().setUser(username);
-			IOUtils.appendFile("stats/users/user.txt", username);
+			if(!comboBox)
+			{
+				IOUtils.appendFile("stats/users/user.txt", username);
+			}
 			mainApp.showWindow(Window.MAIN);
-			
 		} 
 	}
 }
