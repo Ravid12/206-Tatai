@@ -67,7 +67,6 @@ public class StatisticsModel {
 				else if (currentDate.equals(date)) {
 					Stat s = new Stat();
 					s.setDate(date);
-					System.out.println(lines.get(i));
 					String[] data = lines.get(i).split("%");
 					
 					
