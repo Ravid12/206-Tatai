@@ -47,29 +47,36 @@ public class StatisticsModel {
 		if (!IOUtils.readFile(fileNameDates).contains(fileContents.get(0).substring(1))) {
 			IOUtils.appendFile(fileNameDates, fileContents.get(0).substring(1));
 		}
-		
+
 		for(int i=0; i<fileContents.size(); i++) {
 			IOUtils.appendFile(fileNameStats, fileContents.get(i));
 		}
 	}
 
-	public ArrayList<Stat> loadDayStats() {
+	public ArrayList<Stat> loadDayStats(String date) {
 		ArrayList<String> lines = IOUtils.readFile("stats/" + user + ".txt");
 		ArrayList<Stat> dayStats = new ArrayList<Stat>();
+		String currentDate = "";
 
-		Stat s = new Stat();
-		s.setDate(lines.get(0).substring(1));
-		for (int i=1; i<lines.size(); i++) {
-			String[] data = lines.get(i).split("%");
-
-			s.setEquation(data[0]);
-			s.setNumber(data[1]);
-			s.setResult(data[2]);
-
-			if (!lines.get(i).equals("#"+s.getDate())) {
-				dayStats.add(s);
-				s = new Stat();
-				s.setDate(lines.get(0).substring(1));
+		if (!(lines.size()==0)) {
+			for (int i=0; i<lines.size(); i++) {
+				if (lines.get(i).startsWith("#")) {
+					currentDate = lines.get(i).substring(1);
+				}
+				
+				else if (currentDate.equals(date)) {
+					Stat s = new Stat();
+					s.setDate(date);
+					System.out.println(lines.get(i));
+					String[] data = lines.get(i).split("%");
+					
+					
+					s.setEquation(data[0]);
+					s.setNumber(data[1]);
+					s.setResult(data[2]);
+					
+					dayStats.add(s);
+				}
 			}
 		}
 		return dayStats;		
@@ -77,7 +84,7 @@ public class StatisticsModel {
 
 	public void setUser(String user) {
 		this.user = user;
-		
+
 		String fileNameStats = "stats/" + user +".txt";
 		String fileNameDates = "stats/" + user +"-dates.txt";
 
@@ -90,6 +97,9 @@ public class StatisticsModel {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	}
+
+	public ArrayList<String> getDates() {	
+		return IOUtils.readFile("stats/" + user + "-dates.txt");
 	}
 }

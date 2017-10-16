@@ -1,21 +1,26 @@
 package application.view;
 
 import application.controller.WindowController;
-import application.model.Difficulty;
 import application.model.Stat;
 import application.model.StatisticsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class StatisticsWindowController extends WindowController{
+public class DailyStatsWindowController extends WindowController{
 	@FXML
-	private TabPane statsWindows = new TabPane();
+	private TableView<Stat> stats = new TableView<Stat>();
+	
+	@FXML
+	private ComboBox<String> dateBox = new ComboBox<String>();
+	
+	@FXML
+	private Label dateLabel;
 	
 	private StatisticsModel sm = StatisticsModel.getStatisticsModel();
 	
@@ -23,7 +28,7 @@ public class StatisticsWindowController extends WindowController{
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
-	public StatisticsWindowController () {
+	public DailyStatsWindowController () {
 		
 	}
 
@@ -33,7 +38,7 @@ public class StatisticsWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
-		showDailyStats();
+		dateBox.setItems(FXCollections.observableArrayList(sm.getDates()));
 	}
 
 	/**
@@ -44,13 +49,23 @@ public class StatisticsWindowController extends WindowController{
 		mainApp.showWindow(Window.MAIN);
 	}
 	
+	@FXML
+	private void handleOverallStatsBtn() {
+		mainApp.showWindow(Window.STATISTICS);
+	}
+	
+	@FXML
+	private void comboBoxChange() {
+		showDailyStats();
+		dateLabel.setText(dateBox.getValue());
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void showDailyStats() {
-		Tab tab_daily = new Tab("Daily Stats");
+		stats.getColumns().clear();
+
+		ObservableList<Stat> statlist = FXCollections.observableArrayList(sm.loadDayStats(dateBox.getValue()));
 		
-		ObservableList<Stat> statlist = FXCollections.observableArrayList(sm.loadDayStats());
-		
-		TableView<Stat> stats = new TableView<Stat>();
 		stats.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         TableColumn<Stat, String> questionCol = new TableColumn<Stat, String>("Question");
@@ -59,11 +74,8 @@ public class StatisticsWindowController extends WindowController{
         stats.getColumns().addAll(questionCol, answerCol, resultCol);
         
         questionCol.setCellValueFactory(cellData -> cellData.getValue().equationProperty());
-        answerCol.setCellValueFactory(cellData -> cellData.getValue().resultProperty());
-        resultCol.setCellValueFactory(cellData -> cellData.getValue().numberProperty());
+        answerCol.setCellValueFactory(cellData -> cellData.getValue().numberProperty());
+        resultCol.setCellValueFactory(cellData -> cellData.getValue().resultProperty());
         stats.setItems(statlist);
-		tab_daily.setContent(stats);
-		statsWindows.getTabs().add(tab_daily);
-		
 	}
 }

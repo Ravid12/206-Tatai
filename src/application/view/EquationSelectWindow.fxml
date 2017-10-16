@@ -17,5 +17,6 @@
       <JFXButton fx:id="menuButton" layoutX="174.0" layoutY="400.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
       <Label alignment="TOP_CENTER" layoutX="74.0" layoutY="50.0" prefHeight="57.0" prefWidth="300.0" styleClass="title" text="Equation Select" wrapText="true" />
       <ComboBox fx:id="cb" layoutX="149.0" layoutY="250.0" prefWidth="150.0" />
+      <Label layoutX="149.0" layoutY="233.0" text="Choose a level:" />
    </children>
 </AnchorPane>
