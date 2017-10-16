@@ -1,5 +1,6 @@
 package application.model;
 
+import application.utils.MaoriUtils;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,7 +24,7 @@ public class Stat {
     }
 
     public void setNumber(String number) {
-        this.number.set(number);
+        this.number.set(MaoriUtils.getMaoriNumber(number));
     }
 
     public StringProperty numberProperty() {
