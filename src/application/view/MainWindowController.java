@@ -54,4 +54,12 @@ public class MainWindowController extends WindowController{
 	private void handleInstructionsBtn() {
 		mainApp.showWindow(Window.INSTRUCTION);
 	}
+	
+	/**
+	 * Called when the user clicks on the Logout button.
+	 */
+	@FXML
+	private void handleLogoutBtn() {
+		mainApp.showWindow(Window.USERSELECT);
+	}
 }
