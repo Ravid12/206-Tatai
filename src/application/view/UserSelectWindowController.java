@@ -8,10 +8,12 @@ import application.model.Mode;
 import application.model.StatisticsModel;
 import application.model.Window;
 import application.utils.IOUtils;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class UserSelectWindowController extends WindowController{
@@ -21,6 +23,9 @@ public class UserSelectWindowController extends WindowController{
 	
 	@FXML
 	private TextField tf;
+	
+	@FXML
+	private Label errorMessage;
 	
 	private ObservableList<String> users = FXCollections.observableArrayList(IOUtils.readFile("stats/users/user.txt"));
 	/**
@@ -36,7 +41,9 @@ public class UserSelectWindowController extends WindowController{
 	 */
 	@FXML
 	private void initialize() {
+		cb.disableProperty().bind(Bindings.isNotEmpty(tf.textProperty()));
 		cb.setItems(users);
+		errorMessage.setVisible(false);
 //		errorMessage.setText("");
 //		errorMessage.setTextFill(Color.web(redColour));
 	}
@@ -58,9 +65,16 @@ public class UserSelectWindowController extends WindowController{
 		}
 		else {
 			if (!cb.getSelectionModel().isEmpty()) {
-				username = (cb.getValue());
+				username = cb.getValue();
 			} else {
-				username = tf.getText();
+				if(IOUtils.readFile("stats/users/user.txt").contains(tf.getText()))
+				{
+					errorMessage.setVisible(true);
+				}
+				else
+				{
+					username = tf.getText();
+				}
 			}
 		}
 		
@@ -69,8 +83,6 @@ public class UserSelectWindowController extends WindowController{
 			IOUtils.appendFile("stats/users/user.txt", username);
 			mainApp.showWindow(Window.MAIN);
 			
-		} else {
-			//TODO: Make this intuitive as well Zinzan Please
-		}
+		} 
 	}
 }
