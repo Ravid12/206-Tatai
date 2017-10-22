@@ -61,7 +61,6 @@ public class EquationModel extends ExamModel{
 	/**
 	 * Resets the ExamModel.
 	 * Doing this purges the list of 10 numbers, allowing a new list to be made.
-	 * Also tells the ExamModel if it is in practice mode or not.
 	 */
 	public static void resetExamModel() {
 		examModel = new EquationModel();

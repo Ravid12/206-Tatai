@@ -8,9 +8,8 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="448.0" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.DailyStatsWindowController">
    <children>
-      <Label layoutX="88.0" layoutY="35.0" styleClass="title" text="Daily Statistics" />
-      <Button layoutX="114.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Menu" />
-      <Button layoutX="234.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleOverallStatsBtn" styleClass="default-btn" text="Global Stats" />
+      <Label layoutX="139.0" layoutY="35.0" styleClass="title" text="Statistics" />
+      <Button layoutX="174.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
       <TableView fx:id="stats" layoutX="24.0" layoutY="110.0" prefHeight="230.0" prefWidth="400.0" />
       <ComboBox fx:id="dateBox" layoutX="169.0" layoutY="360.0" onAction="#comboBoxChange" prefWidth="150.0" />
       <Label layoutX="129.0" layoutY="365.0" text="Date:" />

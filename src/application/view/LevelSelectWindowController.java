@@ -14,13 +14,13 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 public class LevelSelectWindowController extends WindowController{
-	
+
 	@FXML
 	private ComboBox<Difficulty> cb = new ComboBox<Difficulty>();
 
 	@FXML
 	private Label errorMessage;
-	
+
 	private ObservableList<Difficulty> levels = FXCollections.observableArrayList(Difficulty.values());
 	private final String redColour = "#e80000";
 	/**
@@ -49,29 +49,29 @@ public class LevelSelectWindowController extends WindowController{
 		mainApp.showWindow(Window.MAIN);	
 	}
 
+	@FXML
+	private void conboBoxOnChange() {
+		if(cb.getValue().equals(Difficulty.HARD) && ! mainApp.getUnlocked())
+		{
+			errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
+		}
+	}
+
 	/**
 	 * Called when the user clicks on the Start button.
 	 */	
 	@FXML
 	private void handleStartBtn() {
-		if (! cb.getSelectionModel().isEmpty())
-		{
-			if(cb.getValue().equals(Difficulty.HARD) && ! mainApp.getUnlocked())
-			{
-				errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
-			}
+		if (! cb.getSelectionModel().isEmpty()) {
+			NumberModel.resetExamModel();
+			NumberModel.getExamModel().setDifficulty(cb.getValue());
+			NumberModel.getExamModel().createList();
+			StatisticsModel.getStatisticsModel().startTempStat();
 			
-			else
-			{
-				ExamModel.getExamModel().setDifficulty(cb.getValue());
-				NumberModel.getExamModel().createList();
-				StatisticsModel.getStatisticsModel().startTempStat();
-				mainApp.showWindow(Window.EXAM);
-			}
+			mainApp.showWindow(Window.EXAM);
 		}
-		
-		if (cb.getSelectionModel().isEmpty())
-		{
+
+		if (cb.getSelectionModel().isEmpty()) {
 			errorMessage.setText("Please select a difficulty");
 		}
 	}

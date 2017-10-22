@@ -4,6 +4,7 @@ import application.controller.WindowController;
 import application.model.EquationModel;
 import application.model.Mode;
 import application.model.NumberModel;
+import application.model.PracticeModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,19 +52,17 @@ public class ModeSelectWindowController extends WindowController{
 		{
 			if(cb.getValue().equals(Mode.EQUATION))
 			{
-				EquationModel.resetExamModel();
 				mainApp.showWindow(Window.EQUATIONSELECT);
 			}
 			
-			else
+			else if (cb.getValue().equals(Mode.NUMBER))
 			{
-				NumberModel.resetExamModel();
 				mainApp.showWindow(Window.LEVELSELECT);
 			}
-		}
-		
-		if (cb.getSelectionModel().isEmpty())
-		{
+			
+			else if (cb.getValue().equals(Mode.PRACTICE)) {
+				mainApp.showWindow(Window.PRACTICE);
+			}
 		}
 	}
 }

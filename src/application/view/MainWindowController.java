@@ -26,17 +26,7 @@ public class MainWindowController extends WindowController{
 	@FXML
 	private void handleStartBtn() {
 		mainApp.showWindow(Window.MODESELECT);
-	}
-	
-
-	/**
-	 * Called when the user clicks on the Training button.
-	 */
-	@FXML
-	private void handlePractiseBtn() {
-		mainApp.showWindow(Window.PRACTICESELECT);
-	}
-	
+	}	
 
 	/**
 	 * Called when the user clicks on the Statistics button.

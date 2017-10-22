@@ -39,6 +39,7 @@ public class DailyStatsWindowController extends WindowController{
 	@FXML
 	private void initialize() {
 		dateBox.setItems(FXCollections.observableArrayList(sm.getDates()));
+		stats.setPlaceholder(new Label("Choose a Date below to display stats..."));
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class DailyStatsWindowController extends WindowController{
 	@FXML
 	private void comboBoxChange() {
 		showDailyStats();
-		dateLabel.setText(dateBox.getValue());
+		dateLabel.setText("Stats for " + sm.getCurrentUser() + " on " + dateBox.getValue());
 	}
 	
 	@SuppressWarnings("unchecked")

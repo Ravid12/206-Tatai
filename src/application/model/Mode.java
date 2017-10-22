@@ -1,7 +1,7 @@
 package application.model;
 
 public enum Mode {
-		SPEAKING("Speaking"), EQUATION("Equation");
+		NUMBER("Number Mode"), EQUATION("Equation Mode"), PRACTICE("Practice Mode");
 	
 		private String name;
 		

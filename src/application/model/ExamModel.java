@@ -50,8 +50,13 @@ public class ExamModel {
 	public void setDifficulty(Difficulty d) {
 		difficulty=d;
 	}
+
+	// Template method to be overwritten by children
+	public void createList() {		
+	}
 	
-	public void createList() {
+	// Template method for practice mode
+	public void createList(int practiceNumber) {
 	}
 
 }

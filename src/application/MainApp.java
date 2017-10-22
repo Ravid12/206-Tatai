@@ -23,6 +23,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Tatai");
+        this.primaryStage.setResizable(false);
 
         initRootLayout();
 
@@ -49,8 +50,10 @@ public class MainApp extends Application {
         }
     }
    
+
     /**
      * Initializes the window that goes inside the rootlayout.
+     * @param windowName The window to display inside the root layout.
      */
     public void showWindow(Window windowName) {
         try {
@@ -74,7 +77,6 @@ public class MainApp extends Application {
 
     /**
      * Returns the main stage.
-     * @return
      */
     public Stage getPrimaryStage() {
         return primaryStage;

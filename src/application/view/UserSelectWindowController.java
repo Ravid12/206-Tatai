@@ -24,7 +24,10 @@ public class UserSelectWindowController extends WindowController{
 	private Label errorMessage;
 	
 	private ObservableList<String> users = FXCollections.observableArrayList(IOUtils.readFile("stats/users/user.txt"));
-	private String noneSelected = "   Please either    Create a new user Choose an existing user";
+	private final String ERROR_NONE = "Please either:\nCreate a new user \nor Choose an existing user";
+	private final String ERROR_TAKEN = "Username already taken";
+	private final String ERROR_INVALID = "Usernames can contain only alphanumeric characters or underscores";
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
@@ -54,28 +57,35 @@ public class UserSelectWindowController extends WindowController{
 		boolean comboBox = false;
 		
 		if (cb.getSelectionModel().isEmpty() && (tf.getText().isEmpty() || tf.getText() == null)){
-			errorMessage.setText(noneSelected);
+			errorMessage.setText(ERROR_NONE);
 			errorMessage.setVisible(true);
 			username = null;
 		}	
 		else if (!cb.getSelectionModel().isEmpty() && !tf.getText().isEmpty()) {
 			username = tf.getText();
 		}
-		else {
-			if (!tf.getText().isEmpty()) {
-				username = tf.getText();
-			} else {
-				username = cb.getValue();
-				comboBox = true;
-			}
+		else if (!tf.getText().isEmpty()) {
+			username = tf.getText();
+			
+			// Regex for all alphanumeric characters and underscores
+			if (!username.matches("^[a-zA-Z0-9_]+$")) {
+				errorMessage.setText(ERROR_INVALID);
+				errorMessage.setVisible(true);
+				username = null;
+			};
+			
+		} else {
+			username = cb.getValue();
+			comboBox = true;
 		}
+		
 		if(IOUtils.readFile("stats/users/user.txt").contains(username) && !comboBox)
 		{
-			errorMessage.setText("Username already taken");
+			errorMessage.setText(ERROR_NONE);
 			errorMessage.setVisible(true);
-			username = null;
-			
+			username = null;	
 		}
+		
 		if (username !=null) {
 			StatisticsModel.getStatisticsModel().setUser(username);
 			if(!comboBox)

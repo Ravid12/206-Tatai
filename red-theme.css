@@ -1,0 +1,19 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.default-btn{
+	-fx-background-color: #A10000;
+	-fx-text-fill: WHITE;
+	
+	-fx-pref-width: 100px;
+	-fx-pref-height: 40px;	
+}
+
+.default-Anchor{
+	-fx-pref-width: 448px;
+	-fx-pref-height: 480px;	
+}
+
+.title{
+	-fx-text-fill: #A10000;
+	-fx-font-size: 32;
+	-fx-font-weight: bold;
+}	

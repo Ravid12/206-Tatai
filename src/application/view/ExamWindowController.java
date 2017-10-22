@@ -83,8 +83,13 @@ public class ExamWindowController extends WindowController{
 	private void initialize() {
 		testNumber.setText(em.getDisplay(counter-1));
 		maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber(counter-1))));
-		difficulty.setText("Difficulty: " + em.getDifficulty().toString());
-		round.setText("Question " + counter + " of 10");
+		if (em.getDifficulty() == null) {
+			difficulty.setText("Practice Mode");
+			round.setText("Custom Question");
+		} else {
+			difficulty.setText("Difficulty: " + em.getDifficulty().toString());
+			round.setText("Question " + counter + " of 10");
+		}
 		attemptsLeft.setText("You have 2 attempts remaining");
 		message.setText("");
 		maoriNumber.setVisible(false);
@@ -109,7 +114,7 @@ public class ExamWindowController extends WindowController{
 				String cmd = "./GoSpeech2";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
-					builder.directory(new File("./HTK/MaoriNumbers/"));
+					builder.directory(new File("HTK/MaoriNumbers/"));
 					Process pr = builder.start();						
 					try {
 						pr.waitFor();
@@ -150,7 +155,7 @@ public class ExamWindowController extends WindowController{
 				String cmd = "./play.sh";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
-					builder.directory(new File("./HTK/MaoriNumbers/"));
+					builder.directory(new File("HTK/MaoriNumbers/"));
 					Process pr = builder.start();						
 					try {
 						pr.waitFor();
@@ -220,7 +225,10 @@ public class ExamWindowController extends WindowController{
 		} else {
 			counter++;
 
-			if (counter==11) {
+			if (em.getDifficulty() == null) {
+				mainApp.showWindow(Window.PRACTICE);
+			}
+			else if (counter==11) {
 				mainApp.showWindow(Window.END);
 			} else {
 
@@ -258,17 +266,22 @@ public class ExamWindowController extends WindowController{
 
 		Optional<ButtonType> result1 = alert1.showAndWait();
 		if (result1.get() == buttonTypeYes){
-			Alert alert2 = new Alert(AlertType.CONFIRMATION);
-			alert2.setTitle("Return to Menu");
-			alert2.setHeaderText(null);
-			alert2.setContentText("Would you like to save the stats for this session?");
+			
+			// If not in practice mode
+			if (em.getDifficulty()!=null) {
+				Alert alert2 = new Alert(AlertType.CONFIRMATION);
+				alert2.setTitle("Return to Menu");
+				alert2.setHeaderText(null);
+				alert2.setContentText("Would you like to save the stats for this session?");
 
-			alert2.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+				alert2.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-			Optional<ButtonType> result2 = alert2.showAndWait();
-			if (result2.get() == buttonTypeYes){
-				StatisticsModel.getStatisticsModel().saveStats();
+				Optional<ButtonType> result2 = alert2.showAndWait();
+				if (result2.get() == buttonTypeYes){
+					StatisticsModel.getStatisticsModel().saveStats();
+				}
 			}
+
 			mainApp.showWindow(Window.MAIN);
 		}
 	}

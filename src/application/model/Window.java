@@ -4,16 +4,14 @@ public enum Window {
 	MAIN("Main"), 
 	LEVEL("Level"),
 	EXAM("Exam"),
-	STATISTICS("OverallStats"),
 	PRACTICE("Practise"),
 	INSTRUCTION("Instruction"),
 	END("End"),
 	LEVELSELECT("LevelSelect"),
-	PRACTICESELECT("PracticeSelect"),
 	EQUATIONSELECT("EquationSelect"),
 	MODESELECT("ModeSelect"),
 	USERSELECT("UserSelect"),
-	DAILYSTATISTICS("DailyStats");
+	STATISTICS("DailyStats");
 	
 	private final String name;
 	

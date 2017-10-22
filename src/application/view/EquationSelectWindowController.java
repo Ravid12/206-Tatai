@@ -6,6 +6,7 @@ import application.controller.WindowController;
 import application.model.Difficulty;
 import application.model.EquationModel;
 import application.model.Operator;
+import application.model.StatisticsModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,9 +88,13 @@ public class EquationSelectWindowController extends WindowController{
 			if (divBox.isSelected()) {
 				o.add(Operator.DIVISION);
 			}			
+			
+			EquationModel.resetExamModel();
 			EquationModel.setOperators(o);
 			EquationModel.getEquationModel().setDifficulty(cb.getValue());
 			EquationModel.getEquationModel().createList();
+			StatisticsModel.getStatisticsModel().startTempStat();
+			
 			mainApp.showWindow(Window.EXAM);
 		}			
 		else {

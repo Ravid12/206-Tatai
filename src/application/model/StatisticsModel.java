@@ -11,7 +11,8 @@ import application.utils.IOUtils;
 public class StatisticsModel {
 	private static StatisticsModel sm = new StatisticsModel();
 	private String user;
-
+	private int roundScore = 0;
+	
 	private StatisticsModel() {
 
 	}
@@ -33,23 +34,28 @@ public class StatisticsModel {
 		LocalDate localDate = LocalDate.now();
 
 		IOUtils.overwriteFile("stats/temp.txt", "#"+dtf.format(localDate));
+		
+		roundScore = 0;
 	}
 
 	public void addTempStat(String question, String answer, boolean isCorrect) {
 		IOUtils.appendFile("stats/temp.txt", question + "%" + answer + "%" + (isCorrect ? "Correct ✓" : "Incorrect ✕"));
+		if (isCorrect) {
+			roundScore++;
+		}
 	}
 
 	public void saveStats() {
-		ArrayList<String> fileContents = IOUtils.readFile("stats/temp.txt");
+		ArrayList<String> tempStats = IOUtils.readFile("stats/temp.txt");
 		String fileNameStats = "stats/" + user +".txt";
 		String fileNameDates = "stats/" + user +"-dates.txt";
 
-		if (!IOUtils.readFile(fileNameDates).contains(fileContents.get(0).substring(1))) {
-			IOUtils.appendFile(fileNameDates, fileContents.get(0).substring(1));
+		if (!IOUtils.readFile(fileNameDates).contains(tempStats.get(0).substring(1))) {
+			IOUtils.appendFile(fileNameDates, tempStats.get(0).substring(1));
 		}
 
-		for(int i=0; i<fileContents.size(); i++) {
-			IOUtils.appendFile(fileNameStats, fileContents.get(i));
+		for(int i=0; i<tempStats.size(); i++) {
+			IOUtils.appendFile(fileNameStats, tempStats.get(i));
 		}
 	}
 
@@ -80,7 +86,15 @@ public class StatisticsModel {
 		}
 		return dayStats;		
 	}
+	
+	
+	public ArrayList<Stat> loadGlobalStats() {
+		ArrayList<Stat> globalStats = new ArrayList<Stat>();
 
+		return globalStats;
+	}
+
+	
 	public void setUser(String user) {
 		this.user = user;
 
@@ -97,8 +111,19 @@ public class StatisticsModel {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public String getCurrentUser() {
+		return user;
+	}
 	public ArrayList<String> getDates() {	
 		return IOUtils.readFile("stats/" + user + "-dates.txt");
+	}
+	
+	public int getRoundScore() {
+		return roundScore;
+	}
+	
+	public void resetRoundScore() {
+		roundScore = 0;
 	}
 }

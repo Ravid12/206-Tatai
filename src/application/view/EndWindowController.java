@@ -22,7 +22,7 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private Label finalscore;
 		
-	private int noCorrect;
+	private int noCorrect = 0;
 	private ArrayList<Result> resultList;
 	private ArrayList<String> results = IOUtils.readFile("stats/temp.txt");
 	
@@ -63,7 +63,7 @@ public class EndWindowController extends WindowController{
         answerCol.setCellValueFactory(cellData -> cellData.getValue().symbolProperty());
         correctCol.setCellValueFactory(cellData -> cellData.getValue().correctnessProperty());
 		endList.setItems(list);
-		finalscore.setText("You got " + noCorrect + "/10 Correct!");
+		finalscore.setText("You got " + StatisticsModel.getStatisticsModel().getRoundScore() + "/10 Correct!");
 	}
 	
 	/**

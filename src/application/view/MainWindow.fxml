@@ -22,7 +22,6 @@
                   <Font name="DejaVu Sans Bold" size="32.0" />
                </font>
             </Label>
-            <JFXButton layoutX="174.0" layoutY="300.0" onAction="#handlePractiseBtn" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Practise" textFill="WHITE" />
             <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleLogoutBtn" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Switch User" textFill="WHITE" />
          </children>
       </Pane>
