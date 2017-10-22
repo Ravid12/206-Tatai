@@ -33,7 +33,13 @@ Instructions:
 		Aside from these, everything is the same between the two modes, i.e. the layout is identical between the modes.
 	-The Switch User button allows for profile switching.
 
-Features which don't work:
-	Practice Mode.
-	Global/Overall Stats
-	
+STILL TO DO:
+	 - Make reademe more readable
+	 - Commenting
+	 - Whitespace
+	 - Test App again
+	 - Make sure all error messages are where they should be
+	 - MAYBE? remove prerequisite for hard mode?
+	 - Replace all main menu buttons with "Back" buttons.
+	 - MAYBE? Add a skip current question button?
+	 
