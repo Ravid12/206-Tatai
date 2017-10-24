@@ -22,17 +22,23 @@ public class PractiseWindowController extends WindowController{
 	private final String ERROR_NOT_INT = "Please input an Integer";
 	private final String ERROR_BOUNDS = "Please input a number between 1 and 99";
 
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public PractiseWindowController () {
 	}
 
+	
+	
 	/**
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		// Listen for TextField text changes
@@ -46,9 +52,12 @@ public class PractiseWindowController extends WindowController{
 		});
 	}
 
+	
+	
 	/**
 	 * Called when the user clicks on the test button.
 	 */
+	
 	@FXML
 	private void handleTestBtn() {
 		if (!StringUtils.isNumeric(textField.getText())) {
@@ -64,6 +73,12 @@ public class PractiseWindowController extends WindowController{
 		}
 	}
 
+	
+	
+	/**
+	 * Called when the user clicks on the Menu button.
+	 */
+	
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);

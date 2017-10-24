@@ -28,29 +28,36 @@ public class UserSelectWindowController extends WindowController{
 	private final String ERROR_TAKEN = "Username already taken";
 	private final String ERROR_INVALID = "Usernames can contain only alphanumeric characters or underscores";
 	
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public UserSelectWindowController() {
 	}
 
+	
+	
 	/**
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		cb.disableProperty().bind(Bindings.isNotEmpty(tf.textProperty()));
 		cb.setItems(users);
 		errorMessage.setVisible(false);
-//		errorMessage.setText("");
-//		errorMessage.setTextFill(Color.web(redColour));
 	}
 
+	
+	
 	/**
 	 * Called when the user clicks on the Start button.
 	 */	
+	
 	@FXML
 	private void handleLoginBtn() {
 		String username = null;
@@ -74,13 +81,13 @@ public class UserSelectWindowController extends WindowController{
 				username = null;
 			};
 			
-		} else {
+		} 
+		else {
 			username = cb.getValue();
 			comboBox = true;
 		}
 		
-		if(IOUtils.readFile("stats/users/user.txt").contains(username) && !comboBox)
-		{
+		if(IOUtils.readFile("stats/users/user.txt").contains(username) && !comboBox){
 			errorMessage.setText(ERROR_NONE);
 			errorMessage.setVisible(true);
 			username = null;	
@@ -88,8 +95,7 @@ public class UserSelectWindowController extends WindowController{
 		
 		if (username !=null) {
 			StatisticsModel.getStatisticsModel().setUser(username);
-			if(!comboBox)
-			{
+			if(!comboBox){
 				IOUtils.appendFile("stats/users/user.txt", username);
 			}
 			mainApp.showWindow(Window.MAIN);

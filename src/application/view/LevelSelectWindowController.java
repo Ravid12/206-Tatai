@@ -23,17 +23,24 @@ public class LevelSelectWindowController extends WindowController{
 
 	private ObservableList<Difficulty> levels = FXCollections.observableArrayList(Difficulty.values());
 	private final String redColour = "#e80000";
+	
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public LevelSelectWindowController () {
 	}
 
+	
+	
 	/**
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		cb.setItems(levels);
@@ -41,14 +48,23 @@ public class LevelSelectWindowController extends WindowController{
 		errorMessage.setTextFill(Color.web(redColour));
 	}
 
+	
+	
 	/**
 	 * Called when the user clicks on the Menu button.
 	 */	
+	
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);	
 	}
 
+	
+	
+	/**
+	 * Called if the user tries to play hardmode without unlocking it
+	 */	
+	
 	@FXML
 	private void conboBoxOnChange() {
 		if(cb.getValue().equals(Difficulty.HARD) && ! mainApp.getUnlocked())
@@ -57,9 +73,12 @@ public class LevelSelectWindowController extends WindowController{
 		}
 	}
 
+	
+	
 	/**
 	 * Called when the user clicks on the Start button.
 	 */	
+	
 	@FXML
 	private void handleStartBtn() {
 		if (! cb.getSelectionModel().isEmpty()) {
@@ -67,7 +86,6 @@ public class LevelSelectWindowController extends WindowController{
 			NumberModel.getExamModel().setDifficulty(cb.getValue());
 			NumberModel.getExamModel().createList();
 			StatisticsModel.getStatisticsModel().startTempStat();
-			
 			mainApp.showWindow(Window.EXAM);
 		}
 

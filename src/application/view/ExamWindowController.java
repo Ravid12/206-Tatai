@@ -63,22 +63,29 @@ public class ExamWindowController extends WindowController{
 	private Boolean isFirstAttempt = true;
 	private final String greenColour = "#13ea00";
 	private final String redColour = "#e80000";
-
 	private int counter = 1;
-
 	private ExamModel em = NumberModel.getNumberModel();
 
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public ExamWindowController () {
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		testNumber.setText(em.getDisplay(counter-1));
@@ -86,7 +93,8 @@ public class ExamWindowController extends WindowController{
 		if (em.getDifficulty() == null) {
 			difficulty.setText("Practice Mode");
 			round.setText("Custom Question");
-		} else {
+		} 
+		else {
 			difficulty.setText("Difficulty: " + em.getDifficulty().toString());
 			round.setText("Question " + counter + " of 10");
 		}
@@ -97,11 +105,17 @@ public class ExamWindowController extends WindowController{
 		recordingProgress.setProgress(0);
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * Called when the user clicks on the Record button.
 	 * Creates a new task to Record the person's voice.
 	 * It is then compared to the Maori Number that was generated.
 	 */
+	
 	@FXML
 	private void handleRecordBtn() {
 		Task<Void> taskRecord = new Task<Void>() {
@@ -119,29 +133,37 @@ public class ExamWindowController extends WindowController{
 					try {
 						pr.waitFor();
 
-					} catch (InterruptedException e) {
+					} 
+					catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					pr.destroy();
-				} catch (IOException e) {
+				} 
+				catch (IOException e) {
 				}
 				return null;
 			}
 		};		
-
-
 		taskRecord.setOnSucceeded(e -> {
 			btn_listen.setDisable(false);
 			btn_confirm.setDisable(false);
 			btn_record.setDisable(false);
 			btn_menu.setDisable(false);
 		});
-
-
 		new Thread(taskRecord).start();
 		new Thread(makeLoadingTask()).start();
 	}
 
+	
+	
+	
+	
+	
+	/**
+	 * Called when the user clicks the Listen Button
+	 * Plays back the user's attempt
+	 */
+	
 	@FXML
 	private void handleListenBtn () {
 		Task<Void> taskListen = new Task<Void>() {
@@ -182,9 +204,16 @@ public class ExamWindowController extends WindowController{
 
 	}
 
+	
+	
+	
+	
+	
+	
 	/**
 	 * Called when the user clicks on the Confirm button.
 	 */
+	
 	@FXML
 	private void handleConfirmBtn() {
 		if (isConfirm) {
@@ -199,14 +228,16 @@ public class ExamWindowController extends WindowController{
 				isCompleted = true;
 				StatisticsModel.getStatisticsModel().addTempStat(em.getDisplay(counter-1), em.getNumber(counter-1), true);
 				correctAttempt();
-			} else if (isFirstAttempt) {
+			} 
+			else if (isFirstAttempt) {
 				isFirstAttempt=false;
 				incorrectFirstAttempt();
 				btn_listen.setDisable(true);
 				btn_confirm.setDisable(true);
 				btn_record.setDisable(false);
 				btn_menu.setDisable(false);
-			} else {
+			} 
+			else {
 				incorrectSecondAttempt();
 				isCompleted = true;
 				StatisticsModel.getStatisticsModel().addTempStat(em.getDisplay(counter-1), em.getNumber(counter-1), false);
@@ -230,7 +261,8 @@ public class ExamWindowController extends WindowController{
 			}
 			else if (counter==11) {
 				mainApp.showWindow(Window.END);
-			} else {
+			} 
+			else {
 
 				testNumber.setText(em.getDisplay(counter-1));
 				maoriNumber.setText(MaoriUtils.getMaoriNumber(Integer.parseInt(em.getNumber(counter-1))));
@@ -249,9 +281,15 @@ public class ExamWindowController extends WindowController{
 		}
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * Called when the user clicks on the Menu button.
 	 */
+	
 	@FXML
 	private void handleMenuBtn() {
 		Alert alert1 = new Alert(AlertType.CONFIRMATION);
@@ -286,7 +324,15 @@ public class ExamWindowController extends WindowController{
 		}
 	}
 
-	// called when correct attempt is input
+	
+	
+	
+	
+	
+	/**
+	 * Called after correct attempt
+	 */
+	
 	private void correctAttempt() 
 	{
 		message.setText("Correct, Well Done");
@@ -295,7 +341,15 @@ public class ExamWindowController extends WindowController{
 		maoriNumber.setVisible(false);
 	}
 
-	// This should change display to red or show a cross or something
+	
+	
+	
+	
+	
+	/**
+	 * Called after the first wrong attempt
+	 */
+	
 	private void incorrectFirstAttempt() 
 	{
 		message.setText("Incorrect, Try again");
@@ -304,7 +358,15 @@ public class ExamWindowController extends WindowController{
 		btn_record.setDisable(false);
 	}
 
-	// This should change display to red and also say "you should have said"
+	
+	
+	
+	
+	
+	/**
+	 * Called after a second wrong attempt
+	 */
+	
 	private void incorrectSecondAttempt() 
 	{
 		attemptsLeft.setText("Press Next to continue");
@@ -313,25 +375,33 @@ public class ExamWindowController extends WindowController{
 		maoriNumber.setVisible(true);
 	}
 
+	
+	
+	
+	
+	
+	/**
+	 * Makes a thread that handles the recording bar
+	 * @return LoadingBar Task
+	 */
+	
 	private Task<Void> makeLoadingTask() {
 		// New task for the loading bar
 		Task<Void> loadingTask = new Task<Void>() {
 			@Override 
 			public Void call() {
-				for(int i = 0; i < 1000; i++)
-				{
+				for(int i = 0; i < 1000; i++){
 					recordingProgress.setProgress(i*0.001 + 0.001);
 					try {
 						Thread.sleep(3);
-					} catch (InterruptedException e) {
+					} 
+					catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
 				return null;
 			}
 		};
-
 		return loadingTask;
 	}
-
 }

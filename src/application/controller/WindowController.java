@@ -7,7 +7,7 @@ public abstract class WindowController implements Controller{
 	public MainApp mainApp;
 	
 	/**
-	 * Is called by the main application to give a reference back to itself.
+	 * Is called by windows to give a reference to the MainApp.
 	 * 
 	 * @param mainApp
 	 */

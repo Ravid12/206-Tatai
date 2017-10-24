@@ -9,18 +9,28 @@ import java.util.ArrayList;
 import application.utils.IOUtils;
 
 public class StatisticsModel {
+	
 	private static StatisticsModel sm = new StatisticsModel();
 	private String user;
 	private int roundScore = 0;
+	
+	
+	
+	/**
+	 * private constructor for StatisticsModel so no other class can instantiate it
+	 */
 	
 	private StatisticsModel() {
 
 	}
 
+	
+	
 	/**
-	 * singleton method
+	 * Singleton method
 	 * @return sm The singleton instance of statistics Model
 	 */
+	
 	public static StatisticsModel getStatisticsModel() {
 		if ( sm == null ) {
 			sm = new StatisticsModel();
@@ -29,15 +39,28 @@ public class StatisticsModel {
 		return sm;
 	}
 
+	
+	
+	/**
+	 * Creates a temporary statistics file
+	 */
+	
 	public void startTempStat() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate localDate = LocalDate.now();
-
 		IOUtils.overwriteFile("stats/temp.txt", "#"+dtf.format(localDate));
-		
 		roundScore = 0;
 	}
 
+	
+	
+	/**
+	 * Adds more statistics to the temporary stats file
+	 * @param question
+	 * @param answer
+	 * @param isCorrect
+	 */
+	
 	public void addTempStat(String question, String answer, boolean isCorrect) {
 		IOUtils.appendFile("stats/temp.txt", question + "%" + answer + "%" + (isCorrect ? "Correct ✓" : "Incorrect ✕"));
 		if (isCorrect) {
@@ -45,6 +68,12 @@ public class StatisticsModel {
 		}
 	}
 
+	
+	
+	/**
+	 * Saves statistics to appropriate save files
+	 */
+	
 	public void saveStats() {
 		ArrayList<String> tempStats = IOUtils.readFile("stats/temp.txt");
 		String fileNameStats = "stats/" + user +".txt";
@@ -59,6 +88,13 @@ public class StatisticsModel {
 		}
 	}
 
+	
+	
+	/**
+	 * Loads the Statistics for a user for a given date
+	 * @param date: The date that Stats are sorted by
+	 * @return
+	 */
 	public ArrayList<Stat> loadDayStats(String date) {
 		ArrayList<String> lines = IOUtils.readFile("stats/" + user + ".txt");
 		ArrayList<Stat> dayStats = new ArrayList<Stat>();
@@ -75,7 +111,6 @@ public class StatisticsModel {
 					s.setDate(date);
 					String[] data = lines.get(i).split("%");
 					
-					
 					s.setEquation(data[0]);
 					s.setNumber(data[1]);
 					s.setResult(data[2]);
@@ -88,6 +123,11 @@ public class StatisticsModel {
 	}
 	
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Stat> loadGlobalStats() {
 		ArrayList<Stat> globalStats = new ArrayList<Stat>();
 
@@ -95,6 +135,11 @@ public class StatisticsModel {
 	}
 
 	
+	
+	/**
+	 * Creates new save files for the current Tatai sser
+	 * @param user: Current User
+	 */
 	public void setUser(String user) {
 		this.user = user;
 
@@ -112,17 +157,41 @@ public class StatisticsModel {
 		}
 	}
 	
+	
+	
+	/**
+	 * Gets the current Tatai user
+	 * @return The current User logged in to the Tataa
+	 */
 	public String getCurrentUser() {
 		return user;
 	}
+	
+	
+	
+	/**
+	 * Gets dates from the dates text file
+	 * @return An ArrayList of Dates in String format
+	 */
 	public ArrayList<String> getDates() {	
 		return IOUtils.readFile("stats/" + user + "-dates.txt");
 	}
 	
+	
+	
+	/**
+	 * Gets RoundScore
+	 * @return
+	 */
 	public int getRoundScore() {
 		return roundScore;
 	}
 	
+	
+	
+	/**
+	 * Resets roundScore field
+	 */
 	public void resetRoundScore() {
 		roundScore = 0;
 	}

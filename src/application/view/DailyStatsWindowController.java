@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class DailyStatsWindowController extends WindowController{
+	
 	@FXML
 	private TableView<Stat> stats = new TableView<Stat>();
 	
@@ -24,42 +25,68 @@ public class DailyStatsWindowController extends WindowController{
 	
 	private StatisticsModel sm = StatisticsModel.getStatisticsModel();
 	
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public DailyStatsWindowController () {
-		
 	}
 
+	
+	
 	/**	
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		dateBox.setItems(FXCollections.observableArrayList(sm.getDates()));
 		stats.setPlaceholder(new Label("Choose a Date below to display stats..."));
 	}
 
+	
+	
 	/**
-	 * Called when the user clicks on the Record button.
+	 * Called when the user clicks on the Menu button.
 	 */	
+	
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
 	}
+	
+	
+	
+	/**
+	 * Called when the user clicks on the Statistics button.
+	 */	
 	
 	@FXML
 	private void handleOverallStatsBtn() {
 		mainApp.showWindow(Window.STATISTICS);
 	}
 	
+	
+	
+	/**
+	 * Called when the user clicks on the Statistics button.
+	 */	
+	
 	@FXML
 	private void comboBoxChange() {
 		showDailyStats();
 		dateLabel.setText("Stats for " + sm.getCurrentUser() + " on " + dateBox.getValue());
 	}
+	
+	
+	
+	/**
+	 * Method that changes the contents of the TableView in
+	 */	
 	
 	@SuppressWarnings("unchecked")
 	private void showDailyStats() {

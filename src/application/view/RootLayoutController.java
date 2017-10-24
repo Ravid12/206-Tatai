@@ -13,17 +13,23 @@ public class RootLayoutController extends WindowController{
 	@FXML
 	ImageView rightSide;
 	
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public RootLayoutController () {
 	}
 
+	
+	
 	/**
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		Image image = new Image(RootLayoutController.class.getResource("side.png").toExternalForm());

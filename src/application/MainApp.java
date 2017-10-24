@@ -30,9 +30,12 @@ public class MainApp extends Application {
         showWindow(Window.USERSELECT);
     }
 
+    
+    
     /**
      * Initializes the root layout.
      */
+    
     public void initRootLayout() {
         try {
             // Load root layout from fxml file.
@@ -45,16 +48,19 @@ public class MainApp extends Application {
             scene.getStylesheets().add(MainApp.class.getResource("view/red-theme.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
    
 
+    
     /**
      * Initializes the window that goes inside the rootlayout.
      * @param windowName The window to display inside the root layout.
      */
+    
     public void showWindow(Window windowName) {
         try {
             // Load person overview.
@@ -69,44 +75,57 @@ public class MainApp extends Application {
             Controller controller = loader.getController();
             controller.setMainApp(this);
             
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }    
     }
 
 
+    
     /**
      * Returns the main stage.
      */
+    
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    
+    
     /**
      * Entry point for application.
      */
+    
     public static void main(String[] args) {
     	new File("./stats").mkdir();
     	new File("./stats/users").mkdir();
 		try {
 			new File("./stats/users/user.txt").createNewFile();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 
     	launch(args);
     }
 
+    
+    
     /**
      * Method to enable hardmode for the application.
      */
+    
     public void setUnlocked() {
     	this.unlocked=true;
     }
     
+    
+    
     /**
      * Checks if Hardmode has been enabled.
      */
+    
     public boolean getUnlocked() {
     	return unlocked;
     }

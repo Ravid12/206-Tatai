@@ -11,8 +11,16 @@ public class Equation{
 		private int secondNumber;
 		private int result;
 		private Operator operator;
-
-		//TODO: Make Both numbers in substraction below 100. Also, addition is wrong
+		
+		
+		
+		
+		/**
+		 * Constructor for Equation object
+		 * @param operator: The operator that is used in the equation
+		 * @param maxVal: The Lower bound for values that can appear in the equation
+		 * @param minVal: The Upper bound for values that can appear in the equation
+		 */
 		
 		public Equation(Operator operator, int maxVal, int minVal)
 		{
@@ -24,7 +32,6 @@ public class Equation{
 			this.result = rand.nextInt((max - min) + 1) + min;
 			
 	        switch (operator) {
-	        
 	        case ADDITION:
 	        	this.result = rand.nextInt((max - 2*min) + 1) + 2*min;
 	        	firstNumber = rand.nextInt((result - min - min) + 1) + min;
@@ -52,14 +59,12 @@ public class Equation{
 	    		Random decider = new Random();
 	        	int decision = decider.nextInt((2 - 1) + 1) + 1;
 	        	
-	        	if(decision == 1)
-	        	{
+	        	if(decision == 1) {
 	        		firstNumber = al.get(index);
 	        		secondNumber = result / firstNumber;
-	        	}
+	        	} 
 	        	
-	        	else
-	        	{
+	        	else {
 	        		secondNumber = al.get(index);
 	        		firstNumber = result / secondNumber;
 	        		
@@ -78,15 +83,26 @@ public class Equation{
 	        }
 		}
 		
-		public int getResult()
-		{
+		
+		
+		
+		public int getResult() {
 			return result;
 		}
 		
-		public Operator getOperator()
-		{
+		
+		
+		
+		public Operator getOperator() {
 			return this.operator;
 		}
+		
+		
+		
+		
+		/**
+		 * Returns a string that represents the equation for user to solve
+		 */
 		
 		@Override
 		public String toString() {

@@ -26,12 +26,17 @@ public class EndWindowController extends WindowController{
 	private ArrayList<Result> resultList;
 	private ArrayList<String> results = IOUtils.readFile("stats/temp.txt");
 	
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public EndWindowController () {
 	}
+	
+	
 	
 	/**
 	 * Initializes the controller class. This method is automatically called
@@ -66,13 +71,16 @@ public class EndWindowController extends WindowController{
 		finalscore.setText("You got " + StatisticsModel.getStatisticsModel().getRoundScore() + "/10 Correct!");
 	}
 	
+	
+	
 	/**
 	 * Called when the user clicks on the Main Menu button.
+	 * Unlocks hardmode
 	 */	
+	
 	@FXML
 	private void handleMainMenuBtn() {
-		if(noCorrect > 7)
-		{
+		if(noCorrect > 7) {
 			mainApp.setUnlocked();
 		}
 		mainApp.showWindow(Window.MAIN);

@@ -1,12 +1,16 @@
 package application.utils;
 
 public class MaoriUtils {
+	
+	
+	
 	/**
 	 * Method that translates an integer input to the corresponding string in Maori.
+	 * @param number: The number(int) to translate
 	 */
+	
 	public static String getMaoriNumber(int number) {
 		String maoriNumber;
-		
 		
 		final String[] components = new String[] {
 				"maa",
@@ -36,6 +40,13 @@ public class MaoriUtils {
 		
 		return maoriNumber;
 	}
+	
+	
+	
+	/**
+	 * Method that translates an integer input to the corresponding string in Maori.
+	 * @param number: The number(string) to translate
+	 */
 	
 	public static String getMaoriNumber(String number) {
 		return getMaoriNumber(Integer.parseInt(number));

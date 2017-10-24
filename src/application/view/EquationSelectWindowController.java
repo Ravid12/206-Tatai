@@ -39,17 +39,23 @@ public class EquationSelectWindowController extends WindowController{
 	@FXML
 	private Button menuButton;
 
+	
+	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
+	
 	public EquationSelectWindowController() {
 	}
 
+	
+	
 	/**
 	 * Initializes the controller class. This method is automatically called
 	 * after the fxml file has been loaded.
 	 */
+	
 	@FXML
 	private void initialize() {
 		cb.setItems(levels);
@@ -57,17 +63,24 @@ public class EquationSelectWindowController extends WindowController{
 		//		errorMessage.setTextFill(Color.web(redColour));
 	}
 
+	
+	
 	/**
 	 * Called when the user clicks on the Menu button.
 	 */	
+	
 	@FXML
 	private void handleMainMenuBtn() {
 		mainApp.showWindow(Window.MAIN);
 	}
 
+	
+	
 	/**
 	 * Called when the user clicks on the Start button.
+	 * Checks what operators the user has selected
 	 */	
+	
 	@FXML
 	private void handleSelectBtn() {
 		if (! cb.getSelectionModel().isEmpty()) {
