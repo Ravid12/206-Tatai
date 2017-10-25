@@ -71,7 +71,7 @@ public class EquationSelectWindowController extends WindowController{
 	
 	@FXML
 	private void handleMainMenuBtn() {
-		mainApp.showWindow(Window.MAIN);
+		mainApp.showWindow(Window.MODESELECT);
 	}
 
 	
