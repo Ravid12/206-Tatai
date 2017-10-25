@@ -9,7 +9,7 @@
 
 <AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ModeSelectWindowController">
    <children>
-      <Label alignment="TOP_CENTER" layoutX="59.0" layoutY="50.0" prefHeight="50.0" prefWidth="330.0" styleClass="title" text="Game Selection" textAlignment="CENTER" wrapText="true" />
+      <Label alignment="TOP_CENTER" layoutX="59.0" layoutY="35.0" prefHeight="50.0" prefWidth="330.0" styleClass="title" text="Game Selection" textAlignment="CENTER" wrapText="true" />
       <JFXButton layoutX="174.0" layoutY="300.0" onAction="#handleSelectBtn" styleClass="default-btn" text="Select" />
       <JFXButton layoutX="174.0" layoutY="350.0" onAction="#handleMainMenuBtn" styleClass="default-btn" text="Main Menu" />
       <Label alignment="TOP_LEFT" layoutX="135.0" layoutY="150.0" prefHeight="68.0" prefWidth="178.0" text="Please select the game mode you wish to play" textAlignment="CENTER" wrapText="true">

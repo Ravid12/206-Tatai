@@ -1,7 +1,5 @@
 package application.model;
 
-import java.util.Random;
-
 public class PracticeModel extends ExamModel{
 	
 	
