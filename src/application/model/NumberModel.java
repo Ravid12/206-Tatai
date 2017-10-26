@@ -64,6 +64,8 @@ public class NumberModel extends ExamModel{
      */
 	
 	public static void resetExamModel() {
+		difficulty = null;
+		numbers.clear();
 		examModel = new NumberModel();
 	}
 }

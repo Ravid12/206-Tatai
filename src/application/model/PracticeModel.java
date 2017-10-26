@@ -49,6 +49,8 @@ public class PracticeModel extends ExamModel{
      */
 	
 	public static void resetExamModel() {
+		difficulty = null;
+		numbers.clear();
 		examModel = new PracticeModel();
 	}
 }

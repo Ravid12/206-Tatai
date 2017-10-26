@@ -18,7 +18,7 @@
             <JFXButton layoutX="174.0" layoutY="250.0" onAction="#handleInstructionsBtn" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Instructions" textFill="WHITE" />
             <JFXButton layoutX="174.0" layoutY="200.0" onAction="#handleStatsBtn" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Statistics" textFill="WHITE" />
             <JFXButton layoutX="174.0" layoutY="150.0" onAction="#handleStartBtn" prefHeight="40.0" prefWidth="100.0" ripplerFill="#e3b2b2" styleClass="default-btn" text="Start!" textFill="WHITE" />
-            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="35.0" prefHeight="40.0" prefWidth="336.0" styleClass="title" text="Welcome To Tatai!" textAlignment="CENTER">
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="35.0" prefHeight="40.0" styleClass="title" text="Welcome to Tatai!" textAlignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Bold" size="32.0" />
                </font>

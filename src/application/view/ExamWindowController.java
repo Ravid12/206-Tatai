@@ -121,10 +121,6 @@ public class ExamWindowController extends WindowController{
 		Task<Void> taskRecord = new Task<Void>() {
 			@Override 
 			public Void call() {
-				btn_menu.setDisable(true);
-				btn_record.setDisable(true);
-				btn_confirm.setDisable(true);
-				btn_listen.setDisable(true);
 				String cmd = "./GoSpeech2";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
@@ -144,12 +140,6 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};		
-		taskRecord.setOnSucceeded(e -> {
-			btn_listen.setDisable(false);
-			btn_confirm.setDisable(false);
-			btn_record.setDisable(false);
-			btn_menu.setDisable(false);
-		});
 		new Thread(taskRecord).start();
 		new Thread(makeLoadingTask()).start();
 	}
@@ -169,11 +159,6 @@ public class ExamWindowController extends WindowController{
 		Task<Void> taskListen = new Task<Void>() {
 			@Override 
 			public Void call() {
-				btn_menu.setDisable(true);
-				btn_record.setDisable(true);
-				btn_confirm.setDisable(true);
-				btn_record.setDisable(true);
-				btn_listen.setDisable(true);
 				String cmd = "./play.sh";
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);		
 				try {
@@ -192,12 +177,6 @@ public class ExamWindowController extends WindowController{
 			}
 		};
 
-		taskListen.setOnSucceeded(e -> {
-			btn_listen.setDisable(false);
-			btn_confirm.setDisable(false);
-			btn_record.setDisable(false);
-			btn_menu.setDisable(false);
-		});
 
 		new Thread(taskListen).start();
 		new Thread(makeLoadingTask()).start();
@@ -390,6 +369,10 @@ public class ExamWindowController extends WindowController{
 		Task<Void> loadingTask = new Task<Void>() {
 			@Override 
 			public Void call() {
+				btn_menu.setDisable(true);
+				btn_record.setDisable(true);
+				btn_confirm.setDisable(true);
+				btn_listen.setDisable(true);
 				for(int i = 0; i < 1000; i++){
 					recordingProgress.setProgress(i*0.001 + 0.001);
 					try {
@@ -402,6 +385,13 @@ public class ExamWindowController extends WindowController{
 				return null;
 			}
 		};
+		
+		loadingTask.setOnSucceeded(e -> {
+			btn_listen.setDisable(false);
+			btn_confirm.setDisable(false);
+			btn_record.setDisable(false);
+			btn_menu.setDisable(false);
+		});
 		return loadingTask;
 	}
 }

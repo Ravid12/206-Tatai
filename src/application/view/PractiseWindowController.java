@@ -67,6 +67,7 @@ public class PractiseWindowController extends WindowController{
 			if (num < 0 || num > 99) {
 				errorLabel.setText(ERROR_BOUNDS);
 			} else {
+				PracticeModel.resetExamModel();
 				PracticeModel.getPracticeModel().createList(num);
 				mainApp.showWindow(Window.EXAM);
 			}

@@ -69,11 +69,12 @@ public class Equation{
 	        		firstNumber = result / secondNumber;
 	        		
 	        	}
-	    		
+	    			
 	    		
 	            break;
 	             
 	        case DIVISION:
+	        	this.result = rand.nextInt(((int)Math.floor(Math.sqrt(max)) - min) + 1) + min;
 	        	secondNumber = rand.nextInt(((max / result) - min) + 1) + min;
 	        	firstNumber = secondNumber * result;
 	            break;
