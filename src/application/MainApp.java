@@ -17,7 +17,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private boolean unlocked = false;
+//    private boolean unlocked = false;
     
     @Override
     public void start(Stage primaryStage) {
@@ -108,25 +108,5 @@ public class MainApp extends Application {
 		}
 
     	launch(args);
-    }
-
-    
-    
-    /**
-     * Method to enable hardmode for the application.
-     */
-    
-    public void setUnlocked() {
-    	this.unlocked=true;
-    }
-    
-    
-    
-    /**
-     * Checks if Hardmode has been enabled.
-     */
-    
-    public boolean getUnlocked() {
-    	return unlocked;
     }
 }

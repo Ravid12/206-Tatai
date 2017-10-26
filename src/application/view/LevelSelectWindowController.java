@@ -56,24 +56,10 @@ public class LevelSelectWindowController extends WindowController{
 	
 	@FXML
 	private void handleMainMenuBtn() {
-		mainApp.showWindow(Window.MAIN);	
+		mainApp.showWindow(Window.MODESELECT);	
 	}
 
-	
-	
-	/**
-	 * Called if the user tries to play hardmode without unlocking it
-	 */	
-	
-	@FXML
-	private void conboBoxOnChange() {
-		if(cb.getValue().equals(Difficulty.HARD) && ! mainApp.getUnlocked())
-		{
-			errorMessage.setText("You need to get 8 or more correct in Easy mode to unlock Hard mode");
-		}
-	}
 
-	
 	
 	/**
 	 * Called when the user clicks on the Start button.
