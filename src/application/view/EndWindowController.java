@@ -80,9 +80,6 @@ public class EndWindowController extends WindowController{
 	
 	@FXML
 	private void handleMainMenuBtn() {
-		if(noCorrect > 7) {
-			mainApp.setUnlocked();
-		}
 		mainApp.showWindow(Window.MAIN);
 	}
 }
