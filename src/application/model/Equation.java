@@ -17,9 +17,9 @@ public class Equation{
 		
 		/**
 		 * Constructor for Equation object
-		 * @param operator: The operator that is used in the equation
-		 * @param maxVal: The Lower bound for values that can appear in the equation
-		 * @param minVal: The Upper bound for values that can appear in the equation
+		 * @param operator The operator that is used in the equation
+		 * @param maxVal The Lower bound for values that can appear in the equation
+		 * @param minVal The Upper bound for values that can appear in the equation
 		 */
 		
 		public Equation(Operator operator, int maxVal, int minVal)

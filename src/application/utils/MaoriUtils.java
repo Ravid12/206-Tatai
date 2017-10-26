@@ -6,7 +6,7 @@ public class MaoriUtils {
 	
 	/**
 	 * Method that translates an integer input to the corresponding string in Maori.
-	 * @param number: The number(int) to translate
+	 * @param number The number(int) to translate
 	 */
 	
 	public static String getMaoriNumber(int number) {
@@ -45,7 +45,7 @@ public class MaoriUtils {
 	
 	/**
 	 * Method that translates an integer input to the corresponding string in Maori.
-	 * @param number: The number(string) to translate
+	 * @param number The number(string) to translate
 	 */
 	
 	public static String getMaoriNumber(String number) {

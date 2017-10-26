@@ -20,4 +20,14 @@ public class StringUtils {
 	  }  
 	  return true;  
 	}
+	
+	/**
+	 * Checks if username contains only alphanumeric Characters
+	 * or underscores.
+	 */
+	
+	public static boolean isValidUsername(String username) {
+		// Regex for all alphanumeric characters and underscores
+		return username.matches("^[a-zA-Z0-9_]+$");
+	}
 }
