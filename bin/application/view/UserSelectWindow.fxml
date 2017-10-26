@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.UserSelectWindowController">
+   <children>
+      <TextField fx:id="tf" layoutX="149.0" layoutY="175.0" prefWidth="150.0" />
+      <ComboBox fx:id="cb" layoutX="149.0" layoutY="252.0" prefWidth="150.0" />
+      <JFXButton layoutX="174.0" layoutY="360.0" onAction="#handleLoginBtn" styleClass="default-btn" text="Login" />
+      <Label alignment="TOP_CENTER" layoutX="64.0" layoutY="35.0" prefWidth="320.0" styleClass="title" text="Welcome to Tatai" textAlignment="CENTER" wrapText="true" />
+      <Label alignment="TOP_CENTER" layoutX="166.0" layoutY="150.0" prefHeight="20.0" prefWidth="116.0" text="Create new User" textAlignment="CENTER" wrapText="true" />
+      <Label alignment="TOP_CENTER" layoutX="153.0" layoutY="227.0" prefHeight="20.0" prefWidth="142.0" text="Choose existing User" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="errorMessage" alignment="TOP_CENTER" layoutX="100.0" layoutY="292.0" prefHeight="66.0" prefWidth="249.0" text="   Please either: Create a new user or Choose an existing user" textAlignment="CENTER" textFill="#e80000" wrapText="true" />
+      <JFXButton fx:id="deleteButton" layoutX="174.0" layoutY="410.0" onAction="#handleDeleteBtn" styleClass="default-btn" text="Delete User" />
+   </children>
+</AnchorPane>
