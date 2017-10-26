@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.LevelSelectWindowController">
+<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.LevelSelectWindowController">
    <children>
       <Label layoutX="114.0" layoutY="35.0" styleClass="title" text="Level Select" />
       <ComboBox fx:id="cb" layoutX="74.0" layoutY="228.0" prefWidth="150.0" />

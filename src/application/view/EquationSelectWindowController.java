@@ -14,8 +14,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
-public class EquationSelectWindowController extends WindowController{
+public class EquationSelectWindowController extends WindowController {
 	@FXML
 	private ComboBox<Difficulty> cb = new ComboBox<Difficulty>();
 
@@ -38,6 +39,9 @@ public class EquationSelectWindowController extends WindowController{
 
 	@FXML
 	private Button menuButton;
+	
+	@FXML
+	private Label error;
 
 	
 	
@@ -83,7 +87,7 @@ public class EquationSelectWindowController extends WindowController{
 	
 	@FXML
 	private void handleSelectBtn() {
-		if (! cb.getSelectionModel().isEmpty()) {
+		if (!cb.getSelectionModel().isEmpty() && (addBox.isSelected() || subBox.isSelected() || mulBox.isSelected() || divBox.isSelected())) {
 			ArrayList<Operator> o = new ArrayList<Operator>();
 
 			if (addBox.isSelected()) {
@@ -100,7 +104,7 @@ public class EquationSelectWindowController extends WindowController{
 
 			if (divBox.isSelected()) {
 				o.add(Operator.DIVISION);
-			}			
+			}				
 			
 			EquationModel.resetExamModel();
 			EquationModel.setOperators(o);
@@ -111,6 +115,7 @@ public class EquationSelectWindowController extends WindowController{
 			mainApp.showWindow(Window.EXAM);
 		}			
 		else {
+			error.setText("Please choose some operators \nAND a difficulty...");
 		}
 	}
 }

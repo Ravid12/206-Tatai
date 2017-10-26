@@ -42,6 +42,7 @@ public class EquationModel extends ExamModel{
 	public void createList() {
 		Random rn = new Random();
 
+
 		for (int i=0; i< 10; i++) {			
 			Equation e = new Equation(operators.get(rn.nextInt(operators.size())), difficulty.getMax(), difficulty.getMin());
 			numbers.add(e.getResult());
@@ -78,6 +79,8 @@ public class EquationModel extends ExamModel{
 	 */
 	
 	public static void resetExamModel() {
+		numbers.clear();
+		equations.clear();
 		examModel = new EquationModel();
 	}
 	

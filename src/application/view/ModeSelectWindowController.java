@@ -1,20 +1,21 @@
 package application.view;
 
 import application.controller.WindowController;
-import application.model.EquationModel;
 import application.model.Mode;
-import application.model.NumberModel;
-import application.model.PracticeModel;
 import application.model.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 public class ModeSelectWindowController extends WindowController{
 	
 	@FXML
 	private ComboBox<Mode> cb;
+	
+	@FXML
+	private Label error;
 	
 	private ObservableList<Mode> levels = FXCollections.observableArrayList(Mode.values());
 	
@@ -71,6 +72,8 @@ public class ModeSelectWindowController extends WindowController{
 			else if (cb.getValue().equals(Mode.PRACTICE)) {
 				mainApp.showWindow(Window.PRACTICE);
 			}
+		} else {
+			error.setText("Please select a gamemode...");
 		}
 	}
 }

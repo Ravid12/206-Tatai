@@ -6,7 +6,7 @@ public class ExamModel {
 	
 	protected static ExamModel examModel;
 	protected static Difficulty difficulty;
-	protected ArrayList<Integer> numbers = new ArrayList<Integer>();
+	protected static ArrayList<Integer> numbers = new ArrayList<Integer>();
 
 	
 	

@@ -22,7 +22,6 @@ public class EndWindowController extends WindowController{
 	@FXML
 	private Label finalscore;
 		
-	private int noCorrect = 0;
 	private ArrayList<Result> resultList;
 	private ArrayList<String> results = IOUtils.readFile("stats/temp.txt");
 	

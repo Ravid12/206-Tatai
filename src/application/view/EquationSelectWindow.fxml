@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.EquationSelectWindowController">
+<AnchorPane styleClass="default-Anchor" stylesheets="@red-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.EquationSelectWindowController">
    <children>
       <CheckBox fx:id="addBox" layoutX="72.6" layoutY="200.0" mnemonicParsing="false" text="➕" />
       <CheckBox fx:id="subBox" layoutX="162.2" layoutY="200.0" mnemonicParsing="false" text="➖" />
@@ -18,5 +22,6 @@
       <Label alignment="TOP_CENTER" layoutX="74.0" layoutY="50.0" prefHeight="57.0" prefWidth="300.0" styleClass="title" text="Equation Select" wrapText="true" />
       <ComboBox fx:id="cb" layoutX="149.0" layoutY="250.0" prefWidth="150.0" />
       <Label layoutX="149.0" layoutY="233.0" text="Choose a level:" />
+      <Label fx:id="error" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="295.0" prefHeight="40.0" prefWidth="224.0" textAlignment="CENTER" textFill="#e80000" wrapText="true" />
    </children>
 </AnchorPane>

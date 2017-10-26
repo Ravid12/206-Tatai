@@ -2,7 +2,6 @@ package application.view;
 
 import application.controller.WindowController;
 import application.model.Difficulty;
-import application.model.ExamModel;
 import application.model.NumberModel;
 import application.model.StatisticsModel;
 import application.model.Window;
